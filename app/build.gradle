@@ -4,7 +4,19 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+// greenDao step : 2
+apply plugin: 'org.greenrobot.greendao'
+
 android {
+    // 打包
+    signingConfigs {
+        config {
+            keyAlias 'ssz001'
+            keyPassword 'ssz001'
+            storeFile file('C:/Users/14565/Desktop/ssz/studydemo.jks')
+            storePassword 'ssz001'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.ssz.studydemo"
@@ -17,13 +29,28 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            minifyEnabled true
+            zipAlignEnabled false
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+}
+
+// greenDao step 3
+greendao {
+    schemaVersion 1// 数据库版本号
+    daoPackage 'com.ssz.studydemo.data.dao' //greenDao 自动生成的代码保存的包名
+    targetGenDir 'src/main/java'// 自动生成的代码存储的路径，默认是 build/generated/source/greendao.
+//    generateTests false  //true的时候自动生成测试单元
+//    targetGenDirTests: //测试单元的生成目录默认是 src / androidTest / java
 }
 
 dependencies {
