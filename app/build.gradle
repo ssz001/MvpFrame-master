@@ -9,14 +9,14 @@ apply plugin: 'org.greenrobot.greendao'
 
 android {
     // 打包
-    signingConfigs {
-        config {
-            keyAlias 'ssz001'
-            keyPassword 'ssz001'
-            storeFile file('C:/Users/14565/Desktop/ssz/studydemo.jks')
-            storePassword 'ssz001'
-        }
-    }
+//    signingConfigs {
+//        config {
+//            keyAlias 'ssz001'
+//            keyPassword 'ssz001'
+//            storeFile file('C:/Users/14565/Desktop/ssz/studydemo.jks')
+//            storePassword 'ssz001'
+//        }
+//    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.ssz.studydemo"
@@ -29,12 +29,11 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            zipAlignEnabled true
+//            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+//            signingConfig signingConfigs.config
         }
         debug {
-            minifyEnabled true
             zipAlignEnabled false
         }
     }
@@ -61,8 +60,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     implementation project(':frame')
-
     implementation 'com.android.support:design:28.0.0'
 }
