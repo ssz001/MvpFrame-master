@@ -1,24 +1,33 @@
-package com.ssz.studydemo
+package com.ssz.studydemo.main
 
 import android.os.Bundle
+import android.support.design.widget.AppBarLayout
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
+import com.ssz.studydemo.R
+import com.ssz.studydemo.R.id.cl_layout
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.OnNavigationItemSelectedListener {
 
-    val TAG = "MainActivity"
+//    伴生对象
+    companion object {
+       val  TAG = "MainActivity"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        t_toolbar.setTitle("")
         setSupportActionBar(t_toolbar)
         t_toolbar.setNavigationOnClickListener {
             if(dl_draw.isDrawerOpen(Gravity.START)){
@@ -34,9 +43,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
     fun init(){
         nav_view.setNavigationItemSelectedListener (this)
         float_button.setOnClickListener(this)
-        val headView = View.inflate(this,R.layout.nav_head_view,null)
+        val headView = View.inflate(this, R.layout.nav_head_view,null)
         nav_view.addHeaderView(headView)
         headView.findViewById<ImageView>(R.id.iv_head).setOnClickListener(this)
+
+        sf_layout.setOnRefreshListener({
+            sf_layout.setRefreshing(false)
+        })
+
+        app_bar_l.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener{
+            override fun onOffsetChanged(p0: AppBarLayout?, p1: Int) {
+
+            }
+        })
+
+        app_bar_l.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { p0, p1 -> })
+
+        val manager = LinearLayoutManager(this)
+        manager.orientation = LinearLayoutManager.VERTICAL
+        rv_content.layoutManager = manager
+        rv_content.adapter = ContentDataAdapter()
+
     }
 
     override fun onClick(v: View?) {
@@ -54,7 +81,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
        }
     }
 
-
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when (p0.itemId){
             R.id.nav_home -> Log.d(TAG,"home")
@@ -65,4 +91,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
         }
         return true
     }
+
+    interface listener : (AppBarLayout?,Int) -> Unit   //???
 }

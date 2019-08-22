@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--DrawerLayout允许两个直接子控件 第一个为主页面 第二个为抽屉-->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/dl_draw"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dl_draw"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
-
+    tools:context=".main.MainActivity">
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/cl_layout"
@@ -16,41 +15,58 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-
         <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_l"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!--必须设置scrollFlags才能滚动-->
+            <!--app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
             <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/ctl_collapsing"
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="200dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/dp100"-->
+                <!--app:layout_collapseMode="parallax"-->
+                <!--app:layout_collapseParallaxMultiplier="0.7">-->
 
+                <!--</LinearLayout>-->
+
+                <!--pin设置折叠时固定-->
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/t_toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:navigationIcon="@drawable/title_menu">
+                    android:layout_height="?actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@drawable/title_menu"
+                    app:layout_scrollFlags="scroll|enterAlways">
 
+                    <!--app:navigationIcon="@drawable/title_menu"-->
+                    <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
 
                 </android.support.v7.widget.Toolbar>
 
             </android.support.design.widget.CollapsingToolbarLayout>
 
-
         </android.support.design.widget.AppBarLayout>
 
+        <!--swipeRefreshLayout 不设置这个 layout_behavior 会界面显示错误 布局会到最头上-->
         <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/sf_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorAccent">
-
-        </android.support.v7.widget.RecyclerView>
+            </android.support.v7.widget.RecyclerView>
 
         </android.support.v4.widget.SwipeRefreshLayout>
 
@@ -58,14 +74,12 @@
             android:id="@+id/float_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_gravity="end|bottom"/>
-
+            android:layout_gravity="end|bottom"
+            android:layout_margin="15dp" />
 
     </android.support.design.widget.CoordinatorLayout>
 
-
-<!--<include layout="@layout/title_menu"/>-->
+    <!--<include layout="@layout/title_menu"/>-->
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -76,6 +90,5 @@
         app:menu="@menu/drawer_list">
 
     </android.support.design.widget.NavigationView>
-
 
 </android.support.v4.widget.DrawerLayout>
