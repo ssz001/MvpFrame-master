@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
 
 //    伴生对象
     companion object {
-       val  TAG = "MainActivity"
+       const val TAG = "MainActivity"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
