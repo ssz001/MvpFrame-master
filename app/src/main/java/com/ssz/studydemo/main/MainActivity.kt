@@ -11,10 +11,10 @@ import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.ssz.studydemo.R
 import com.ssz.studydemo.R.id.cl_layout
+import com.ssz.studydemo.main.app.AppContext
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.OnNavigationItemSelectedListener {
@@ -27,17 +27,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        t_toolbar.setTitle("")
-        setSupportActionBar(t_toolbar)
+//        t_toolbar.title = ""
+        setSupportActionBar(t_toolbar.also { title= "" })
         t_toolbar.setNavigationOnClickListener {
-            if(dl_draw.isDrawerOpen(Gravity.START)){
-                dl_draw.closeDrawers()
-            }else{
-                dl_draw.openDrawer(Gravity.START)
-            }
+            if(dl_draw.isDrawerOpen(Gravity.START)) dl_draw.closeDrawers() else dl_draw.openDrawer(Gravity.START)
             Toast.makeText(this,"点击了菜单",Toast.LENGTH_SHORT).show()
         }
         init()
+        Log.d(TAG, AppContext.instance.toString())
     }
 
     fun init(){
@@ -45,11 +42,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
         float_button.setOnClickListener(this)
         val headView = View.inflate(this, R.layout.nav_head_view,null)
         nav_view.addHeaderView(headView)
+//        iv_head.setOnClickListener(this)
         headView.findViewById<ImageView>(R.id.iv_head).setOnClickListener(this)
 
-        sf_layout.setOnRefreshListener({
-            sf_layout.setRefreshing(false)
-        })
+        sf_layout.setOnRefreshListener{ sf_layout.isRefreshing = false }
 
         app_bar_l.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener{
             override fun onOffsetChanged(p0: AppBarLayout?, p1: Int) {
@@ -57,23 +53,26 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
             }
         })
 
-        app_bar_l.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { p0, p1 -> })
+        app_bar_l.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
 
-        val manager = LinearLayoutManager(this)
-        manager.orientation = LinearLayoutManager.VERTICAL
-        rv_content.layoutManager = manager
+        app_bar_l.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener() { p0, p1 -> })
+
+        rv_content.layoutManager = LinearLayoutManager(this).also { it.orientation = LinearLayoutManager.VERTICAL }
         rv_content.adapter = ContentDataAdapter()
-
     }
 
     override fun onClick(v: View?) {
        when(v?.id){
            R.id.float_button -> {
-              val snackbar = Snackbar.make(cl_layout,"点击了FloatActionButton",Snackbar.LENGTH_SHORT)
-               snackbar.setAction("撤销") {
-                   snackbar.dismiss()
+               val snackBar = Snackbar.make(cl_layout,"点击了FloatActionButton",Snackbar.LENGTH_SHORT)
+               snackBar.setAction("撤销") {
+                   snackBar.dismiss()
                }
-               snackbar.show()
+               snackBar.show()
            }
            R.id.iv_head -> {
                Toast.makeText(this,"点击了头像",Toast.LENGTH_SHORT).show()
@@ -81,8 +80,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
        }
     }
 
-    override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-        when (p0.itemId){
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
             R.id.nav_home -> Log.d(TAG,"home")
             R.id.nav_item2 -> Log.d(TAG,"item2")
             R.id.nav_item3 -> Log.d(TAG,"item3")
@@ -93,4 +92,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
     }
 
     interface listener : (AppBarLayout?,Int) -> Unit   //???
+
 }
