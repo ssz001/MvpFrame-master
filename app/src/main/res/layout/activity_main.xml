@@ -81,14 +81,19 @@
 
     <!--<include layout="@layout/title_menu"/>-->
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="false"
-        app:menu="@menu/drawer_list">
+    <!--headerlayout 是头像部分的，menu是底下的-->
+    <!--<android.support.design.widget.NavigationView-->
+        <!--android:id="@+id/nav_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--app:headerLayout="@layout/title_menu"-->
+        <!--app:menu="@menu/drawer_list">-->
 
-    </android.support.design.widget.NavigationView>
+    <!--</android.support.design.widget.NavigationView>-->
+
+    <!--必须设置layout_gravity-->
+    <include layout="@layout/draw_left_view" />
 
 </android.support.v4.widget.DrawerLayout>

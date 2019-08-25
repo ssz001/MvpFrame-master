@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!--用group可以维持单选 加入分割线-->
     <!--<group android:checkableBehavior="single">-->
@@ -35,5 +36,6 @@
             android:title="意见反馈" />
 
     </group>
+
 
 </menu>

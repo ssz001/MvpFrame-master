@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <array name="appcompat_textview_textsize">
+        <item>@dimen/dp12</item>
+        <item>@dimen/dp14</item>
+        <item>@dimen/dp16</item>
+        <item>@dimen/dp18</item>
+        <item>@dimen/dp20</item>
+        <item>@dimen/dp22</item>
+    </array>
+    
+</resources>

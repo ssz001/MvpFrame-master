@@ -10,10 +10,8 @@ import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import com.ssz.studydemo.R
-import com.ssz.studydemo.R.id.cl_layout
 import com.ssz.studydemo.main.app.AppContext
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -38,28 +36,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
     }
 
     fun init(){
-        nav_view.setNavigationItemSelectedListener (this)
+//        nav_view.setNavigationItemSelectedListener (this)
         float_button.setOnClickListener(this)
-        val headView = View.inflate(this, R.layout.nav_head_view,null)
-        nav_view.addHeaderView(headView)
-//        iv_head.setOnClickListener(this)
-        headView.findViewById<ImageView>(R.id.iv_head).setOnClickListener(this)
+//        val headView = View.inflate(this, R.layout.nav_head_view,null)
+//        nav_view.addHeaderView(headView)
+//        headView.findViewById<ImageView>(R.id.iv_head).setOnClickListener(this)
 
         sf_layout.setOnRefreshListener{ sf_layout.isRefreshing = false }
 
-        app_bar_l.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener{
-            override fun onOffsetChanged(p0: AppBarLayout?, p1: Int) {
-
-            }
-        })
-
-        app_bar_l.setOnClickListener(object :View.OnClickListener{
-            override fun onClick(v: View?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-        })
-
-        app_bar_l.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener() { p0, p1 -> })
 
         rv_content.layoutManager = LinearLayoutManager(this).also { it.orientation = LinearLayoutManager.VERTICAL }
         rv_content.adapter = ContentDataAdapter()

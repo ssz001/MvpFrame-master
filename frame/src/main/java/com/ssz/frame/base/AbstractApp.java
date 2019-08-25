@@ -2,7 +2,6 @@ package com.ssz.frame.base;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -130,6 +129,7 @@ public abstract class AbstractApp extends Application implements Application.Act
     }
 
     /**
+     * 以下文字针对activity：（系统文字变化等）
      * 当系统的配置信息发生改变时，系统会调用此方法。
      * 注意，只有在配置文件 AndroidManifest 中处理了 configChanges属性 对应的设备配置，该方法才会被调用。
      * 如果发生设备配置与在配置文件中设置的不一致，则Activity会被销毁并使用新的配置重建。
