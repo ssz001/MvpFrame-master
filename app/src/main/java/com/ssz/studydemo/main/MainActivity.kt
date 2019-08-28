@@ -25,8 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        t_toolbar.title = ""
-        setSupportActionBar(t_toolbar.also { title= "" })
+        setSupportActionBar(t_toolbar.also { title= ""})
         t_toolbar.setNavigationOnClickListener {
             if(dl_draw.isDrawerOpen(Gravity.START)) dl_draw.closeDrawers() else dl_draw.openDrawer(Gravity.START)
             Toast.makeText(this,"点击了菜单",Toast.LENGTH_SHORT).show()
@@ -43,7 +42,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
 //        headView.findViewById<ImageView>(R.id.iv_head).setOnClickListener(this)
 
         sf_layout.setOnRefreshListener{ sf_layout.isRefreshing = false }
-
 
         rv_content.layoutManager = LinearLayoutManager(this).also { it.orientation = LinearLayoutManager.VERTICAL }
         rv_content.adapter = ContentDataAdapter()
@@ -66,7 +64,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
-            R.id.nav_home -> Log.d(TAG,"home")
+            R.id.nav_home ->  Log.d(TAG,"home")
             R.id.nav_item2 -> Log.d(TAG,"item2")
             R.id.nav_item3 -> Log.d(TAG,"item3")
             R.id.nav_item4 -> Log.d(TAG,"item4")

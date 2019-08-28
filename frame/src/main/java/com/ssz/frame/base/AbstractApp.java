@@ -51,7 +51,7 @@ public abstract class AbstractApp extends Application implements Application.Act
      * onTerminate：当终止应用程序对象时调用，不保证一定被调用，当程序是被内核终止以便为其他应用程序释放资源，
      * 那么将不会提醒，并且不调用应用程序的对象的onTerminate方法而直接终止进程。
      * (- 真机情况下不会被调用 -)
-     * ( 模拟器情况下调用 )
+     * ( 模拟器情况下调用 ?)
      */
     @Override
     public void onTerminate() {
@@ -68,6 +68,9 @@ public abstract class AbstractApp extends Application implements Application.Act
         windowManager.getDefaultDisplay().getMetrics(dm);
         screenHeight = dm.heightPixels;
         screenWidth = dm.widthPixels;
+        //                 3          :    4   :     x     :    6    :     8     :   12
+        // 屏幕密度（每寸像素120(ldpi)/160(mdpi)/213(tvdpi)/240(hdpi)/320(xhdpi)/480(xxhdpi)）
+        Log.d("dpi","设备的DPI = " + dm.densityDpi);
     }
 
     /**********************区别***********************/

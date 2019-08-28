@@ -23,7 +23,4 @@ class Run {
             this?.name
         }
     }
-
-
-
 }
