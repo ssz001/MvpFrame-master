@@ -33,6 +33,11 @@ public class Net {
         api = mRetrofit.create(Api.class);
     }
 
+    public void updateRetrofit(){
+        mRetrofit = RemoteHelper.getInstance().updateRetrofit();
+        api = mRetrofit.create(Api.class);
+    }
+
     public Api getApi(){
         return Objects.requireNonNull(api,"null == api ?");
     }
