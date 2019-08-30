@@ -1,9 +1,9 @@
-package com.ssz.frame.net1.base;
+package com.ssz.frame.data.remote.base;
 
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.ssz.frame.net1.base.converter.GsonConverterFactory;
+import com.ssz.frame.data.remote.base.converter.GsonConverterFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;

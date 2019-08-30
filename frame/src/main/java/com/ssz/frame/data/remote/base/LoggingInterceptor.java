@@ -1,4 +1,4 @@
-package com.ssz.frame.net1.base;
+package com.ssz.frame.data.remote.base;
 
 import android.support.annotation.NonNull;
 import android.util.Log;

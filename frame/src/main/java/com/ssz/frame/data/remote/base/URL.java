@@ -1,4 +1,4 @@
-package com.ssz.frame.net1.base;
+package com.ssz.frame.data.remote.base;
 
 /**
  * @author : zsp
@@ -6,4 +6,9 @@ package com.ssz.frame.net1.base;
  */
 class URL {
     static String BASE_URL = "http://192.168.0.100:8000";
+    public static void setBaseUrl(String baseUrl){
+        BASE_URL = baseUrl;
+    }
+
+
 }

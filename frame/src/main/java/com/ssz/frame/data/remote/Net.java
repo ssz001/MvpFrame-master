@@ -1,6 +1,6 @@
-package com.ssz.frame.net1;
+package com.ssz.frame.data.remote;
 
-import com.ssz.frame.net1.base.RemoteHelper;
+import com.ssz.frame.data.remote.base.RemoteHelper;
 
 import java.util.Objects;
 

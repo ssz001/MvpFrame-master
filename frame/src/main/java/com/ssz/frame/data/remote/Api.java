@@ -1,4 +1,4 @@
-package com.ssz.frame.net1;
+package com.ssz.frame.data.remote;
 
 /**
  * @author : zsp
