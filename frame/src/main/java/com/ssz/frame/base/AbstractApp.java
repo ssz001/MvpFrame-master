@@ -9,6 +9,9 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.ssz.frame.BuildConfig;
+import com.ssz.frame.utils.LogUtils;
+
 /**
  * @author : zsp
  * time : 2019 08 2019/8/23 9:56
@@ -44,7 +47,9 @@ public abstract class AbstractApp extends Application implements Application.Act
         instance = this;
 //      from  API 14 每一个Activity的生命周期都会回调到这里的对应方法,只需要在这里注册
         registerActivityLifecycleCallbacks(this);
-        Log.d(TAG, "screen width = " + screenWidth + " screen height = " + screenHeight);
+
+        Log.d("BuildConfig","是否打印日志：" + BuildConfig.DEBUG);
+        LogUtils.d(TAG, "screen width = " + screenWidth + " screen height = " + screenHeight);
     }
 
     /**

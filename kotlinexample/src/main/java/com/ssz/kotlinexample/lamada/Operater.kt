@@ -1,6 +1,7 @@
 package com.ssz.kotlinexample.lamada
 
 import android.view.View
+import com.ssz.kotlinexample.BuildConfig
 import com.ssz.kotlinexample.lamada.iface.*
 
 /**

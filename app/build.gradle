@@ -23,6 +23,7 @@ android {
         applicationId "com.ssz.studydemo"
         minSdkVersion 23
         targetSdkVersion 28
+
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -34,8 +35,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 //            signingConfig signingConfigs.config
         }
+
         debug {
             zipAlignEnabled false
+            //增加 BuildConfig 类参数
+            buildConfigField ("String","name","zsp")
         }
     }
     compileOptions {

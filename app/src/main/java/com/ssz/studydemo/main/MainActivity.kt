@@ -12,6 +12,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.ssz.studydemo.R
+import com.ssz.studydemo.R.id.*
 import com.ssz.studydemo.main.app.AppContext
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(t_toolbar.also { title= ""})
+        setSupportActionBar(t_toolbar.also {title= ""})
         t_toolbar.setNavigationOnClickListener {
             if(dl_draw.isDrawerOpen(Gravity.START)) dl_draw.closeDrawers() else dl_draw.openDrawer(Gravity.START)
             Toast.makeText(this,"点击了菜单",Toast.LENGTH_SHORT).show()
@@ -40,9 +41,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
 //        val headView = View.inflate(this, R.layout.nav_head_view,null)
 //        nav_view.addHeaderView(headView)
 //        headView.findViewById<ImageView>(R.id.iv_head).setOnClickListener(this)
-
         sf_layout.setOnRefreshListener{ sf_layout.isRefreshing = false }
-
         rv_content.layoutManager = LinearLayoutManager(this).also { it.orientation = LinearLayoutManager.VERTICAL }
         rv_content.adapter = ContentDataAdapter()
     }
