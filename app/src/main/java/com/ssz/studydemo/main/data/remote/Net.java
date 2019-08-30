@@ -1,10 +1,9 @@
-package com.ssz.frame.data.remote;
-
-import com.ssz.frame.data.remote.base.RemoteHelper;
+package com.ssz.studydemo.main.data.remote;
 
 import java.util.Objects;
 
 import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import retrofit2.Retrofit;
 
@@ -26,6 +25,10 @@ public class Net {
             }
         }
         return instance;
+    }
+
+    public OkHttpClient getOkhttpClient(){
+        return RemoteHelper.getInstance().getOkHttpClient();
     }
 
     private Net() {

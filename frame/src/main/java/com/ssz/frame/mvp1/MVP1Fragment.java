@@ -28,8 +28,13 @@ public abstract class MVP1Fragment<P extends IContract.IPresenter> extends Fragm
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(getLayoutId(),container,false);
         mBinder = ButterKnife.bind(this,rootView);
-        mPresenter = bindPresenter();
+        attachView(bindPresenter());
         return rootView;
+    }
+
+    private void attachView(P presenter){
+        mPresenter = presenter;
+        mPresenter.attachView(this);
     }
 
     @Override

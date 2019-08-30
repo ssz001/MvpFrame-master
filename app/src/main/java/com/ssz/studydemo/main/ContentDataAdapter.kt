@@ -23,5 +23,5 @@ class ContentDataAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     }
 
-    class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

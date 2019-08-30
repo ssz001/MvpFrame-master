@@ -20,6 +20,7 @@ val onClick  = { println("无参数的情况") }
 fun onClick(){
     println("无参数的情况")
 }
+var ong : (() -> Unit)? = null
 
 /**
  * 有参数的情况

@@ -1,9 +1,10 @@
-package com.ssz.frame.data.remote.base;
+package com.ssz.studydemo.main.data.remote;
 
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.ssz.frame.data.remote.base.converter.GsonConverterFactory;
+import com.ssz.frame.utils.converter.GsonConverterFactory;
+import com.ssz.studydemo.main.data.URL;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -59,15 +60,15 @@ public class RemoteHelper {
                 .build();
     }
 
-    public OkHttpClient getOkHttpClient() {
+    OkHttpClient getOkHttpClient() {
         return mOkHttpClient;
     }
 
-    public Retrofit getRetrofit(){
+    Retrofit getRetrofit(){
         return mRetrofit;
     }
 
-    public Retrofit updateRetrofit(){
+    Retrofit updateRetrofit(){
         mRetrofit = new Retrofit.Builder()
                 .client(mOkHttpClient)
                 .baseUrl(URL.BASE_URL)

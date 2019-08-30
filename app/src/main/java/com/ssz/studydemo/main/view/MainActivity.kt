@@ -1,4 +1,4 @@
-package com.ssz.studydemo.main
+package com.ssz.studydemo.main.view
 
 import android.os.Bundle
 import android.support.design.widget.AppBarLayout
@@ -12,7 +12,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.ssz.studydemo.R
-import com.ssz.studydemo.R.id.*
+import com.ssz.studydemo.main.ContentDataAdapter
 import com.ssz.studydemo.main.app.AppContext
 import kotlinx.android.synthetic.main.activity_main.*
 

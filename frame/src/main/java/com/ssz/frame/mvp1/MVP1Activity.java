@@ -23,7 +23,12 @@ public abstract class MVP1Activity<P extends IContract.IPresenter> extends AppCo
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         ButterKnife.bind(this);
-        mPresenter = bindPresenter();
+        attachView(bindPresenter());
+    }
+
+    private void attachView(P presenter){
+        mPresenter = presenter;
+        mPresenter.attachView(this);
     }
 
     @Override
@@ -31,6 +36,7 @@ public abstract class MVP1Activity<P extends IContract.IPresenter> extends AppCo
         if (null != mCompositeDisposable){
             mCompositeDisposable.dispose();
         }
+        mPresenter.detachView();
         super.onDestroy();
     }
 

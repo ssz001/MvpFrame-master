@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ssz.frame.data.remote.base.converter;
+package com.ssz.frame.utils.converter;
 
 import android.support.annotation.NonNull;
 import android.util.Log;

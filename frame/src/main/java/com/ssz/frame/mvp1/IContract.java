@@ -10,7 +10,10 @@ public interface IContract {
 
     }
 
-    interface IPresenter{
+    interface IPresenter<T> {
 
+        void attachView(T view);
+
+        void detachView();
     }
 }
