@@ -19,7 +19,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
  * @author : zsp
  * time : 2019 08 2019/8/30 15:18
  */
-public class RemoteHelper {
+class RemoteHelper {
 
     private static volatile RemoteHelper instance;
     private OkHttpClient mOkHttpClient;
