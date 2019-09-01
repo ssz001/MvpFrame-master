@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp10"
+        android:textSize="@dimen/dp20"
+        android:text="用户名" />
+
+    <View
+        android:id="@+id/v_1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="@dimen/dp100"
+        android:background="@color/gray"/>
+
+    <TextView
+        android:id="@+id/tv_item1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item1"
+        android:layout_below="@id/v_1"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10" />
+
+    <TextView
+        android:id="@+id/tv_item2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item2"
+        android:layout_below="@id/tv_item1"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item3"
+        android:layout_below="@id/tv_item2"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item4"
+        android:layout_below="@id/tv_item3"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item5"
+        android:layout_below="@id/tv_item4"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item6"
+        android:layout_below="@id/tv_item5"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item7"
+        android:layout_below="@id/tv_item6"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item8"
+        android:layout_below="@id/tv_item7"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item9"
+        android:layout_below="@id/tv_item8"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item10"
+        android:layout_below="@id/tv_item9"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item11"
+        android:layout_below="@id/tv_item10"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item12"
+        android:layout_below="@id/tv_item11"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item13"
+        android:layout_below="@id/tv_item12"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item14"
+        android:layout_below="@id/tv_item13"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tv_item15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp14"
+        android:text="item15"
+        android:layout_below="@id/tv_item14"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10"/>
+
+
+</RelativeLayout>

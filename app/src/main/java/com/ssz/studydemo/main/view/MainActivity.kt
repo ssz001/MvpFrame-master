@@ -1,9 +1,11 @@
 package com.ssz.studydemo.main.view
 
+import android.app.Activity
 import android.os.Bundle
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
+import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -11,6 +13,7 @@ import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.ssz.frame.utils.StatusBarUtils
 import com.ssz.studydemo.R
 import com.ssz.studydemo.main.ContentDataAdapter
 import com.ssz.studydemo.main.app.AppContext
@@ -27,6 +30,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(t_toolbar.also {title= ""})
+
+        StatusBarUtils.setColorNoTranslucentForDrawerLayout(this,dl_draw,getColor(R.color.white_ffffff))
+
         t_toolbar.setNavigationOnClickListener {
             if(dl_draw.isDrawerOpen(Gravity.START)) dl_draw.closeDrawers() else dl_draw.openDrawer(Gravity.START)
             Toast.makeText(this,"点击了菜单",Toast.LENGTH_SHORT).show()
