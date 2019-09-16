@@ -2,7 +2,6 @@ package com.ssz.studydemo.main.data.remote;
 
 import java.util.Objects;
 
-import io.reactivex.Single;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
@@ -42,7 +41,7 @@ public class Net {
         api = mRetrofit.create(Api.class);
     }
 
-    public Api getApi(){
+    public Api createRequest(){
         return Objects.requireNonNull(api,"null == api ?");
     }
 

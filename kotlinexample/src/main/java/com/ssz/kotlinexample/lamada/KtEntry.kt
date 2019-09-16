@@ -1,5 +1,9 @@
 package com.ssz.kotlinexample.lamada
 
+import com.ssz.kotlinexample.lamada.inline.lock
+import java.util.concurrent.locks.Lock
+import java.util.concurrent.locks.ReentrantLock
+
 
 /**
  * @author : zsp
@@ -9,6 +13,10 @@ package com.ssz.kotlinexample.lamada
 
 fun main(args: Array<String>) {
 
+    var l : Lock = ReentrantLock()
+    lock(l){
+
+    }
 
 }
 

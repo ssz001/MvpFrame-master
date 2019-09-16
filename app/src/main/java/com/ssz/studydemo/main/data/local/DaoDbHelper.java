@@ -7,7 +7,7 @@ import com.ssz.studydemo.main.model.dao.DaoMaster;
 import com.ssz.studydemo.main.model.dao.DaoSession;
 
 public class DaoDbHelper {
-    private static final String DB_NAME = "ssz";
+    private static final String DB_NAME = "ssz_note";
 
     private static volatile DaoDbHelper sInstance;
     private SQLiteDatabase mDb;

@@ -1,11 +1,9 @@
 package com.ssz.studydemo.main.view
 
-import android.app.Activity
 import android.os.Bundle
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
-import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -28,7 +26,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        Context
         setContentView(R.layout.activity_main)
+//        setSupportActionBar(t_toolbar)
         setSupportActionBar(t_toolbar.also {title= ""})
 
         StatusBarUtils.setColorNoTranslucentForDrawerLayout(this,dl_draw,getColor(R.color.white_ffffff))
@@ -39,14 +39,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,NavigationView.On
         }
         init()
         Log.d(TAG, AppContext.instance.toString())
+        
     }
 
     fun init(){
-//        nav_view.setNavigationItemSelectedListener (this)
         float_button.setOnClickListener(this)
+
+//        nav_view.setNavigationItemSelectedListener (this)
 //        val headView = View.inflate(this, R.layout.nav_head_view,null)
 //        nav_view.addHeaderView(headView)
 //        headView.findViewById<ImageView>(R.id.iv_head).setOnClickListener(this)
+
         sf_layout.setOnRefreshListener{ sf_layout.isRefreshing = false }
         rv_content.layoutManager = LinearLayoutManager(this).also { it.orientation = LinearLayoutManager.VERTICAL }
         rv_content.adapter = ContentDataAdapter()

@@ -28,14 +28,6 @@
                 android:layout_height="200dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="@dimen/dp100"-->
-                <!--app:layout_collapseMode="parallax"-->
-                <!--app:layout_collapseParallaxMultiplier="0.7">-->
-
-                <!--</LinearLayout>-->
-
                 <!--pin设置折叠时固定-->
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/t_toolbar"
@@ -77,13 +69,11 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="15dp" />
 
-
-
     </android.support.design.widget.CoordinatorLayout>
 
     <!--<include layout="@layout/title_menu"/>-->
 
-    <!--headerlayout 是头像部分的，menu是底下的-->
+    <!--&lt;!&ndash;headerlayout 是头像部分的，menu是底下的&ndash;&gt;-->
     <!--<android.support.design.widget.NavigationView-->
         <!--android:id="@+id/nav_view"-->
         <!--android:layout_width="match_parent"-->
@@ -97,5 +87,6 @@
 
     <!--必须设置layout_gravity-->
     <include layout="@layout/draw_left_view" />
+
 
 </android.support.v4.widget.DrawerLayout>

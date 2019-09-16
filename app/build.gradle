@@ -8,6 +8,7 @@ apply plugin: 'kotlin-android-extensions'
 // greenDao step : 2
 apply plugin: 'org.greenrobot.greendao'
 
+
 android {
     // 打包
 //    signingConfigs {

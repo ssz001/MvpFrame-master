@@ -19,6 +19,9 @@
         android:layout_marginTop="@dimen/dp100"
         android:background="@color/gray"/>
 
+    <!--android:background="?android:attr/selectableItemBackground"波纹有边界-->
+    <!--android:background="?android:attr/selectableItemBackgroundBorderless"波纹超出边界-->
+
     <TextView
         android:id="@+id/tv_item1"
         android:layout_width="match_parent"
@@ -27,7 +30,9 @@
         android:text="item1"
         android:layout_below="@id/v_1"
         android:paddingTop="@dimen/dp10"
-        android:paddingBottom="@dimen/dp10" />
+        android:paddingBottom="@dimen/dp10"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"/>
 
     <TextView
         android:id="@+id/tv_item2"
@@ -37,7 +42,9 @@
         android:text="item2"
         android:layout_below="@id/tv_item1"
         android:paddingTop="@dimen/dp10"
-        android:paddingBottom="@dimen/dp10"/>
+        android:paddingBottom="@dimen/dp10"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackgroundBorderless"/>
 
     <TextView
         android:id="@+id/tv_item3"
