@@ -19,16 +19,17 @@ public abstract class MVP1Activity<P extends IContract.IPresenter> extends AppCo
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        beforeOnCreate();
+        beforeOnCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         attachView(bindPresenter());
+        afterOnCreate(savedInstanceState);
     }
 
     private void attachView(P presenter){
         mPresenter = presenter;
-        mPresenter.attachView(this);
+//        mPresenter.attachView(this);
     }
 
     @Override
@@ -41,9 +42,14 @@ public abstract class MVP1Activity<P extends IContract.IPresenter> extends AppCo
     }
 
     /**
+     * 逻辑初始化区域
+     */
+    protected abstract void afterOnCreate(Bundle savedInstanceState);
+
+    /**
      * 在 onCreate() 之前调用
      */
-    protected void beforeOnCreate(){}
+    protected void beforeOnCreate(Bundle savedInstanceState){}
 
     /**
      * View

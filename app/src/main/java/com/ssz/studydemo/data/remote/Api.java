@@ -1,4 +1,4 @@
-package com.ssz.studydemo.main.data.remote;
+package com.ssz.studydemo.data.remote;
 
 /**
  * @author : zsp

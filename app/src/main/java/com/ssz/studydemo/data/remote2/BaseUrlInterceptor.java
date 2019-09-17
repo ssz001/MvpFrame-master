@@ -1,8 +1,8 @@
-package com.ssz.studydemo.main.data.remote2;
+package com.ssz.studydemo.data.remote2;
 
 import android.support.annotation.NonNull;
 
-import com.ssz.studydemo.main.data.URL;
+import com.ssz.studydemo.data.URL;
 
 import java.io.IOException;
 import java.util.List;

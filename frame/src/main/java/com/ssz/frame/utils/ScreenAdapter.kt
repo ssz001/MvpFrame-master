@@ -5,7 +5,6 @@ import android.content.res.Resources
 
 object ScreenAdapter {
 
-
     fun adapterScreen(activity: Activity, targetDP: Int, isVertical: Boolean) {
         //系统的屏幕尺寸
         val systemDM = Resources.getSystem().displayMetrics

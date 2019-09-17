@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:fitsSystemWindows="true"
-    tools:context=".main.view.MainActivity">
+    tools:context=".view.MainActivity">
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/cl_layout"

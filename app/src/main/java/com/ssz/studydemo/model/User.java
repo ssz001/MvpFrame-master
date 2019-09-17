@@ -1,4 +1,4 @@
-package com.ssz.studydemo.main.model;
+package com.ssz.studydemo.model;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;

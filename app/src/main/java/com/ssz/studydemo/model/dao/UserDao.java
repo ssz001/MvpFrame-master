@@ -1,4 +1,4 @@
-package com.ssz.studydemo.main.model.dao;
+package com.ssz.studydemo.model.dao;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;

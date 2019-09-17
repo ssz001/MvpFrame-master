@@ -48,7 +48,7 @@ public abstract class AbstractApp extends Application implements Application.Act
 //      from  API 14 每一个Activity的生命周期都会回调到这里的对应方法,只需要在这里注册
         registerActivityLifecycleCallbacks(this);
 
-        Log.d("BuildConfig","是否打印日志：" + BuildConfig.DEBUG);
+        Log.e("BuildConfig","是否打印日志：" + BuildConfig.DEBUG);
         LogUtils.d(TAG, "screen width = " + screenWidth + " screen height = " + screenHeight);
     }
 

@@ -1,4 +1,4 @@
-package com.ssz.studydemo.main.data.remote2;
+package com.ssz.studydemo.data.remote2;
 
 public interface Api2 {
    /**

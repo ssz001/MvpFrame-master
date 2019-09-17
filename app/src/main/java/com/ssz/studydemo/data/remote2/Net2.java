@@ -1,7 +1,7 @@
-package com.ssz.studydemo.main.data.remote2;
+package com.ssz.studydemo.data.remote2;
 
 import com.ssz.frame.utils.converter.GsonConverterFactory;
-import com.ssz.studydemo.main.data.URL;
+import com.ssz.studydemo.data.URL;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;

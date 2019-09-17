@@ -1,10 +1,10 @@
-package com.ssz.studydemo.main.data.remote;
+package com.ssz.studydemo.data.remote;
 
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.ssz.frame.utils.converter.GsonConverterFactory;
-import com.ssz.studydemo.main.data.URL;
+import com.ssz.studydemo.data.URL;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;

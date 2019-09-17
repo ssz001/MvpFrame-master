@@ -1,9 +1,8 @@
-package com.ssz.studydemo.main
+package com.ssz.studydemo
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.ssz.studydemo.R
 
 /**
  * @author : zsp

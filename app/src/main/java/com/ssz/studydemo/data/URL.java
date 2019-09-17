@@ -1,4 +1,4 @@
-package com.ssz.studydemo.main.data;
+package com.ssz.studydemo.data;
 
 /**
  * @author : zsp
@@ -7,4 +7,8 @@ package com.ssz.studydemo.main.data;
 public class URL {
     public static String BASE_URL = "http://192.168.0.100:8000";
     public static String BASE_URL2 = "http://192.168.0.100:8000";
+
+    public void test(){
+
+    }
 }

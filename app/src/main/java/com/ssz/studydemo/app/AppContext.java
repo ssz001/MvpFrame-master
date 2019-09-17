@@ -1,4 +1,4 @@
-package com.ssz.studydemo.main.app;
+package com.ssz.studydemo.app;
 
 import com.ssz.frame.base.AbstractApp;
 
