@@ -49,7 +49,7 @@ public abstract class AbstractApp extends Application implements Application.Act
         registerActivityLifecycleCallbacks(this);
 
         Log.e("BuildConfig","是否打印日志：" + BuildConfig.DEBUG);
-        LogUtils.d(TAG, "screen width = " + screenWidth + " screen height = " + screenHeight);
+        LogUtils.INSTANCE.d(TAG, "screen width = " + screenWidth + " screen height = " + screenHeight);
     }
 
     /**

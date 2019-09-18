@@ -9,6 +9,7 @@
 
 
     <android.support.v4.widget.NestedScrollView
+        android:visibility="visible"
         android:id="@+id/nsv_drawer"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -72,6 +73,5 @@
             android:textSize="@dimen/dp14" />
 
     </LinearLayout>
-
 
 </android.support.constraint.ConstraintLayout>

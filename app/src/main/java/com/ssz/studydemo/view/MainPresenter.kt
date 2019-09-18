@@ -6,13 +6,17 @@ import com.ssz.studydemo.view.main.IMainContract
  * @author : zsp
  * time : 2019 09 2019/9/17 15:11
  */
-class MainPresenter : IMainContract.IMainPresenter {
+class MainPresenter(val view : IMainContract.IMainView) : IMainContract.IMainPresenter {
 
-    override fun attachView(view: IMainContract.IMainView) {
+    init {
+        view.mPresenter = this
+    }
+
+    override fun attach() {
 
     }
 
-    override fun detachView() {
+    override fun detach() {
 
     }
 }
