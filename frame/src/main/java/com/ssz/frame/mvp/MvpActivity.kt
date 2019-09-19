@@ -2,7 +2,6 @@ package com.ssz.frame.mvp
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import butterknife.ButterKnife
 import io.reactivex.disposables.CompositeDisposable
 
 /**
@@ -17,23 +16,21 @@ abstract class MvpActivity : AppCompatActivity(){
         beforeOnCreate(savedInstanceState)
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
-        ButterKnife.bind(this)
+//        ButterKnife.bind(this)
         attachPresenter().attach()
         afterOnCreate(savedInstanceState)
     }
 
-    open fun beforeOnCreate(savedInstanceState: Bundle?) {
+    protected open fun beforeOnCreate(savedInstanceState: Bundle?) {
 
     }
 
-    abstract fun afterOnCreate(savedInstanceState: Bundle?)
-    abstract fun getLayoutId(): Int
-    abstract fun attachPresenter():BasePresenter
-    abstract fun detachPresenter():BasePresenter
+    protected abstract fun afterOnCreate(savedInstanceState: Bundle?)
+    protected abstract fun getLayoutId(): Int
+    protected abstract fun attachPresenter():BasePresenter
 
     override fun onDestroy() {
         mDisposable?.dispose()
-        detachPresenter().detach()
         super.onDestroy()
     }
 }
