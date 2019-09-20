@@ -11,7 +11,7 @@ import com.ssz.frame.mvp.MvpActivity
 import com.ssz.frame.utils.LogUtils
 import com.ssz.frame.utils.StatusBarUtils
 import com.ssz.studydemo.R
-import com.ssz.studydemo.view.main.IHomeContract
+import com.ssz.studydemo.view.home.IHomeContract
 import kotlinx.android.synthetic.main.activity_main.*
 
 

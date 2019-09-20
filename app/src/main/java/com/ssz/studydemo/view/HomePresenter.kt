@@ -1,6 +1,6 @@
 package com.ssz.studydemo.view
 
-import com.ssz.studydemo.view.main.IHomeContract
+import com.ssz.studydemo.view.home.IHomeContract
 
 /**
  * @author : zsp

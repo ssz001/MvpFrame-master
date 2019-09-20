@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--text-->
+    <!--二级标题-->
+    <dimen name="nb.text.large">18sp</dimen>
+
+    <dimen name="nb.text.normal">16sp</dimen>
+    <!--小标签-->
+    <dimen name="nb.text.small">12sp</dimen>
+
     <dimen name="dp1">1.0dp</dimen>
     <dimen name="dp2">2.0dp</dimen>
     <dimen name="dp3">3.0dp</dimen>

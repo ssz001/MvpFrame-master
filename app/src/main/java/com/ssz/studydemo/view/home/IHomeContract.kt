@@ -1,4 +1,4 @@
-package com.ssz.studydemo.view.main
+package com.ssz.studydemo.view.home
 
 import com.ssz.frame.mvp.BasePresenter
 import com.ssz.frame.mvp.BaseView

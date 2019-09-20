@@ -59,6 +59,12 @@ greendao {
 //    targetGenDirTests: //测试单元的生成目录默认是 src / androidTest / java
 }
 
+repositories {
+    maven {
+        url 'https://dl.bintray.com/qichuan/maven/'
+    }
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 //  已经在 kotlinexample 模块中用api导入了
