@@ -16,9 +16,13 @@ class MyOpenHelper(context: Context, name :String, factory : SQLiteDatabase.Curs
         when (oldVersion) {
             1,
                 // 暂无 1.0
-            2 -> { }
+            2 -> {
+
+            }
             // 更新数据到 3.0
-            else -> { }
+            else -> {
+
+            }
         }
     }
 }
