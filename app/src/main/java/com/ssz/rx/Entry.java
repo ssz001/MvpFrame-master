@@ -122,7 +122,7 @@ public class Entry {
 //      3. 经过 map 变换，将 observer.onSubscribe(sd)   --->   observer.onSubscribe(new MapObserver<T,U>(t,function))
 
         // 源变换后
-        //2:  protected void subscribeActual(Observer<? super T> observer) {
+        //1:  protected void subscribeActual(Observer<? super T> observer) {
 //            ScalarDisposable<T> sd = new ScalarDisposable<T>(new MapObserver<T, U>(t, function), value);
 //            observer.onSubscribe(sd);
 //            sd.run();
