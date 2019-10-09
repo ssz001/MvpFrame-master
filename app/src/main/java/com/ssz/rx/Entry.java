@@ -23,12 +23,18 @@ public class Entry {
 //        Integer num2 = list.get(1);
 //        list.add(new Integer(1));
 
+//      得到  ObservableCreate 对象
         Observable mObservable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
 
             }
         });
+
+        mObservable.observeOn(Schedulers.newThread())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+
 
         // ep:
         Observable.just("String")
@@ -128,4 +134,30 @@ public class Entry {
 //            sd.run();
 //        }
     }
+
+    void entry(){
+        // 生成了ObservableCreate 对象 他的 subscribe() 方法实际走的如下：
+        // 这里 source 是ObservableOnSubscribe 对象，所以create（）方法里的对象实际是 ObservableOnSubscribe 调用的
+        //    @Override
+        //    protected void subscribeActual(Observer<? super T> observer) {
+        //        CreateEmitter<T> parent = new CreateEmitter<T>(observer);
+        //        observer.onSubscribe(parent);
+        //
+        //        try {
+        //            source.subscribe(parent);
+        //        } catch (Throwable ex) {
+        //            Exceptions.throwIfFatal(ex);
+        //            parent.onError(ex);
+        //        }
+        //    }
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> emitter) throws Exception {
+
+            }
+        }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+    }
+
 }
