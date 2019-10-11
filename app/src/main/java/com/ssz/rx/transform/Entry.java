@@ -5,12 +5,15 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
 import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.observables.GroupedObservable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author : zsp
@@ -316,6 +319,110 @@ public class Entry {
         //=====================onComplete
     }
 
+    // 自
+
+    /**
+     *  compose()
+     *  将好集合操作符合在一起
+     *  compose( ObservableTransformer<? super T, ? extends R> composer )
+     */
+    void compose(){
+        Observable.just(1,2,3,4)
+                .map(new Function<Integer, String>() {
+                    @Override
+                    public String apply(Integer integer) throws Exception {
+                        return integer + "";
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe();
+
+        Observable.just(1,2,3,4)
+                .map(new Function<Integer, String>() {
+                    @Override
+                    public String apply(Integer integer) throws Exception {
+                        return integer + "";
+                    }
+                })
+                .compose(new Transformer())
+                .subscribe();
+
+        Observable.just(1,2,3,4)
+                .map(new Function<Integer, String>() {
+                    @Override
+                    public String apply(Integer integer) throws Exception {
+                        return integer + "";
+                    }
+                })
+                .compose(Transformer.handle())
+                .subscribe();
+
+      Disposable d = Observable.just(1,2,3,4)
+//                .compose(new ObservableTransformer<Integer, Object>() {
+//                    @Override
+//                    public ObservableSource<Object> apply(Observable<Integer> upstream) {
+                      /**  注意这个转换 ObservableTransformer<T, R> 中的转换*/
+//                        return null;
+//                    }
+//                })
+                .compose(Transformer.intToString())
+                .compose(Transformer.handle())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+
+                    }
+                });
+    }
+
+    // new Transformer 新建了ObservableTransformer<String,String>对象
+    static class Transformer implements ObservableTransformer<String,String>{
+        @Override
+        public ObservableSource<String> apply(Observable<String> upstream) {
+            return upstream
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(Schedulers.newThread());
+        }
+
+//        这个方法返回了ObservableTransformer对象
+        public static <T> ObservableTransformer<T,T> handle(){
+//             这个upstream 是怎么来的？？？？？？？？？？？  Lamada 表达式匿名对象
+//             return upstream ->
+//                     upstream.subscribeOn(Schedulers.io())
+//                    .observeOn(AndroidSchedulers.mainThread());
+
+            return new ObservableTransformer<T, T>() {
+                @Override
+                public ObservableSource<T> apply(Observable<T> upstream) {
+                    return upstream
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread());
+                }
+            };
+        }
+
+        public static ObservableTransformer<Integer,String> intToString(){
+            return upstream -> upstream.map(new Function<Integer, String>() {
+                @Override
+                public String apply(Integer integer) throws Exception {
+                    return integer + "";
+                }
+            });
+        }
+
+        /**
+         * 这里的泛型必须是确定的，不然有问题
+         */
+        public static <T,R> ObservableTransformer<T,R> intToString2(){
+            return upstream -> upstream.map(new Function<T, R>() {
+                @Override
+                public R apply(T t) throws Exception {
+                    return null;
+                }
+            });
+        }
+    }
 }
 
 

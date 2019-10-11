@@ -70,4 +70,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     //  简繁转换
     api 'com.zqc.opencc.android.lib:lib-opencc-android:0.8.0@aar'
+
+    //@IntDef和@StringDef
+    implementation 'com.android.support:support-annotations:28.0.0'
 }

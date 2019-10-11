@@ -57,7 +57,7 @@ public class Entry {
     }
 
     /**
-     * 可以过滤不符合该类型事件
+     * 可以过滤不符合该类型事件,留下的是ofType里的参数类型
      */
     void ofType(){
         Observable.just(1, 2, 3, "chan", "zhide")

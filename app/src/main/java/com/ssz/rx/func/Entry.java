@@ -457,6 +457,7 @@ public class Entry {
 
     /**
      * 当接收到 onError() 事件时，返回一个新的 Observable，并正常结束事件序列。
+     * 可以是Observable.error()
      */
     void onErrorResumeNext(){
         Observable.create(new ObservableOnSubscribe<Integer>() {

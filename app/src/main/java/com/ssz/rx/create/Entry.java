@@ -69,7 +69,7 @@ public class Entry {
     * 的返回值 V 生成Observabel 对象，不是将Callble 发送出去
     */
    void fromCallAble(){
-       Observable.fromCallable(new Callable<String>() {
+     Disposable d = Observable.fromCallable(new Callable<String>() {
            @Override
            public String call() throws Exception {
                return "zhongguo";

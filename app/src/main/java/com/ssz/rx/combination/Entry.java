@@ -368,7 +368,7 @@ public class Entry {
      * 在发送事件之前追加事件，startWith() 追加一个事件，startWithArray() 可以追加多个事件。追加的事件会先发出。
      */
     void startWith(){
-        Observable.just(5, 6, 7)
+      Disposable d =  Observable.just(5, 6, 7)
                 .startWithArray(2, 3, 4)
                 .startWith(1)
                 .subscribe(new Consumer < Integer > () {
@@ -388,7 +388,7 @@ public class Entry {
      * 返回被观察者发送事件的数量。
      */
     void count(){
-        Observable.just(1, 2, 3)
+       Disposable d = Observable.just(1, 2, 3)
                 .count()
                 .subscribe(new Consumer < Long > () {
                     @Override

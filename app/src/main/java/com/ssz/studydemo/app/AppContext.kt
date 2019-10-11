@@ -1,6 +1,7 @@
 package com.ssz.studydemo.app
 
 import com.ssz.frame.base.AbstractApp
+import com.ssz.frame.utils.network.NetworkManager
 
 /**
  * @author : zsp
@@ -16,5 +17,6 @@ class AppContext : AbstractApp(){
 
     override fun onCreate() {
         super.onCreate()
+        NetworkManager.getDefault().init(this)
     }
 }
