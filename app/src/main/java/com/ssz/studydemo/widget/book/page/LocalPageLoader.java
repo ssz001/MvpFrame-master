@@ -328,7 +328,7 @@ public class LocalPageLoader extends PageLoader {
             mCollBook.setLastRead(StringUtils.
                     dateConvert(System.currentTimeMillis(), Constant.FORMAT_BOOK_DATE));
             //直接更新
-//            BookRepository.getInstance()
+//            BookRepository.getINSTANCE()
 //                    .saveCollBook(mCollBook);
         }
     }
@@ -412,8 +412,8 @@ public class LocalPageLoader extends PageLoader {
                         mCollBook.setBookChapters(bookChapterBeanList);
                         mCollBook.setUpdated(lastModified);
 
-//                        BookRepository.getInstance().saveBookChaptersWithAsync(bookChapterBeanList);
-//                        BookRepository.getInstance().saveCollBook(mCollBook);
+//                        BookRepository.getINSTANCE().saveBookChaptersWithAsync(bookChapterBeanList);
+//                        BookRepository.getINSTANCE().saveCollBook(mCollBook);
 
                         // 加载并显示当前章节
                         Log.e(TAG,"+refreshChapterList" );

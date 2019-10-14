@@ -13,10 +13,23 @@ import kotlinx.android.synthetic.main.activity_launch.*
 
 class LaunchActivity : BaseActivity(), View.OnClickListener {
 
-    override fun getLayoutId() = R.layout.activity_launch
+    override fun beforeOnCreate() {
+        setTheme(R.style.AppTheme)
+    }
+
+    override fun getLayoutId():Int{
+
+        Thread.sleep(3000)
+
+//        window.setBackgroundDrawable(ColorDrawable())
+        return R.layout.activity_launch
+    }
+//    = R.layout.activity_launch
 
 
     override fun initView() {
+//        window.setBackgroundDrawable(null)
+//        setTheme(R.style.AppTheme)
 //      var lk = arrayOf(NetType.NONE,NetType.MOBILE)
     }
 
@@ -37,7 +50,7 @@ class LaunchActivity : BaseActivity(), View.OnClickListener {
 //                         Thread.sleep(10)
 //                    }
 
-//                    ToastUtils.showToast(this@LaunchActivity, funName)
+                    ToastUtils.showToast(this@LaunchActivity, "ssssssssssssss")
 //                    startActivity(Intent(this@LaunchActivity,ReadActivity::class.java))
                 } }
         }

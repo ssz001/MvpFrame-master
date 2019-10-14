@@ -579,7 +579,7 @@ public abstract class PageLoader {
         }
 
         //存储到数据库
-//        BookRepository.getInstance()
+//        BookRepository.getINSTANCE()
 //                .saveBookRecord(mBookRecord);
     }
 
@@ -589,7 +589,7 @@ public abstract class PageLoader {
     private void prepareBook() {
         Log.d(TAG, "prepareBook");
 
-//        mBookRecord = BookRepository.getInstance()
+//        mBookRecord = BookRepository.getINSTANCE()
 //                .getBookRecord(mCollBook.get_id());
 
         if (mBookRecord == null) {

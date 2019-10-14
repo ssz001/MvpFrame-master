@@ -247,7 +247,7 @@ public class NetPageLoader extends PageLoader {
             mCollBook.setLastRead(StringUtils.
                     dateConvert(System.currentTimeMillis(), Constant.FORMAT_BOOK_DATE));
             //直接更新
-//            BookRepository.getInstance().saveCollBook(mCollBook);
+//            BookRepository.getINSTANCE().saveCollBook(mCollBook);
         }
     }
 }

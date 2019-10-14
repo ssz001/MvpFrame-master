@@ -17,6 +17,7 @@ class AppContext : AbstractApp(){
 
     override fun onCreate() {
         super.onCreate()
+        // 网络状态监听框架注册
         NetworkManager.getDefault().init(this)
     }
 }

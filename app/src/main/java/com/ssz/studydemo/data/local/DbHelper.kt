@@ -10,7 +10,7 @@ import com.ssz.studydemo.model.dao.DaoSession
  * @author : zsp
  * time : 2019 09 2019/9/17 14:28
  */
-class DaoDbHelper private constructor(){
+class DbHelper private constructor(){
 
     val mDb: SQLiteDatabase
     val mDaoMaster: DaoMaster
@@ -18,8 +18,8 @@ class DaoDbHelper private constructor(){
 
     companion object {
         private const val DB_NAME = "ssz_note"
-        val instance : DaoDbHelper by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED){
-            DaoDbHelper()
+        val INSTANCE : DbHelper by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED){
+            DbHelper()
         }
     }
 
