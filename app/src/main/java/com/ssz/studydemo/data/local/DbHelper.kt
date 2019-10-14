@@ -24,7 +24,7 @@ class DbHelper private constructor(){
     }
 
     init {
-        val openHelper = MyOpenHelper(AppContext.getInstance(), DB_NAME, null)
+        val openHelper = DbOpenHelper(AppContext.getInstance(), DB_NAME, null)
         //获取数据库
         mDb = openHelper.writableDatabase
         //封装数据库中表的创建、更新、删除
