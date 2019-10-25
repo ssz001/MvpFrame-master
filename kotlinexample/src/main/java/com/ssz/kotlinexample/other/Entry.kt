@@ -11,4 +11,10 @@ fun main(args: Array<String>) {
 //    c.create()
     c.destroy()
 
+    for (index in 0 until 1000) {
+
+    }
+
 }
+
+

@@ -11,12 +11,4 @@ class HomePresenter(val view : IHomeContract.IHomeView) : IHomeContract.IHomePre
     init {
         view.mPresenter = this
     }
-
-    override fun attach() {
-
-    }
-
-    override fun detach() {
-
-    }
 }

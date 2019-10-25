@@ -7,6 +7,7 @@ import android.content.Context;
  * @author zsp
  * create at 2019/1/18 17:04
  * 持有 ApplicationContext 的类，方便获取ApplicationContext
+ * 因为框架很多都嵌入了Application content，这里解耦一下
  */
 public class Framework {
 
@@ -23,7 +24,7 @@ public class Framework {
     }
 
     /**
-     * 获取本项目ApplicationContext对象
+     * 获取本项目ApplicationContext对象，类型转换
      */
     public static <T> T toApp(Class<T> clz){
         return ObjectHelper.requireNotNull ((T)Framework.context,"Framework.context no init !");

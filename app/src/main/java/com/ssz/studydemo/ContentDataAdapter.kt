@@ -19,7 +19,9 @@ class ContentDataAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     }
 
     override fun onBindViewHolder(p0: RecyclerView.ViewHolder, p1: Int) {
+           with(p0.itemView){
 
+           }
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)

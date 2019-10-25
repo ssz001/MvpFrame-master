@@ -9,11 +9,7 @@ import com.ssz.frame.mvp.BaseView
  */
 interface IReadContract {
 
-    interface IReadView : BaseView<IReadPresenter>{
+    interface IReadView : BaseView<IReadPresenter>
 
-    }
-
-    interface IReadPresenter : BasePresenter{
-
-    }
+    interface IReadPresenter : BasePresenter
 }

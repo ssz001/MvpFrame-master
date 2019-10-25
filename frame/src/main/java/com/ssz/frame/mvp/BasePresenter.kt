@@ -1,6 +1,3 @@
- package com.ssz.frame.mvp
+package com.ssz.frame.mvp
 
-interface BasePresenter {
-    fun attach()
-    fun detach()
-}
+interface BasePresenter

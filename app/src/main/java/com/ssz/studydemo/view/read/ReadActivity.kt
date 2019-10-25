@@ -1,7 +1,6 @@
 package com.ssz.studydemo.view.read
 
 import android.os.Bundle
-import com.ssz.frame.mvp.BasePresenter
 import com.ssz.frame.mvp.MvpActivity
 
 /**
@@ -9,6 +8,13 @@ import com.ssz.frame.mvp.MvpActivity
  * time : 2019 09 2019/9/20 14:21
  */
 class ReadActivity : MvpActivity() ,IReadContract.IReadView {
+
+    override lateinit var mPresenter: IReadContract.IReadPresenter
+
+    override fun bindPresenter() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun afterOnCreate(savedInstanceState: Bundle?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -17,13 +23,7 @@ class ReadActivity : MvpActivity() ,IReadContract.IReadView {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun attachPresenter(): BasePresenter {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-    override var mPresenter: IReadContract.IReadPresenter
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
-        set(value) {}
 //
 //    companion object{
 //        private val TAG = "ReadActivity"

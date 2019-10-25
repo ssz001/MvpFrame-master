@@ -1,32 +1,25 @@
 package com.ssz.frame.base
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.app.Fragment
 import android.widget.PopupWindow
 import android.widget.TextView
 import com.ssz.frame.utils.toast.ToastUtil
 
 /**
  * @author : zsp
- * time : 2019 09 2019/9/18 15:33
+ * time : 2019 10 2019/10/15 13:28
  */
-@SuppressLint("Registered")
-abstract class BaseActivity : AppCompatActivity(){
+abstract class BaseFragment : Fragment() {
 
-    protected fun getText(view: TextView) = view.text.toString()
-
-    /**
-     * 获取数字，空默认为0
-     */
     protected fun getTextToInt(view: TextView):Int{
         val str = view.text.toString()
-        return if (str == null || str.isEmpty()) 0 else str.toInt()
+        return if (str == null || str.length == 0) 0 else str.toInt()
     }
+
+    protected fun getText(view: TextView) = view.text.toString()
 
     protected fun dismiss(dialog: Dialog) {
         if (dialog.isShowing) dialog.dismiss()
@@ -36,20 +29,12 @@ abstract class BaseActivity : AppCompatActivity(){
         if (popupWindow.isShowing) popupWindow.dismiss()
     }
 
-    fun showToast(msg: String) {
-        ToastUtil.showToast(this, msg)
+    protected fun showToast(msg: String) {
+        ToastUtil.showToast(activity, msg)
     }
 
-    fun showToast(msg: String, gravity: Int) {
-        ToastUtil.showToast(this, msg, gravity)
-    }
-
-    fun getColorById(res : Int): Int{
-       return ContextCompat.getColor(this,res)
-    }
-
-    fun getDrawableById(res : Int): Drawable? {
-        return ContextCompat.getDrawable(this,res)
+    protected fun showToast(msg: String, gravity: Int) {
+        ToastUtil.showToast(activity, msg, gravity)
     }
 
     /**
@@ -58,7 +43,7 @@ abstract class BaseActivity : AppCompatActivity(){
      * @param clz 所跳转的目的Activity类
      */
     fun startActivity(clz: Class<*>) {
-        startActivity(Intent(this, clz))
+        activity?.startActivity(Intent(activity, clz))
     }
 
     /**
@@ -68,7 +53,7 @@ abstract class BaseActivity : AppCompatActivity(){
      * @param requestCode 请求码
      */
     fun startActivityForResult(clz: Class<*>, requestCode: Int) {
-        startActivityForResult(Intent(this, clz), requestCode)
+        activity?.startActivityForResult(Intent(activity, clz), requestCode)
     }
 
     /**
@@ -78,11 +63,7 @@ abstract class BaseActivity : AppCompatActivity(){
      * @param bundle 跳转所携带的信息
      */
     fun startActivity(clz: Class<*>, bundle: Bundle?) {
-        val intent = Intent(this, clz)
-        if (bundle != null) {
-            intent.putExtra("bundle", bundle)
-        }
-        startActivity(intent)
+        activity?.startActivity(Intent(activity, clz).also { it.putExtra("bundle", bundle) })
     }
 
     /**
@@ -93,11 +74,7 @@ abstract class BaseActivity : AppCompatActivity(){
      * @param requestCode 请求码
      */
     fun startActivityForResult(clz: Class<*>, requestCode: Int, bundle: Bundle?) {
-        val intent = Intent(this, clz)
-        if (bundle != null) {
-            intent.putExtra("bundle", bundle)
-        }
-        startActivityForResult(intent, requestCode)
+        activity?.startActivityForResult(Intent(activity, clz)
+                .also { it.putExtra("bundle", bundle) }, requestCode)
     }
-
 }

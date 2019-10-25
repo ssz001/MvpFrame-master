@@ -12,7 +12,7 @@ import java.util.Map;
  * Created by newbiechen on 17-4-16.
  */
 
-public class Constant {
+public final class Constant {
     /*SharedPreference*/
     public static final String SHARED_SEX = "sex";
     public static final String SHARED_SAVE_BOOK_SORT = "book_sort";

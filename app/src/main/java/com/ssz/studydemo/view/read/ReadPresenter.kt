@@ -6,11 +6,4 @@ package com.ssz.studydemo.view.read
  */
 class ReadPresenter : IReadContract.IReadPresenter {
 
-    override fun attach() {
-
-    }
-
-    override fun detach() {
-
-    }
 }

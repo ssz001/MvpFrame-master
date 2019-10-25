@@ -7,6 +7,7 @@ import com.ssz.kotlinexample.`object`.dataclass.Student
  * time : 2019 08 2019/8/23 17:00
  *
  * public inline fun <R> run(block: () -> R): R{}
+ * public inline fun <T, R> T.run(block: T.() -> R): R {}
  *
  */
 class Run {
@@ -21,6 +22,12 @@ class Run {
         val sr = stu.run {
             this?.age
             this?.name
+        }
+
+       var s = run {
+           for (index in 0 until 1000) {
+
+           }
         }
     }
 }

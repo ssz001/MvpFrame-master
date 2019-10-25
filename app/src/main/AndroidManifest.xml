@@ -18,14 +18,21 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".view.HomeActivity" />
-        <activity android:name=".view.launch.LaunchActivity" android:theme="@style/SplashActivityTheme">
+        <!--<activity android:name=".view.launch.LaunchActivity" android:theme="@style/SplashActivityTheme">-->
+        <!--</activity>-->
+
+        <activity android:name=".view.read.ReadActivity"/>
+
+        <activity android:name=".view.splash.SplashActivity"
+            android:theme="@style/SplashActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.read.ReadActivity"/>
+        <activity android:name=".view.dispatch.DispatchActivity"
+            android:theme="@style/NoBackGround"/>
     </application>
 
 </manifest>
