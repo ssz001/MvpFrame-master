@@ -39,7 +39,7 @@ abstract class BaseSplashActivity : BaseActivity() {
             resetTheme()
             getLayoutId().apply {if (Integer.MAX_VALUE != this)setContentView(this)}
             afterOnCreate()
-        },3000)
+        },1000)
     }
 
     /**

@@ -1,8 +1,8 @@
 package com.ssz.studydemo.view.dispatch
 
 import android.support.v4.view.ViewPager
+import android.widget.FrameLayout
 import com.ssz.frame.base.CustomActivity
-import com.ssz.frame.utils.ScreenUtil
 import com.ssz.frame.utils.StatusBarUtils
 import com.ssz.studydemo.R
 import kotlinx.android.synthetic.main.activity_dispatch.*
@@ -16,13 +16,15 @@ import kotlinx.android.synthetic.main.activity_dispatch.*
     override fun getLayoutId() = R.layout.activity_dispatch
 
     override fun initView() {
-      StatusBarUtils.setColor(this,ScreenUtil.getColor(R.color.colorAccent))
+        // 透明状态栏
+        StatusBarUtils.setTransparent(this)
+            val params = FrameLayout.LayoutParams(root_cl.layoutParams).apply {
+                topMargin = (-StatusBarUtils.getStatusBarHeight(this@DispatchActivity))
+            }
+           root_cl.layoutParams = params
     }
 
    override fun beforeOnCreate() {
-//      supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
-//      window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//              WindowManager.LayoutParams.FLAG_FULLSCREEN)
       super.beforeOnCreate()
    }
 

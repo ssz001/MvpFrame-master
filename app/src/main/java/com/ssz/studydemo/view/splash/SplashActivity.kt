@@ -25,7 +25,7 @@ class SplashActivity : BaseSplashActivity() {
     }
 
     /**
-     * 获取Layout
+     * 获取Layout,默认不设置
      */
     override fun getLayoutId(): Int {
         return super.getLayoutId()

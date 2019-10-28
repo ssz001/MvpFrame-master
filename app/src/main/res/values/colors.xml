@@ -6,9 +6,22 @@
     <color name="theme_background">@color/white_ffffff</color>
 
     <color name="white_ffffff">#ffffff</color>
+    <color name="white_b4ffffff">#b4ffffff</color>
     <color name="green">#2d89e4</color>
     <color name="gray">#a6a1a1</color>
     <color name="black">#000000</color>
+
+    <color name="green_37fc44">#6437fc44</color>
+
+    <color name="type">#ffffff</color>
+
+    <color name="type_1_start">#b42bb5d1</color>
+    <color name="type_1_end">#b4aacbd2</color>
+    <color name="type_2_start">#b4cde917</color>
+    <color name="type_2_end">#b4e8edc3</color>
+    <color name="type_3_start">#b414e6d8</color>
+    <color name="type_3_end">#b4c0d5e7</color>
+
 
     <!--read-->
     <color name="read_bg_1">#CEC29C</color>

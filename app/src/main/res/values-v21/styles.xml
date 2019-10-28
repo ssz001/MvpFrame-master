@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--// 这个有问题？  -->
+    <!--&lt;!&ndash;values-21。v19开始有android:windowTranslucentStatus这个属性&ndash;&gt;-->
+   <!--<style name="TranslucentStatusTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+         <!--<item name="android:windowTranslucentStatus">false</item>-->
+         <!--<item name="android:windowTranslucentNavigation">true</item>-->
+         <!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+         <!--&lt;!&ndash;Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色&ndash;&gt;-->
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+    <!--</style>&ndash;&gt;-->
+</resources>
