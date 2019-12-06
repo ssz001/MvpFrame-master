@@ -3,7 +3,7 @@ package com.ssz.frame.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.ssz.frame.base.AbstractApp;
+import com.ssz.frame.base.BaseApp;
 
 /**
  * Created by newbiechen on 17-4-16.
@@ -16,7 +16,7 @@ public class SharedPreUtils {
     private SharedPreferences.Editor sharedWritable;
 
     private SharedPreUtils(){
-        sharedReadable = AbstractApp.instance
+        sharedReadable = BaseApp.instance
                 .getSharedPreferences(SHARED_NAME, Context.MODE_MULTI_PROCESS);
         sharedWritable = sharedReadable.edit();
     }

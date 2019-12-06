@@ -1,17 +1,17 @@
 package com.ssz.studydemo.app
 
-import com.ssz.frame.base.AbstractApp
+import com.ssz.frame.base.BaseApp
 import com.ssz.frame.utils.network.NetworkManager
 
 /**
  * @author : zsp
  * time : 2019 09 2019/9/18 15:44
  */
-class AppContext : AbstractApp(){
+class AppContext : BaseApp(){
 
     companion object {
        fun getInstance() : AppContext{
-           return AbstractApp.instance as AppContext
+           return BaseApp.instance as AppContext
        }
     }
 

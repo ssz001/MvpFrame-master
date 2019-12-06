@@ -3,7 +3,7 @@ package com.ssz.frame.utils;
 import android.content.Context;
 import android.support.annotation.StringRes;
 
-import com.ssz.frame.base.AbstractApp;
+import com.ssz.frame.base.BaseApp;
 import com.zqc.opencc.android.lib.ChineseConverter;
 import com.zqc.opencc.android.lib.ConversionType;
 
@@ -86,11 +86,11 @@ public class StringUtils {
     }
 
     public static String getString(@StringRes int id) {
-        return AbstractApp.instance.getResources().getString(id);
+        return BaseApp.instance.getResources().getString(id);
     }
 
     public static String getString(@StringRes int id, Object... formatArgs) {
-        return AbstractApp.instance.getResources().getString(id, formatArgs);
+        return BaseApp.instance.getResources().getString(id, formatArgs);
     }
 
     /**

@@ -7,7 +7,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.ssz.frame.base.AbstractApp;
+import com.ssz.frame.base.BaseApp;
 
 import java.lang.reflect.Method;
 
@@ -40,7 +40,7 @@ public class ScreenUtil {
     }
 
     public static DisplayMetrics getDisplayMetrics(){
-        return AbstractApp.instance
+        return BaseApp.instance
                 .getResources()
                 .getDisplayMetrics();
     }
@@ -126,7 +126,7 @@ public class ScreenUtil {
      * 在某些平台会无法得到建议用传入 Context的获取方式
      */
     public static String getString(int stringId){
-        return AbstractApp.instance.getResources().getString(stringId);
+        return BaseApp.instance.getResources().getString(stringId);
     }
 
 
@@ -142,7 +142,7 @@ public class ScreenUtil {
      * 在某些平台会无法得到建议用传入 Context的获取方式
      */
     public static int getColor(int colorId){
-        return AbstractApp.instance.getResources().getColor(colorId);
+        return BaseApp.instance.getResources().getColor(colorId);
     }
 
     /**
@@ -157,7 +157,7 @@ public class ScreenUtil {
      * 在某些平台会无法得到建议用传入 Context的获取方式
      */
     public static Drawable getDrawable(int drawAbleId){
-        return AbstractApp.instance.getResources().getDrawable(drawAbleId);
+        return BaseApp.instance.getResources().getDrawable(drawAbleId);
     }
 
     /**
@@ -172,7 +172,7 @@ public class ScreenUtil {
      * 在某些平台会无法得到建议用传入 Context的获取方式
      */
     public static int getDimen(int dimenId){
-        return (int)AbstractApp.instance.getResources().getDimension(dimenId);
+        return (int) BaseApp.instance.getResources().getDimension(dimenId);
     }
 
     /**
@@ -187,7 +187,7 @@ public class ScreenUtil {
      * @return
      */
     public static int getStatusBarHeight(){
-        Resources resources = AbstractApp.instance.getResources();
+        Resources resources = BaseApp.instance.getResources();
         int resourceId = resources.getIdentifier("status_bar_height","dimen","android");
         return resources.getDimensionPixelSize(resourceId);
     }
@@ -198,7 +198,7 @@ public class ScreenUtil {
      */
     public static int getNavigationBarHeight() {
         int navigationBarHeight = 0;
-        Resources rs = AbstractApp.instance.getResources();
+        Resources rs = BaseApp.instance.getResources();
         int id = rs.getIdentifier("navigation_bar_height", "dimen", "android");
         if (id > 0 && hasNavigationBar()) {
             navigationBarHeight = rs.getDimensionPixelSize(id);
@@ -212,7 +212,7 @@ public class ScreenUtil {
      */
     private static boolean hasNavigationBar() {
         boolean hasNavigationBar = false;
-        Resources rs = AbstractApp.instance.getResources();
+        Resources rs = BaseApp.instance.getResources();
         int id = rs.getIdentifier("config_showNavigationBar", "bool", "android");
         if (id > 0) {
             hasNavigationBar = rs.getBoolean(id);

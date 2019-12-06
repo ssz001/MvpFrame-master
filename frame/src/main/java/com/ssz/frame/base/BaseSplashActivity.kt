@@ -39,13 +39,15 @@ abstract class BaseSplashActivity : BaseActivity() {
             resetTheme()
             getLayoutId().apply {if (Integer.MAX_VALUE != this)setContentView(this)}
             afterOnCreate()
-        },1000)
+        },getDelayTime())
     }
 
     /**
      * 初始化逻辑
      */
     protected abstract fun afterOnCreate()
+
+    protected fun getDelayTime() : Long = 1000
 
     /**
      * 获取Layout

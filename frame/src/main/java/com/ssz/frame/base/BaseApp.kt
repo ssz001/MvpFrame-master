@@ -16,9 +16,9 @@ import com.ssz.frame.utils.LogUtils
  * @author : zsp
  * time : 2019 09 2019/9/18 15:29
  */
-abstract class AbstractApp : Application(), Application.ActivityLifecycleCallbacks{
+abstract class BaseApp : Application(), Application.ActivityLifecycleCallbacks{
 
-    val TAG = "AbstractApp"
+    val TAG = "BaseApp"
     /**
      * 屏幕宽高参数
      */
@@ -29,7 +29,7 @@ abstract class AbstractApp : Application(), Application.ActivityLifecycleCallbac
      */
 
     companion object {
-       lateinit var instance: AbstractApp
+       lateinit var instance: BaseApp
     }
 
     /**

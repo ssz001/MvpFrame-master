@@ -1,9 +1,12 @@
 package com.ssz.frame.utils;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
+
+import java.lang.reflect.Method;
 
 /**
  * Created by newbiechen on 17-5-16.
@@ -52,6 +55,45 @@ public class SystemBarUtils {
 
     public static void showUnStableStatusBar(Activity activity){
         clearFlag(activity,UNSTABLE_STATUS);
+    }
+
+    /**
+     * 获取虚拟按键的高度
+     * @return
+     */
+    public static int getNavigationBarHeight() {
+        int navigationBarHeight = 0;
+        Resources rs = Framework.context.getResources();
+        int id = rs.getIdentifier("navigation_bar_height", "dimen", "android");
+        if (id > 0 && hasNavigationBar()) {
+            navigationBarHeight = rs.getDimensionPixelSize(id);
+        }
+        return navigationBarHeight;
+    }
+
+    /**
+     * 是否存在虚拟按键
+     * @return
+     */
+    private static boolean hasNavigationBar() {
+        boolean hasNavigationBar = false;
+        Resources rs = Framework.context.getResources();
+        int id = rs.getIdentifier("config_showNavigationBar", "bool", "android");
+        if (id > 0) {
+            hasNavigationBar = rs.getBoolean(id);
+        }
+        try {
+            Class systemPropertiesClass = Class.forName("android.os.SystemProperties");
+            Method m = systemPropertiesClass.getMethod("get", String.class);
+            String navBarOverride = (String) m.invoke(systemPropertiesClass, "qemu.hw.mainkeys");
+            if ("1".equals(navBarOverride)) {
+                hasNavigationBar = false;
+            } else if ("0".equals(navBarOverride)) {
+                hasNavigationBar = true;
+            }
+        } catch (Exception e) {
+        }
+        return hasNavigationBar;
     }
 
     //隐藏NavigationBar(点击任意地方会恢复)

@@ -2,7 +2,7 @@ package com.ssz.frame.utils;
 
 import android.os.Environment;
 
-import com.ssz.frame.base.AbstractApp;
+import com.ssz.frame.base.BaseApp;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -60,12 +60,12 @@ public class FileUtils {
     //获取Cache文件夹
     public static String getCachePath(){
         if (isSdCardExist()){
-            return AbstractApp.instance
+            return BaseApp.instance
                     .getExternalCacheDir()
                     .getAbsolutePath();
         }
         else{
-            return AbstractApp.instance
+            return BaseApp.instance
                     .getCacheDir()
                     .getAbsolutePath();
         }

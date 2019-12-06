@@ -21,7 +21,7 @@
         <!--<activity android:name=".view.launch.LaunchActivity" android:theme="@style/SplashActivityTheme">-->
         <!--</activity>-->
 
-        <activity android:name=".view.read.ReadActivity"/>
+        <activity android:name="com.ssz.studydemo.view.book.read.ReadActivity"/>
 
         <activity android:name=".view.splash.SplashActivity"
             android:theme="@style/SplashActivityTheme">
