@@ -3,6 +3,7 @@ package com.ssz.studydemo.data.remote;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.ssz.frame.utils.converter.GsonConverterFactory;
 import com.ssz.studydemo.data.URL;
 
@@ -55,9 +56,14 @@ class RemoteHelper {
         mRetrofit = new Retrofit.Builder()
                 .client(mOkHttpClient)
                 .baseUrl(URL.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(new Gson().newBuilder().create()))
+                .addConverterFactory(GsonConverterFactory.create(buildGson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+    }
+
+    Gson buildGson(){
+        return new GsonBuilder()
+                .create();
     }
 
     OkHttpClient getOkHttpClient() {
@@ -72,7 +78,7 @@ class RemoteHelper {
         mRetrofit = new Retrofit.Builder()
                 .client(mOkHttpClient)
                 .baseUrl(URL.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(new Gson().newBuilder().create()))
+                .addConverterFactory(GsonConverterFactory.create(buildGson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         return mRetrofit;

@@ -14,7 +14,7 @@ import android.net.NetworkRequest;
 import android.os.Build;
 import android.util.Log;
 
-import com.ssz.frame.utils.LogUtils;
+import com.ssz.frame.utils.log.LogUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

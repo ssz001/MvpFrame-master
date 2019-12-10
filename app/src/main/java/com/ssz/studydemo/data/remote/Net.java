@@ -41,7 +41,11 @@ public class Net {
         api = mRetrofit.create(Api.class);
     }
 
-    public Api createRequest(){
+    public static Api request(){
+       return getInstance().getApi();
+    }
+
+    public Api getApi(){
         return Objects.requireNonNull(api,"null == api ?");
     }
 

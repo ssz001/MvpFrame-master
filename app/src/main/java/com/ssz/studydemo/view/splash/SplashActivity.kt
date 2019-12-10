@@ -36,6 +36,7 @@ class SplashActivity : BaseSplashActivity() {
      */
     override fun afterOnCreate() {
         startActivity(Intent(this, DispatchActivity::class.java))
+        overridePendingTransition(0, 0)
         finish()
 //        post(Runnable {
 //        },3000)

@@ -11,7 +11,7 @@ class AppContext : BaseApp(){
 
     companion object {
        fun getInstance() : AppContext{
-           return BaseApp.instance as AppContext
+           return instance as AppContext
        }
     }
 

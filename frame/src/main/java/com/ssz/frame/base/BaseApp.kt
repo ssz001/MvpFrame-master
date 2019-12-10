@@ -10,7 +10,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.WindowManager
 import com.ssz.frame.BuildConfig
-import com.ssz.frame.utils.LogUtils
+import com.ssz.frame.utils.log.LogUtils
 
 /**
  * @author : zsp

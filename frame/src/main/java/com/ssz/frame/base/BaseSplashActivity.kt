@@ -3,7 +3,6 @@ package com.ssz.frame.base
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import com.ssz.frame.utils.ObjectHelper
@@ -37,7 +36,7 @@ abstract class BaseSplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         post(Runnable {
             resetTheme()
-            getLayoutId().apply {if (Integer.MAX_VALUE != this)setContentView(this)}
+            getLayoutId().apply {if (0 != this)setContentView(this)}
             afterOnCreate()
         },getDelayTime())
     }
@@ -52,7 +51,7 @@ abstract class BaseSplashActivity : BaseActivity() {
     /**
      * 获取Layout
      */
-    protected open fun getLayoutId(): Int = Integer.MAX_VALUE
+    protected open fun getLayoutId(): Int = 0
 
     protected open fun resetTheme() {
         //todo 这里重置SplashActivity 的 Theme
@@ -100,12 +99,6 @@ abstract class BaseSplashActivity : BaseActivity() {
         mHandler.postDelayed(run, delayTime)
     }
 
-    /**
-     * 延迟后进入
-     */
-    protected fun post(view: View, run: Runnable, delayTime: Long) {
-        view.postDelayed(run, delayTime)
-    }
 
     /**
      * 倒计时监听

@@ -7,8 +7,8 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.Toast
-import com.ssz.frame.mvp.MvpActivity
-import com.ssz.frame.utils.LogUtils
+import com.ssz.frame.base.mvp.MvpActivity
+import com.ssz.frame.utils.log.LogUtils
 import com.ssz.frame.utils.StatusBarUtils
 import com.ssz.frame.utils.network.NetType
 import com.ssz.frame.utils.network.NetworkListener

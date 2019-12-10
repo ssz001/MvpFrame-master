@@ -46,7 +46,7 @@ fun <T> CoroutineScope.retrofit(dsl: RetrofitCoroutineDSL<T>.() -> Unit) {
                         //访问接口成功
                         if (response.body()?.code == 200) {
                             //判断status 为1 表示获取数据成功
-                            coroutine.onSuccess?.invoke(response.body().data)
+//                            coroutine.onSuccess?.invoke(response.body()!!.data)
                         } else {
                             coroutine.onFail?.invoke(response.body()?.message ?: "返回数据为空", response.code())
                         }

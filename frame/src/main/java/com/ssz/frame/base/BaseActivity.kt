@@ -25,7 +25,7 @@ abstract class BaseActivity : AppCompatActivity(){
      */
     protected fun getTextToInt(view: TextView):Int{
         val str = view.text.toString()
-        return if (str == null || str.isEmpty()) 0 else str.toInt()
+        return if (str.isEmpty()) 0 else str.toInt()
     }
 
     protected fun dismiss(dialog: Dialog) {
@@ -44,6 +44,8 @@ abstract class BaseActivity : AppCompatActivity(){
         ToastUtil.showToast(this, msg, gravity)
     }
 
+    /*************************** get resources *************************/
+
     fun getColorById(res : Int): Int{
        return ContextCompat.getColor(this,res)
     }
@@ -51,6 +53,20 @@ abstract class BaseActivity : AppCompatActivity(){
     fun getDrawableById(res : Int): Drawable? {
         return ContextCompat.getDrawable(this,res)
     }
+
+    fun getDimenById(dimenId : Int):Int{
+        return resources.getDimension(dimenId).toInt()
+    }
+
+    fun getDimenFloatById(dimenId : Int):Float{
+        return resources.getDimension(dimenId)
+    }
+
+    fun getStringById(resId : Int):String{
+        return resources.getString(resId)
+    }
+
+    /*************************** get resources end *************************/
 
     /**
      * 跳转页面

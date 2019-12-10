@@ -6,8 +6,11 @@ import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.ssz.frame.base.BaseApp;
+import com.ssz.frame.base.Framework;
+import com.ssz.frame.utils.log.LogUtils;
 
 import java.lang.reflect.Method;
 
@@ -168,7 +171,7 @@ public class ScreenUtil {
     }
 
     /**
-     * 获取Drawable资源
+     * 获取Dimen资源
      * 在某些平台会无法得到建议用传入 Context的获取方式
      */
     public static int getDimen(int dimenId){
@@ -176,7 +179,7 @@ public class ScreenUtil {
     }
 
     /**
-     * 获取Drawable资源
+     * 获取Dimen资源
      */
     public static int getDimen(Context context,int dimenId){
         return (int)context.getResources().getDimension(dimenId);
@@ -229,5 +232,27 @@ public class ScreenUtil {
         } catch (Exception e) {
         }
         return hasNavigationBar;
+    }
+
+    private static Context getContext(){
+        return Framework.get();
+    }
+
+    /**
+     * 打印屏幕信息
+     */
+    public static void log(){
+        DisplayMetrics dm = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getMetrics(dm);
+        int screenHeight = dm.heightPixels;
+        int screenWidth = dm.widthPixels;
+        //                 3          :    4   :     x     :    6    :     8     :   12
+        // 屏幕密度（每寸像素120(ldpi)/160(mdpi)/213(tvdpi)/240(hdpi)/320(xhdpi)/480(xxhdpi)）
+        LogUtils.INSTANCE.e("屏幕参数","*************** 屏幕参数 ****************");
+        LogUtils.INSTANCE.e("屏幕参数","heightPx : widthPx  = (" + screenHeight + "×" + screenWidth +")");
+        LogUtils.INSTANCE.e("屏幕参数","dpi ：" + dm.densityDpi);
+        LogUtils.INSTANCE.e("屏幕参数","dpi ：" + "屏幕密度:             3         4                    6         8           12          16     ");
+        LogUtils.INSTANCE.e("屏幕参数","dpi ：" + "屏幕密度:每寸像素(120(ldpi)/160(mdpi)/213(tvdpi)/240(hdpi)/320(xhdpi)/480(xxhdpi)/640(xxxhdpi)");
     }
 }

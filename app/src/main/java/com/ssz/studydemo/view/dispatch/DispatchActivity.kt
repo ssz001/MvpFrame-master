@@ -2,7 +2,6 @@ package com.ssz.studydemo.view.dispatch
 
 import android.support.v4.view.ViewPager
 import android.widget.FrameLayout
-import com.ssz.dragger2.Entry
 import com.ssz.frame.base.CustomActivity
 import com.ssz.frame.utils.StatusBarUtils
 import com.ssz.studydemo.R
@@ -17,7 +16,6 @@ import kotlinx.android.synthetic.main.activity_dispatch.*
     override fun getLayoutId() = R.layout.activity_dispatch
 
     override fun initView() {
-        Entry().start()
         // 透明状态栏
         StatusBarUtils.setTransparent(this)
         val params = FrameLayout.LayoutParams(root_cl.layoutParams).apply {
@@ -25,10 +23,6 @@ import kotlinx.android.synthetic.main.activity_dispatch.*
         }
         root_cl.layoutParams = params
     }
-
-   override fun beforeOnCreate() {
-      super.beforeOnCreate()
-   }
 
    override fun initData() {
        v_dispatch.apply{
