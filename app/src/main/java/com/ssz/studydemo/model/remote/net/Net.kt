@@ -15,6 +15,7 @@ import java.net.ConnectException
 fun <T> CoroutineScope.retrofit(dsl: RetrofitCoroutineDSL<T>.() -> Unit) {
     //在主线程中开启协程
     this.launch(Dispatchers.Main) {
+        //                                                                  apply { }
         val coroutine = RetrofitCoroutineDSL<T>().apply(dsl)
         coroutine.api?.let { call ->
             //async 并发执行 在IO线程中

@@ -7,8 +7,8 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.Toast
-import com.ssz.studydemo.base.mvp.MvpActivity
 import com.ssz.studydemo.R
+import com.ssz.studydemo.base.mvp.MvpActivity
 import com.ssz.studydemo.module.home.IHomeContract
 import com.ssz.studydemo.utils.StatusBarUtils
 import com.ssz.studydemo.utils.log.LogUtils
@@ -34,6 +34,7 @@ class HomeActivity : MvpActivity(), IHomeContract.IHomeView ,
     override fun getLayoutId(): Int = R.layout.activity_main
 
     override fun afterOnCreate(savedInstanceState: Bundle?) {
+
         NetworkManager.getDefault().registerNetWorkObserver(this)
         //Context
         setContentView(R.layout.activity_main)
