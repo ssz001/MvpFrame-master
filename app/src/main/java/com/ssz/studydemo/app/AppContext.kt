@@ -1,6 +1,7 @@
 package com.ssz.studydemo.app
 
 import com.ssz.frame.base.BaseApp
+import com.ssz.frame.base.Framework
 import com.ssz.frame.utils.network.NetworkManager
 
 /**
@@ -18,6 +19,9 @@ class AppContext : BaseApp(){
     override fun onCreate() {
         super.onCreate()
         // 网络状态监听框架注册
+        Framework.init(this).registerReleaseListener {
+
+        }
         NetworkManager.getDefault().init(this)
     }
 }

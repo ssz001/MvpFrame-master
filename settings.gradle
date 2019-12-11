@@ -1,1 +1,1 @@
-include ':app', ':frame', ':kotlinexample'
+include ':app', ':framekotlin', ':kotlinexample', ':framejava'
