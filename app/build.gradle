@@ -8,6 +8,9 @@ apply plugin: 'kotlin-android-extensions'
 // greenDao step : 2
 apply plugin: 'org.greenrobot.greendao'
 
+// 使得支持Kapt
+apply plugin: 'kotlin-kapt'
+
 
 android {
     // 打包
@@ -80,8 +83,8 @@ dependencies {
     implementation 'com.google.dagger:dagger-android:2.21'
     implementation 'com.google.dagger:dagger-android-support:2.21'
     implementation 'com.google.dagger:dagger:2.21'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.21'
+    kapt  'com.google.dagger:dagger-compiler:2.21'
+    kapt 'com.google.dagger:dagger-android-processor:2.21'
 
     //  rxjava
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
