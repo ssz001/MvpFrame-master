@@ -2,7 +2,7 @@ package com.ssz.studydemo.data.local
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import com.ssz.studydemo.model.dao.DaoMaster
+import com.ssz.studydemo.model.local.dao.DaoMaster
 
 /**
  * @author : zsp

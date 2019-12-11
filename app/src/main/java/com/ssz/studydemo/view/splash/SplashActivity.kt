@@ -1,7 +1,8 @@
 package com.ssz.studydemo.view.splash
 
 import android.content.Intent
-import com.ssz.frame.base.BaseSplashActivity
+import android.support.v4.content.ContextCompat.startActivity
+import com.ssz.base.BaseSplashActivity
 import com.ssz.studydemo.R
 import com.ssz.studydemo.view.dispatch.DispatchActivity
 

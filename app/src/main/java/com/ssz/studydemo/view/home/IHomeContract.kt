@@ -1,7 +1,7 @@
 package com.ssz.studydemo.view.home
 
-import com.ssz.frame.base.mvp.BasePresenter
-import com.ssz.frame.base.mvp.BaseView
+import com.ssz.base.func.BasePresenter
+import com.ssz.base.func.BaseView
 
 
 /**

@@ -2,8 +2,8 @@ package com.ssz.studydemo.data.local
 
 import android.database.sqlite.SQLiteDatabase
 import com.ssz.studydemo.app.AppContext
-import com.ssz.studydemo.model.dao.DaoMaster
-import com.ssz.studydemo.model.dao.DaoSession
+import com.ssz.studydemo.model.local.dao.DaoMaster
+import com.ssz.studydemo.model.local.dao.DaoSession
 
 
 /**

@@ -2,23 +2,24 @@ package com.ssz.studydemo.view.dispatch
 
 import android.support.v4.view.ViewPager
 import android.widget.FrameLayout
-import com.ssz.frame.base.CustomActivity
-import com.ssz.frame.utils.StatusBarUtils
+import com.ssz.base.CustomActivity
 import com.ssz.studydemo.R
+import com.ssz.utils.StatusBarUtils
 import kotlinx.android.synthetic.main.activity_dispatch.*
 
 /**
  * @author : zsp
  * time : 2019 10 2019/10/24 16:27
  */
- class DispatchActivity :CustomActivity(),ViewPager.OnPageChangeListener {
+ class DispatchActivity : CustomActivity(),ViewPager.OnPageChangeListener {
 
     override fun getLayoutId() = R.layout.activity_dispatch
 
     override fun initView() {
         // 透明状态栏
         StatusBarUtils.setTransparent(this)
-        val params = FrameLayout.LayoutParams(root_cl.layoutParams).apply {
+        val params = FrameLayout.LayoutParams(root_cl.layoutParams)
+                .apply {
             topMargin = (-StatusBarUtils.getStatusBarHeight(this@DispatchActivity))
         }
         root_cl.layoutParams = params

@@ -1,8 +1,9 @@
 package com.ssz.studydemo.app
 
-import com.ssz.frame.base.BaseApp
-import com.ssz.frame.base.Framework
-import com.ssz.frame.utils.network.NetworkManager
+import com.ssz.base.BaseApp
+import com.ssz.base.Framework
+import com.ssz.utils.network.NetworkManager
+
 
 /**
  * @author : zsp

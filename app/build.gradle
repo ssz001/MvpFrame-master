@@ -51,8 +51,8 @@ android {
 
 // greenDao step 3
 greendao {
-    schemaVersion 5// 数据库版本号
-    daoPackage 'com.ssz.studydemo.model.dao' //greenDao 自动生成的代码保存的包名
+    schemaVersion 6// 数据库版本号
+    daoPackage 'com.ssz.studydemo.model.local.dao' //greenDao 自动生成的代码保存的包名
     targetGenDir 'src/main/java'// 自动生成的代码存储的路径，默认是 build/generated/source/greendao.
 //    generateTests false  //true的时候自动生成测试单元
 //    targetGenDirTests: //测试单元的生成目录默认是 src / androidTest / java
@@ -74,8 +74,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':framekotlin')
-    implementation project(':kotlinexample')
+    implementation project(':testarea')
 
     //dragger2
     implementation 'com.google.dagger:dagger-android:2.21'
@@ -83,5 +82,37 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.21'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.21'
+
+    //  rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    //  retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    //  gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+    //  greenDao
+    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'org.greenrobot:greendao-generator:3.2.2'
+    //  ijkplayer
+    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv5:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-arm64:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.8'
+    //  glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    //@IntDef和@StringDef
+    implementation 'com.android.support:support-annotations:28.0.0'
+
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
 
 }

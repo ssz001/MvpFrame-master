@@ -7,14 +7,14 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.Toast
-import com.ssz.frame.base.mvp.MvpActivity
-import com.ssz.frame.utils.log.LogUtils
-import com.ssz.frame.utils.StatusBarUtils
-import com.ssz.frame.utils.network.NetType
-import com.ssz.frame.utils.network.NetworkListener
-import com.ssz.frame.utils.network.NetworkManager
+import com.ssz.base.mvp.MvpActivity
 import com.ssz.studydemo.R
 import com.ssz.studydemo.view.home.IHomeContract
+import com.ssz.utils.StatusBarUtils
+import com.ssz.utils.log.LogUtils
+import com.ssz.utils.network.NetType
+import com.ssz.utils.network.NetworkListener
+import com.ssz.utils.network.NetworkManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 
