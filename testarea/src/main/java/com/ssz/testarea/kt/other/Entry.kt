@@ -7,9 +7,9 @@ package com.ssz.testarea.kt.other
 
 fun main(args: Array<String>) {
 
-    val c = Client()
+//    val c = Client()
 //    c.create()
-    c.destroy()
+//    c.destroy()
 
     for (index in 0 until 1000) {
 

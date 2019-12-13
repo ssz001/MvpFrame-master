@@ -12,9 +12,9 @@ import com.ssz.studydemo.utils.ScreenUtil
  */
 class DispatchAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm){
     private val mPaperList = listOf<Fragment>(
-            DispatchFragment("夏虫", ScreenUtil.getDrawable(R.drawable.dispatch_type_1))
-            ,DispatchFragment("麦浪", ScreenUtil.getDrawable(R.drawable.dispatch_type_2))
-            ,DispatchFragment("雷声", ScreenUtil.getDrawable(R.drawable.dispatch_type_3))
+            DispatchFragment("simple", ScreenUtil.getDrawable(R.drawable.dispatch_type_1))
+            ,DispatchFragment("custom", ScreenUtil.getDrawable(R.drawable.dispatch_type_2))
+            ,DispatchFragment("dagger", ScreenUtil.getDrawable(R.drawable.dispatch_type_3))
     )
     override fun getItem(position: Int) = mPaperList[position]
     override fun getCount() = mPaperList.size

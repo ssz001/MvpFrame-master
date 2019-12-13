@@ -4,8 +4,12 @@ import android.support.v4.view.ViewPager
 import android.widget.FrameLayout
 import com.ssz.studydemo.base.CustomActivity
 import com.ssz.studydemo.R
+import com.ssz.studydemo.module.dagger.DaggerMvpExampleActivity
 import com.ssz.studydemo.utils.StatusBarUtils
+import kotlinx.android.synthetic.main.activity_custommvp.*
 import kotlinx.android.synthetic.main.activity_dispatch.*
+import kotlinx.android.synthetic.main.activity_dispatch.view.*
+import retrofit2.Retrofit
 
 /**
  * @author : zsp
@@ -14,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_dispatch.*
  class DispatchActivity : CustomActivity(),ViewPager.OnPageChangeListener {
 
     override fun getLayoutId() = R.layout.activity_dispatch
+    var page : Int = 0
 
     override fun initView() {
         // 透明状态栏
@@ -30,6 +35,13 @@ import kotlinx.android.synthetic.main.activity_dispatch.*
           adapter = DispatchAdapter(supportFragmentManager)
           addOnPageChangeListener(this@DispatchActivity)
        }
+       tv_enter .setOnClickListener {
+           when(page){
+               0->{}
+               1->{}
+               2->{ startActivity(DaggerMvpExampleActivity::class.java) }
+           }
+       }
     }
 
     override fun onPageScrollStateChanged(position: Int) {
@@ -41,6 +53,6 @@ import kotlinx.android.synthetic.main.activity_dispatch.*
     }
 
     override fun onPageSelected(p0: Int) {
-
+        this.page= p0
     }
 }
