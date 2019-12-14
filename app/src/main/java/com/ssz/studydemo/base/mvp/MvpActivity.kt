@@ -13,8 +13,6 @@ import io.reactivex.disposables.Disposable
  */
 abstract class MvpActivity : BaseActivity(){
 
-    private var mcDisposable: CompositeDisposable? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         beforeOnCreate(savedInstanceState)
         super.onCreate(savedInstanceState)
@@ -30,18 +28,7 @@ abstract class MvpActivity : BaseActivity(){
     protected abstract fun afterOnCreate(savedInstanceState: Bundle?)
     protected abstract fun getLayoutId(): Int
 
-    /**
-     * 统一管理订阅
-     */
-    protected fun addDisposable(d: Disposable){
-        if(ObjectHelper.isNull(mcDisposable)){
-            mcDisposable = CompositeDisposable()
-        }
-        mcDisposable!!.add(d)
-    }
-
     override fun onDestroy() {
-        mcDisposable?.dispose()
         super.onDestroy()
     }
 }

@@ -15,6 +15,7 @@ abstract class CustomActivity : BaseActivity() {
         setContentView(getLayoutId())
         initView()
         initData()
+        setEvent()
     }
 
     protected open fun beforeOnCreate(){
@@ -23,4 +24,5 @@ abstract class CustomActivity : BaseActivity() {
     abstract fun getLayoutId():Int
     abstract fun initView()
     abstract fun initData()
+    abstract fun setEvent()
 }

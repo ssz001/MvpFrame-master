@@ -6,16 +6,17 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.net.ConnectException
+import java.net.SocketTimeoutException
 
 /**
  * @author : zsp
  * time : 2019 12 2019/12/6 14:38
  */
 
-fun <T> CoroutineScope.retrofit(dsl: RetrofitCoroutineDSL<T>.() -> Unit) {
+fun <T> CoroutineScope.request(dsl: RetrofitCoroutineDSL<T>.() -> Unit) {
     //在主线程中开启协程
     this.launch(Dispatchers.Main) {
-        //                                                                  apply { }
+        //                                        apply { }
         val coroutine = RetrofitCoroutineDSL<T>().apply(dsl)
         coroutine.api?.let { call ->
             //async 并发执行 在IO线程中
@@ -27,6 +28,9 @@ fun <T> CoroutineScope.retrofit(dsl: RetrofitCoroutineDSL<T>.() -> Unit) {
                     null
                 } catch (e: IOException) {
                     coroutine.onFail?.invoke("未知网络错误", -1)
+                    null
+                }catch (e : SocketTimeoutException){
+                    coroutine.onFail?.invoke("连接超时", -1)
                     null
                 }
             }
@@ -40,7 +44,7 @@ fun <T> CoroutineScope.retrofit(dsl: RetrofitCoroutineDSL<T>.() -> Unit) {
             //await 等待异步执行的结果
             val response = deferred.await()
             if (response == null) {
-                coroutine.onFail?.invoke("返回为空", -1)
+//                coroutine.onFail?.invoke("返回为空", -1)
             } else {
                 response.let {
                     if (response.isSuccessful) {

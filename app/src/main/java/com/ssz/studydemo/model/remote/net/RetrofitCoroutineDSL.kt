@@ -40,6 +40,7 @@ class RetrofitCoroutineDSL<T> {
         this.onComplete = block
     }
 
+
     internal fun clean() {
         onSuccess = null
         onComplete = null

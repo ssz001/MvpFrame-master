@@ -1,4 +1,4 @@
-package com.ssz.studydemo.base.func
+package com.ssz.studydemo.base.mvp.func
 
 interface BaseView<T> {
     var mPresenter: T
