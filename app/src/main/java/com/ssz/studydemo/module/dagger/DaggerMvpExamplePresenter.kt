@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 
 @ActivityScope
-class BaseMvpExamplePresenter
+class DaggerMvpExamplePresenter
 @Inject constructor(val view : DaggerMvpExampleActivity): BasePresenter(),IDaggerMvpContract.IPresenter {
 
     @set:Inject

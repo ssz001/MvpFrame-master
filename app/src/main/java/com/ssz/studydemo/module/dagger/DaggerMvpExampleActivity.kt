@@ -8,14 +8,14 @@ import com.ssz.studydemo.module.dagger.component.DaggerMvpExampleComponent
 import com.ssz.studydemo.module.dagger.module.DaggerMvpModule
 import kotlinx.android.synthetic.main.activity_custommvp.*
 
-class DaggerMvpExampleActivity : DaggerMvpActivity<BaseMvpExamplePresenter>(), IDaggerMvpContract.IView {
+class DaggerMvpExampleActivity : DaggerMvpActivity<DaggerMvpExamplePresenter>(), IDaggerMvpContract.IView {
 
     override fun getLayoutId() = R.layout.activity_custommvp
 
     override fun initInject() {
         DaggerMvpExampleComponent.builder()
                 .view(this)
-                .addAppComponent(AppContext.getInstance().appComponent)
+//                .addAppComponent(AppContext.getInstance().appComponent)
                 .addDaggerMvpModule(DaggerMvpModule())
                 .build()
                 .inject(this)

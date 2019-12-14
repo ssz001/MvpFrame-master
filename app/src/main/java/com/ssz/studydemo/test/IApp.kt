@@ -6,4 +6,5 @@ package com.ssz.studydemo.test
  */
 interface IApp{
 
+
 }

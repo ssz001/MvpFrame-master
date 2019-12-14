@@ -60,7 +60,7 @@ abstract class BaseApp : Application(), Application.ActivityLifecycleCallbacks{
     /**
      * 获取屏幕宽高 参数
      */
-    fun getScreenMetrics() {
+   private fun getScreenMetrics() {
         val dm = DisplayMetrics()
         val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
         windowManager.defaultDisplay.getMetrics(dm)

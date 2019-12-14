@@ -1,6 +1,7 @@
 package com.ssz.studydemo.base.dagger.di.module
 
 import com.ssz.studydemo.app.AppContext
+import com.ssz.studydemo.test.AppDelegate
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -10,11 +11,11 @@ import javax.inject.Singleton
  * time : 2019 12 2019/12/11 14:28
  */
 @Module
-class AppModule(val context: AppContext) {
+class AppModule(val appDelegate : AppDelegate) {
 
     @Singleton
     @Provides
-    fun provideAppContext(): AppContext {
-        return context
+    fun provideAppDelegate(): AppDelegate {
+        return appDelegate
     }
 }

@@ -18,7 +18,7 @@ import retrofit2.Retrofit
  class DispatchActivity : CustomActivity(),ViewPager.OnPageChangeListener {
 
     override fun getLayoutId() = R.layout.activity_dispatch
-    var page : Int = 0
+    private var page : Int = 0
 
     override fun initView() {
         // 透明状态栏
@@ -35,14 +35,16 @@ import retrofit2.Retrofit
           adapter = DispatchAdapter(supportFragmentManager)
           addOnPageChangeListener(this@DispatchActivity)
        }
-       tv_enter .setOnClickListener {
-           when(page){
-               0->{}
-               1->{}
-               2->{ startActivity(DaggerMvpExampleActivity::class.java) }
-           }
-       }
     }
+
+    override fun setEvent() {
+        tv_enter .setOnClickListener {
+            when(page){
+                0->{}
+                1->{}
+                2->{ startActivity(DaggerMvpExampleActivity::class.java) }
+            }
+        }    }
 
     override fun onPageScrollStateChanged(position: Int) {
 

@@ -1,16 +1,10 @@
 package com.ssz.studydemo.app
 
 import android.content.Context
-import com.ssz.studydemo.base.dagger.di.component.AppComponent
-import com.ssz.studydemo.base.dagger.di.component.DaggerAppComponent
-import com.ssz.studydemo.base.dagger.di.module.AppModule
-import com.ssz.studydemo.base.dagger.di.module.NetModule
+import android.content.res.Configuration
 import com.ssz.studydemo.test.AppDelegate
 import com.ssz.studydemo.test.IApp
-import com.ssz.studydemo.utils.log.LogUtils
 import com.ssz.studydemo.utils.network.NetworkManager
-import retrofit2.Retrofit
-import javax.inject.Inject
 
 
 /**
@@ -19,7 +13,7 @@ import javax.inject.Inject
  */
 class AppContext : BaseApp(), IApp {
 
-    var mAppDelegate : AppDelegate? = null
+    private val mAppDelegate: AppDelegate by lazy { AppDelegate() }
 
     companion object {
         private lateinit var  appContext: AppContext
@@ -31,13 +25,12 @@ class AppContext : BaseApp(), IApp {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         appContext = this
-        if (null == mAppDelegate) mAppDelegate = AppDelegate()
-        mAppDelegate?.attachBaseContext(base)
+        mAppDelegate.attachBaseContext(base)
     }
 
     override fun onCreate() {
         super.onCreate()
-        mAppDelegate?.onCreate(this)
+        mAppDelegate.onCreate(this)
 
         // 注册释放监听
         Framework.init(this).registerReleaseListener {
@@ -46,18 +39,15 @@ class AppContext : BaseApp(), IApp {
         }
         // 网络状态监听框架注册
         NetworkManager.getDefault().init(this)
-        inject()
-        LogUtils.d("mmmRe","mRe = $mRetrofit" )
     }
 
-    lateinit var appComponent : AppComponent
-    @Inject lateinit var mRetrofit : Retrofit
-    fun inject(){
-        appComponent = DaggerAppComponent.builder()
-                .appModule(AppModule(this))
-                .netModule(NetModule())
-                .build()
-        appComponent.inject(this)
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        mAppDelegate.onTrimMemory(level)
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        mAppDelegate.onConfigurationChanged(newConfig)
+        super.onConfigurationChanged(newConfig)
+    }
 }
