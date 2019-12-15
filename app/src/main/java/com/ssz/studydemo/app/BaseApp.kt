@@ -30,11 +30,12 @@ abstract class BaseApp : Application(), Application.ActivityLifecycleCallbacks{
      * Application中在onCreate()方法里去初始化各种全局的变量数据是一种比较推荐的做法，
      * 但是如果你想把初始化的时间点提前到极致，也可以去重写attachBaseContext()方法，
      */
-    override fun attachBaseContext(base: Context?) {
+    override fun attachBaseContext(base: Context) {
         // 在这里调用Context的方法会崩溃
         super.attachBaseContext(base)
         // 在这里可以正常调用Context的方法
     }
+
 
     override fun onCreate() {
         super.onCreate()

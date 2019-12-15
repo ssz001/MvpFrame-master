@@ -2,12 +2,10 @@ package com.ssz.studydemo.base.dagger
 
 import android.os.Bundle
 import com.ssz.studydemo.base.BaseActivity
-import com.ssz.studydemo.utils.ObjectHelper
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import com.ssz.studydemo.base.dagger.func.IActivity
 import javax.inject.Inject
 
-abstract class DaggerMvpActivity<T : BasePresenter> : BaseActivity() {
+abstract class DaggerMvpActivity<T : BasePresenter> : BaseActivity(), IActivity {
 
     @set: Inject
     var mPresenter : T? = null
@@ -21,18 +19,13 @@ abstract class DaggerMvpActivity<T : BasePresenter> : BaseActivity() {
         afterOnCreate(savedInstanceState)
     }
 
-
     protected open fun beforeOnCreate(savedInstanceState: Bundle?) {
 
     }
-    protected abstract fun getLayoutId(): Int
-    protected abstract fun initInject()
-    protected abstract fun setEvent()
-    protected abstract fun afterOnCreate(savedInstanceState: Bundle?)
-
 
     override fun onDestroy() {
         mPresenter?.detach()
+        mPresenter = null
         super.onDestroy()
     }
 }

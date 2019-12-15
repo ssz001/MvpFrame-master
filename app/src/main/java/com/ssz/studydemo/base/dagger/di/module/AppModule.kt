@@ -1,7 +1,6 @@
 package com.ssz.studydemo.base.dagger.di.module
 
-import com.ssz.studydemo.app.AppContext
-import com.ssz.studydemo.test.AppDelegate
+import com.ssz.studydemo.test.app.AppDelegate
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -18,4 +17,6 @@ class AppModule(val appDelegate : AppDelegate) {
     fun provideAppDelegate(): AppDelegate {
         return appDelegate
     }
+
+
 }

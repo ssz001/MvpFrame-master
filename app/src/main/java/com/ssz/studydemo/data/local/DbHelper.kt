@@ -12,9 +12,9 @@ import com.ssz.studydemo.model.local.dao.DaoSession
  */
 class DbHelper private constructor(){
 
-    val mDb: SQLiteDatabase
-    val mDaoMaster: DaoMaster
-    val mSession: DaoSession
+    private val mDb: SQLiteDatabase
+    private val mDaoMaster: DaoMaster
+    private val mSession: DaoSession
 
     companion object {
         private const val DB_NAME = "ssz_note"

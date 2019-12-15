@@ -2,8 +2,9 @@ package com.ssz.studydemo.app
 
 import android.content.Context
 import android.content.res.Configuration
-import com.ssz.studydemo.test.AppDelegate
-import com.ssz.studydemo.test.IApp
+import com.ssz.studydemo.test.app.AppDelegate
+import com.ssz.studydemo.test.app.IApp
+import com.ssz.studydemo.test.app.IAppLifeCycle
 import com.ssz.studydemo.utils.network.NetworkManager
 
 
@@ -13,7 +14,7 @@ import com.ssz.studydemo.utils.network.NetworkManager
  */
 class AppContext : BaseApp(), IApp {
 
-    private val mAppDelegate: AppDelegate by lazy { AppDelegate() }
+    private val mAppDelegate: IAppLifeCycle by lazy { AppDelegate() }
 
     companion object {
         private lateinit var  appContext: AppContext
@@ -22,7 +23,7 @@ class AppContext : BaseApp(), IApp {
         }
     }
 
-    override fun attachBaseContext(base: Context?) {
+    override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
         appContext = this
         mAppDelegate.attachBaseContext(base)

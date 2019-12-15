@@ -5,16 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ssz.studydemo.base.BaseFragment
-import com.ssz.studydemo.utils.ObjectHelper
-
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import com.ssz.studydemo.base.mvp.func.IFragment
 
 /**
  * @author : zsp
  * time : 2019 10 2019/10/15 13:40
  */
-abstract class MvpFragment : BaseFragment() {
+abstract class MvpFragment : BaseFragment(), IFragment {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         bindPresenter()
@@ -24,20 +21,13 @@ abstract class MvpFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setEvent()
         afterOnCreateView(savedInstanceState)
     }
 
     protected open fun beforeOnCreateView(){
 
     }
-
-    protected abstract fun bindPresenter()
-    /**
-     * view 已经初始化
-     */
-    protected abstract fun afterOnCreateView(savedInstanceState: Bundle?)
-    protected abstract fun getLayoutId(): Int
-
 
     override fun onDestroy() {
         super.onDestroy()

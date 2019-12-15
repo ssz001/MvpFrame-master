@@ -5,12 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ssz.studydemo.base.BaseFragment
-import com.ssz.studydemo.utils.ObjectHelper
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import com.ssz.studydemo.base.dagger.func.IFragment
 import javax.inject.Inject
 
-abstract class DaggerMvpFragment<T : BasePresenter> : BaseFragment(){
+abstract class DaggerMvpFragment<T : BasePresenter> : BaseFragment(), IFragment {
 
     @set: Inject
     var mPresenter : T? = null
@@ -28,15 +26,9 @@ abstract class DaggerMvpFragment<T : BasePresenter> : BaseFragment(){
         afterOnCreateView(savedInstanceState)
     }
 
-
     protected open fun beforeOnCreateView(savedInstanceState: Bundle?) {
 
     }
-    protected abstract fun getLayoutId(): Int
-    protected abstract fun initInject()
-    protected abstract fun setEvent()
-    protected abstract fun afterOnCreateView(savedInstanceState: Bundle?)
-
 
     override fun onDestroyView() {
         mPresenter?.detach()
@@ -44,6 +36,7 @@ abstract class DaggerMvpFragment<T : BasePresenter> : BaseFragment(){
     }
 
     override fun onDestroy() {
+        this.mPresenter = null
         super.onDestroy()
     }
 }

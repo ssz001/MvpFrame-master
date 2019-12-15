@@ -3,7 +3,7 @@ package com.ssz.studydemo.base.dagger.di.component
 import com.ssz.studydemo.base.dagger.di.module.AppModule
 import com.ssz.studydemo.base.dagger.di.module.NetModule
 import com.ssz.studydemo.model.remote.net.Api
-import com.ssz.studydemo.test.AppDelegate
+import com.ssz.studydemo.test.app.AppDelegate
 import dagger.Component
 import javax.inject.Singleton
 
