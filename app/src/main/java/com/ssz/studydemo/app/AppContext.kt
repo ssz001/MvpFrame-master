@@ -30,6 +30,7 @@ class AppContext : BaseApp(), IApp {
     }
 
     override fun onCreate() {
+        
         super.onCreate()
         mAppDelegate.onCreate(this)
 

@@ -2,7 +2,7 @@ package com.ssz.studydemo.base.dagger.di.module
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.ssz.studydemo.data.URL.BASE_URL
+import com.ssz.studydemo.model.URL.BASE_URL
 import com.ssz.studydemo.model.remote.net.Api
 import com.ssz.studydemo.utils.converter.GsonConverterFactory
 import com.ssz.studydemo.utils.log.LogUtils

@@ -1,4 +1,4 @@
-package com.ssz.studydemo.data.remote
+package com.ssz.studydemo.data.remote.bean
 
 data class SayBean(
         var sid: String,

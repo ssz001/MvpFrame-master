@@ -3,7 +3,7 @@ package com.ssz.studydemo.module.dagger
 
 import com.ssz.studydemo.base.dagger.BasePresenter
 import com.ssz.studydemo.base.dagger.di.scope.ActivityScope
-import com.ssz.studydemo.data.remote.SayBean
+import com.ssz.studydemo.data.remote.bean.SayBean
 import com.ssz.studydemo.model.remote.net.Api
 import com.ssz.studydemo.model.remote.net.request
 import javax.inject.Inject

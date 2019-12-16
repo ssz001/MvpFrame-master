@@ -1,4 +1,4 @@
-package com.ssz.studydemo.data
+package com.ssz.studydemo.model
 
 /**
  * @author : zsp

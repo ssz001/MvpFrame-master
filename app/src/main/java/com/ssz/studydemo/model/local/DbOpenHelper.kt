@@ -1,4 +1,4 @@
-package com.ssz.studydemo.data.local
+package com.ssz.studydemo.model.local
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
