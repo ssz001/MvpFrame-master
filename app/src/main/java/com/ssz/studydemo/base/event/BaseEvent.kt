@@ -1,4 +1,4 @@
-package com.ssz.studydemo.event
+package com.ssz.studydemo.base.event
 
 /**
  * @author : zsp

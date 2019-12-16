@@ -1,4 +1,4 @@
-package com.ssz.studydemo.cons
+package com.ssz.studydemo.base.cons
 
 /**
  * @author : zsp

@@ -1,4 +1,4 @@
-package com.ssz.studydemo.fuc
+package com.ssz.studydemo.base.fuc
 
 /**
  * @author : zsp
