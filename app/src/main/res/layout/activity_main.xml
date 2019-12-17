@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:fitsSystemWindows="true"
-    tools:context=".module.HomeActivity">
+    tools:context=".ui.HomeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

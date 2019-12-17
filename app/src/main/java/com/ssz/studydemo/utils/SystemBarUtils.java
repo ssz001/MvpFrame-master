@@ -6,7 +6,7 @@ import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.ssz.studydemo.app.Framework;
+import com.ssz.studydemo.base.app.helper.AppHelper;
 
 import java.lang.reflect.Method;
 
@@ -65,7 +65,7 @@ public class SystemBarUtils {
      */
     public static int getNavigationBarHeight() {
         int navigationBarHeight = 0;
-        Resources rs = Framework.INSTANCE.get().getResources();
+        Resources rs = AppHelper.INSTANCE.getApplication().getResources();
         int id = rs.getIdentifier("navigation_bar_height", "dimen", "android");
         if (id > 0 && hasNavigationBar()) {
             navigationBarHeight = rs.getDimensionPixelSize(id);
@@ -79,7 +79,7 @@ public class SystemBarUtils {
      */
     private static boolean hasNavigationBar() {
         boolean hasNavigationBar = false;
-        Resources rs = Framework.INSTANCE.get().getResources();
+        Resources rs = AppHelper.INSTANCE.getApplication().getResources();
         int id = rs.getIdentifier("config_showNavigationBar", "bool", "android");
         if (id > 0) {
             hasNavigationBar = rs.getBoolean(id);

@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
-import com.ssz.studydemo.app.AppStatus
-import com.ssz.studydemo.app.Framework
+import com.ssz.studydemo.base.app.helper.AppHelper
+import com.ssz.studydemo.base.app.helper.AppStatus
 import com.ssz.studydemo.utils.ObjectHelper
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -33,7 +33,7 @@ abstract class BaseSplashActivity : BaseActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         // 设置App状态 为存活
-        Framework.setAppStatus(AppStatus.ALIVE)
+        AppHelper.setAppStatus(AppStatus.ALIVE)
         aVoidDoubleEnter()
 
         windowInit()

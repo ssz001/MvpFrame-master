@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.widget.PopupWindow
 import android.widget.TextView
-import com.ssz.studydemo.app.Framework
+import com.ssz.studydemo.base.app.helper.AppHelper
 import com.ssz.studydemo.utils.toast.ToastUtil
 
 /**
@@ -43,11 +43,11 @@ abstract class BaseFragment : Fragment() {
     /*************************** get resources *************************/
 
     fun getColorById(res : Int): Int{
-        return ContextCompat.getColor(Framework.get(),res)
+        return ContextCompat.getColor(AppHelper.getApplication(),res)
     }
 
     fun getDrawableById(res : Int): Drawable? {
-        return ContextCompat.getDrawable(Framework.get().applicationContext,res)
+        return ContextCompat.getDrawable(AppHelper.getApplication().applicationContext,res)
     }
 
     fun getDimenById(dimenId : Int):Int{

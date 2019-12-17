@@ -1,55 +1,37 @@
 package com.ssz.studydemo.app
 
-import android.content.Context
-import android.content.res.Configuration
-import com.ssz.studydemo.test.app.AppDelegate
-import com.ssz.studydemo.test.app.IApp
-import com.ssz.studydemo.test.app.IAppLifeCycle
+import android.app.Application
+import com.ssz.studydemo.base.app.func.IApp
+import com.ssz.studydemo.base.app.helper.AppHelper
+import com.ssz.studydemo.base.ui.dagger.di.component.AppComponent
+import com.ssz.studydemo.base.ui.dagger.di.component.DaggerAppComponent
+import com.ssz.studydemo.base.ui.dagger.di.module.AppModule
+import com.ssz.studydemo.base.ui.dagger.di.module.NetModule
 import com.ssz.studydemo.utils.network.NetworkManager
-
 
 /**
  * @author : zsp
- * time : 2019 09 2019/9/18 15:44
+ * time : 2019 12 2019/12/17 10:04
  */
-class AppContext : BaseApp(), IApp {
-
-    private val mAppDelegate: IAppLifeCycle by lazy { AppDelegate() }
-
-    companion object {
-        private lateinit var  appContext: AppContext
-        fun getInstance(): AppContext {
-            return appContext
-        }
-    }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
-        appContext = this
-        mAppDelegate.attachBaseContext(base)
-    }
+class AppContext : Application(), IApp {
 
     override fun onCreate() {
-        
         super.onCreate()
-        mAppDelegate.onCreate(this)
-
-        // 注册释放监听
-        Framework.init(this).registerReleaseListener {
-
-            System.gc()
-        }
+        AppHelper.init(this).toLog()
+        setupAppComponent()
         // 网络状态监听框架注册
         NetworkManager.getDefault().init(this)
     }
 
-    override fun onTrimMemory(level: Int) {
-        super.onTrimMemory(level)
-        mAppDelegate.onTrimMemory(level)
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration?) {
-        mAppDelegate.onConfigurationChanged(newConfig)
-        super.onConfigurationChanged(newConfig)
+    /**
+     * supperDagger2
+     */
+    override lateinit var mAppComponent: AppComponent
+    override fun setupAppComponent() {
+        mAppComponent = DaggerAppComponent.builder()
+                .appModule(AppModule(this))
+                .netModule(NetModule())
+                .build()
+        mAppComponent.inject(this)
     }
 }

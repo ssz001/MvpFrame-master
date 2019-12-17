@@ -16,6 +16,7 @@ import com.ssz.studydemo.utils.log.LogUtils
 /**
  * @author : zsp
  * time : 2019 09 2019/9/18 15:29
+ * 只是参数说明，不用继承此
  */
 abstract class BaseApp : Application(), Application.ActivityLifecycleCallbacks{
 
@@ -87,6 +88,7 @@ abstract class BaseApp : Application(), Application.ActivityLifecycleCallbacks{
 
     /**
      * Android 4.0之后提供的API
+     *
      * TRIM_MEMORY_COMPLETE：内存不足，并且该进程在后台进程列表最后一个，马上就要被清理
      * TRIM_MEMORY_MODERATE：内存不足，并且该进程在后台进程列表的中部。
      * TRIM_MEMORY_BACKGROUND：内存不足，并且该进程是后台进程。

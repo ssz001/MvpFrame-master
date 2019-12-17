@@ -8,7 +8,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.ssz.studydemo.app.Framework;
+import com.ssz.studydemo.base.app.helper.AppHelper;
 import com.ssz.studydemo.utils.log.LogUtils;
 
 import java.lang.reflect.Method;
@@ -234,7 +234,7 @@ public class ScreenUtil {
     }
 
     private static Context getContext(){
-        return Framework.INSTANCE.get();
+        return AppHelper.INSTANCE.getApplication();
     }
 
     /**

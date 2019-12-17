@@ -3,7 +3,7 @@ package com.ssz.studydemo.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.ssz.studydemo.app.Framework;
+import com.ssz.studydemo.base.app.helper.AppHelper;
 
 /**
  * Created by newbiechen on 17-4-16.
@@ -15,7 +15,7 @@ public final class SharedPreUtils {
     private final SharedPreferences sharedPreference;
 
     private SharedPreUtils(){
-        sharedPreference = Framework.INSTANCE.get()
+        sharedPreference = AppHelper.INSTANCE.getApplication()
                 .getSharedPreferences(SHARED_NAME, Context.MODE_PRIVATE);
     }
 

@@ -18,11 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".module.HomeActivity" />
+        <activity android:name=".ui.HomeActivity" />
         <!--<activity android:name=".view.launch.LaunchActivity" android:theme="@style/SplashActivityTheme">-->
         <!--</activity>-->
 
-        <activity android:name=".module.splash.SplashActivity"
+        <activity android:name=".ui.splash.SplashActivity"
             android:theme="@style/SplashActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,9 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.dispatch.DispatchActivity"
+        <activity android:name=".ui.dispatch.DispatchActivity"
             android:theme="@style/NoBackGround"/>
-        <activity android:name=".module.dagger.DaggerMvpExampleActivity" />
+        <activity android:name=".ui.dagger.DaggerMvpExampleActivity" />
     </application>
 
 </manifest>

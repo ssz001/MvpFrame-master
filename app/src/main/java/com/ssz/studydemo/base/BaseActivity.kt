@@ -9,7 +9,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.widget.PopupWindow
 import android.widget.TextView
-import com.ssz.studydemo.app.Framework
+import com.ssz.studydemo.base.app.helper.AppHelper
 import com.ssz.studydemo.utils.log.LogUtils
 import com.ssz.studydemo.utils.toast.ToastUtil
 
@@ -21,9 +21,9 @@ import com.ssz.studydemo.utils.toast.ToastUtil
 abstract class BaseActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (Framework.isAppKill()) {
+        if (AppHelper.isKilled()) {
             LogUtils.d("AppStatus", "App后台被杀，重启!")
-            Framework.restartApp()
+            AppHelper.restartApp()
             return
         }
         super.onCreate(savedInstanceState)

@@ -3,7 +3,7 @@ package com.ssz.studydemo.utils;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.ssz.studydemo.app.Framework;
+import com.ssz.studydemo.base.app.helper.AppHelper;
 import com.ssz.studydemo.utils.toast.ToastUtil;
 
 
@@ -45,7 +45,7 @@ public final class ExitProxy {
                 ToastUtil.showToast(mActivity,"再按一次退出程序");
                 exitTime = System.currentTimeMillis();
             } else {
-                Framework.INSTANCE.exitApp();
+                AppHelper.INSTANCE.exitApp();
             }
         }
     }
