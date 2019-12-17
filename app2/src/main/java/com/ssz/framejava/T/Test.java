@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.ssz.framejava.app.Framework;
+import com.ssz.framejava.base.app.helper.AppHelper;
 import com.ssz.framejava.data.local.bean.Student;
 import com.ssz.framejava.model.remote.net.Net;
 import com.ssz.framejava.model.remote.net.URL;
@@ -112,7 +112,7 @@ public class Test {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        ToastUtil.showToast(Framework.get(), throwable.toString());
+                        ToastUtil.showToast(AppHelper.getApplication(), throwable.toString());
                     }
                 });
     }

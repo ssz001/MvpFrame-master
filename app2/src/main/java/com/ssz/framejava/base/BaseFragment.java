@@ -24,15 +24,6 @@ import butterknife.Unbinder;
  */
 public abstract class BaseFragment extends Fragment {
 
-    private Unbinder mBinder;
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(getLayoutId(), container, false);
-        mBinder = ButterKnife.bind(this, view);
-        return view;
-    }
 
     protected abstract int getLayoutId();
 
@@ -111,9 +102,4 @@ public abstract class BaseFragment extends Fragment {
         startActivityForResult(intent, requestCode);
     }
 
-    @Override
-    public void onDestroyView() {
-        if (ObjectHelper.nonNull(mBinder)) mBinder.unbind();
-        super.onDestroyView();
-    }
 }

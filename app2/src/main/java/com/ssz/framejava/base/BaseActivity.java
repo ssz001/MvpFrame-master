@@ -11,12 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.ssz.framejava.app.Framework;
+import com.ssz.framejava.base.app.helper.AppHelper;
 import com.ssz.framejava.utils.ObjectHelper;
 import com.ssz.framejava.utils.log.LogUtil;
 import com.ssz.framejava.utils.toast.ToastUtil;
 
-import butterknife.ButterKnife;
 
 
 /**
@@ -28,22 +27,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        if (Framework.isAppKilled()) {
+        if (AppHelper.get().isKilled()){
             LogUtil.d("AppStatus", "App后台被杀，重启!");
-            Framework.restart();
+            AppHelper.get().restartApp();
             return;
         }
-        beforeOnCrete(savedInstanceState);
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
-        ButterKnife.bind(this);
     }
 
-    protected abstract int getLayoutId();
-
-    protected void beforeOnCrete(Bundle savedInstanceState) {
-        // todo 本方法在super.onCreate()前调用 ;
-    }
 
     /**
      * 手动重写

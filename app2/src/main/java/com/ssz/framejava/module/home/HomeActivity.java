@@ -1,14 +1,16 @@
 package com.ssz.framejava.module.home;
 
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.KeyEvent;
 import android.view.View;
 
 import com.ssz.framejava.R;
-import com.ssz.framejava.app.Framework;
-import com.ssz.framejava.base.mvp.MvpActivity;
-import com.ssz.framejava.base.simple.SimpleActivity;
+import com.ssz.framejava.base.app.helper.AppHelper;
+import com.ssz.framejava.base.app.helper.ExitAppBroadcast;
+import com.ssz.framejava.base.ui.mvp.MvpActivity;
+import com.ssz.framejava.base.ui.simple.SimpleActivity;
 import com.ssz.framejava.module.custom.CustomMvpActivity;
 import com.ssz.framejava.module.dagger.DaggerMvpExampleActivity;
 import com.ssz.framejava.utils.ExitProxy;
@@ -29,20 +31,20 @@ public class HomeActivity extends MvpActivity<IHomeContract.IPresenter> implemen
     }
 
     @Override
-    protected int getLayoutId() {
+    public int getLayoutId() {
         return R.layout.activity_main;
     }
 
     @Override
-    protected void afterOnCreate(Bundle savedInstanceState) {
-        Framework.registerAppExitActivity(this);
+    public void afterOnCreate(Bundle savedInstanceState) {
+        registerReceiver(new ExitAppBroadcast(),new IntentFilter(ExitAppBroadcast.EditAction));
     }
 
     @OnClick({R.id.bt_content,R.id.bt_dagger,R.id.bt_custom,R.id.bt_simple})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_content:
-                Framework.exitApp();
+                AppHelper.exitApp();
 //                  finish();
 //                Framework.exitApp();
 //                Framework.restart();

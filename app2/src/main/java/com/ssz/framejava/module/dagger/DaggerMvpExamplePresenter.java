@@ -2,8 +2,8 @@ package com.ssz.framejava.module.dagger;
 
 
 import com.ssz.framejava.T.SayBean;
-import com.ssz.framejava.base.dagger.di.scope.ActivityScope;
-import com.ssz.framejava.func.ISuccessListener;
+import com.ssz.framejava.base.ui.dagger.di.scope.ActivityScope;
+import com.ssz.framejava.base.func.ISuccessListener;
 import com.ssz.framejava.model.remote.net.Api;
 import com.ssz.framejava.model.remote.net.Net;
 import com.ssz.framejava.model.remote.net.execption.ApiException;

@@ -1,8 +1,8 @@
 package com.ssz.framejava.module.dagger.di.component;
 
 
-import com.ssz.framejava.base.dagger.di.component.AppComponent;
-import com.ssz.framejava.base.dagger.di.scope.ActivityScope;
+import com.ssz.framejava.base.ui.dagger.di.component.AppComponent;
+import com.ssz.framejava.base.ui.dagger.di.scope.ActivityScope;
 import com.ssz.framejava.module.dagger.DaggerMvpExampleActivity;
 import com.ssz.framejava.module.dagger.di.module.DaggerMvpModule;
 

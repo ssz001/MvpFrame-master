@@ -2,7 +2,7 @@ package com.ssz.framejava.module.custom;
 
 
 import com.ssz.framejava.T.SayBean;
-import com.ssz.framejava.func.ISuccessListener;
+import com.ssz.framejava.base.func.ISuccessListener;
 import com.ssz.framejava.model.remote.net.Net;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
 import com.ssz.framejava.model.remote.net.net200.RetryTransformer200;

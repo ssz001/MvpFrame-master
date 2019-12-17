@@ -7,7 +7,8 @@ import android.view.View;
 import com.ssz.framejava.R;
 import com.ssz.framejava.T.SayBean;
 import com.ssz.framejava.app.AppContext;
-import com.ssz.framejava.base.dagger.DaggerMvpActivity;
+import com.ssz.framejava.base.app.helper.AppHelper;
+import com.ssz.framejava.base.ui.dagger.DaggerMvpActivity;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
 import com.ssz.framejava.module.dagger.di.component.DaggerMvpExampleComponent;
 import com.ssz.framejava.module.dagger.di.module.DaggerMvpModule;
@@ -33,22 +34,22 @@ public class DaggerMvpExampleActivity extends DaggerMvpActivity<DaggerMvpExample
     @Inject String stringTest;
 
     @Override
-    protected void initInject() {
+    public void initInject() {
         DaggerMvpExampleComponent.builder()
                 .view(this)
-                .addAppComponent(AppContext.get().getAppComponent())
+                .addAppComponent(AppHelper.getAppContext().getAppComponent())
                 .daggerMvpModule(new DaggerMvpModule())
                 .build()
                 .inject(this);
     }
 
     @Override
-    protected int getLayoutId() {
+    public int getLayoutId() {
         return R.layout.activity_custommvp;
     }
 
     @Override
-    protected void afterOnCreate(Bundle savedInstanceState) {
+    public void afterOnCreate(Bundle savedInstanceState) {
         // false
         Timber.d("appContext == null :%s", (appContext == null));
         Timber.d("stringTest :%s", stringTest);

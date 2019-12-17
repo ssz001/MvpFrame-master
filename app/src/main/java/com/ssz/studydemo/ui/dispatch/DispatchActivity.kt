@@ -41,7 +41,8 @@ import kotlinx.android.synthetic.main.activity_dispatch.*
                 1->{}
                 2->{ startActivity(DaggerMvpExampleActivity::class.java) }
             }
-        }    }
+        }
+    }
 
     override fun onPageScrollStateChanged(position: Int) {
 

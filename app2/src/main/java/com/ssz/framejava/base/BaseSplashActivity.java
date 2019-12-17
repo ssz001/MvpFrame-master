@@ -10,8 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.ssz.framejava.app.AppStatus;
-import com.ssz.framejava.app.Framework;
+import com.ssz.framejava.base.app.helper.AppHelper;
+import com.ssz.framejava.base.app.helper.AppStatus;
 import com.ssz.framejava.utils.ObjectHelper;
 
 import java.util.concurrent.TimeUnit;
@@ -41,7 +41,7 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Framework.setAppStatus(AppStatus.ALIVE);
+        AppHelper.get().setAppStatus(AppStatus.ALIVE);
         aVoidDoubleEnter();
 
         windowInit();
@@ -122,7 +122,6 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
     protected abstract void afterOnCreate(@Nullable Bundle savedInstanceState);
 
     private Disposable disposable;
-
     protected void countDown(final long count) {
         if (ObjectHelper.nonNull(disposable)) return;
         disposable = Observable.interval(1, TimeUnit.SECONDS)

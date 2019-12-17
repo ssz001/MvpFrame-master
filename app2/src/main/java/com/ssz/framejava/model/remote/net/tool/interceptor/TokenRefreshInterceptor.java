@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.ssz.framejava.account.AccountManager;
-import com.ssz.framejava.app.Framework;
+import com.ssz.framejava.base.app.helper.AppHelper;
 import com.ssz.framejava.model.remote.net.URL;
 
 import java.io.IOException;
@@ -34,11 +34,11 @@ public class TokenRefreshInterceptor implements Interceptor {
     @NonNull
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {
-        Log.i("rToken","未刷新前：    TokenExpiredException     ----  "+AccountManager.getToken(Framework.get()));
-        Log.i("rToken","未刷新前： RefreshToken ----  "+AccountManager.getRefreshToken(Framework.get()));
+        Log.i("rToken","未刷新前：    TokenExpiredException     ----  "+AccountManager.getToken(AppHelper.getApplication()));
+        Log.i("rToken","未刷新前： RefreshToken ----  "+AccountManager.getRefreshToken(AppHelper.getApplication()));
         Log.i("rToken","拦截器里的线程是："+ Thread.currentThread().getName());
         // 对应登录
-        if (TextUtils.isEmpty(AccountManager.getToken(Framework.get()))){
+        if (TextUtils.isEmpty(AccountManager.getToken(AppHelper.getApplication()))){
             Request request = chain.request()
                     .newBuilder()
                     .build();
@@ -46,14 +46,14 @@ public class TokenRefreshInterceptor implements Interceptor {
         }
         // 对应每次非登录的请求
         Request.Builder builder = chain.request().newBuilder();
-        builder.addHeader("Authorization","bearer "+AccountManager.getToken(Framework.get()));
+        builder.addHeader("Authorization","bearer "+AccountManager.getToken(AppHelper.getApplication()));
         Response response = chain.proceed(builder.build());
         // 检查是不是 401 错误
         if (isTokenExpired(response)) {
             getNewToken();
 //            getNewToken1();
             Request.Builder newBuilder = chain.request().newBuilder();
-            newBuilder.addHeader("Authorization", "bearer " + AccountManager.getToken(Framework.get()));
+            newBuilder.addHeader("Authorization", "bearer " + AccountManager.getToken(AppHelper.getApplication()));
             return chain.proceed(newBuilder.build());
         }
         return response;
@@ -80,15 +80,15 @@ public class TokenRefreshInterceptor implements Interceptor {
      */
     private synchronized void getNewToken() throws IOException{
         Log.i("newToken","--------------------走了getNewToken-----------------------");
-        Log.i("newToken","-------"+System.currentTimeMillis()+"-------------"+AccountManager.getTokenTime(Framework.get())+"-----------"+(System.currentTimeMillis() - AccountManager.getTokenTime(Framework.get()))+"------------");
+        Log.i("newToken","-------"+System.currentTimeMillis()+"-------------"+AccountManager.getTokenTime(AppHelper.getApplication())+"-----------"+(System.currentTimeMillis() - AccountManager.getTokenTime(AppHelper.getApplication()))+"------------");
         long now = System.currentTimeMillis();
-        long tokenTime = AccountManager.getTokenTime(Framework.get());
+        long tokenTime = AccountManager.getTokenTime(AppHelper.getApplication());
         if (now >= tokenTime || tokenTime - now <= 20000L){
             Log.i("newToken","跟新了-------------------------------------------");
             Log.i("too", "获取Token的线程是：" + Thread.currentThread().getName());
             OkHttpClient okHttpClient = new OkHttpClient();
             RequestBody body = new FormBody.Builder()
-                    .add("refreshToken", AccountManager.getRefreshToken(Framework.get()))
+                    .add("refreshToken", AccountManager.getRefreshToken(AppHelper.getApplication()))
                     .build();
             Request request = new Request.Builder()
                     .url(URL.get() + "ground-wire/online/refresh-token")

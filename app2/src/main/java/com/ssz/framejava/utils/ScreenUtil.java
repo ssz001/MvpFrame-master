@@ -7,7 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.ssz.framejava.app.Framework;
+import com.ssz.framejava.base.app.helper.AppHelper;
 import com.ssz.framejava.utils.log.LogUtil;
 
 
@@ -19,7 +19,7 @@ import com.ssz.framejava.utils.log.LogUtil;
 public final class ScreenUtil {
 
     private static Context getContext(){
-        return Framework.get();
+        return AppHelper.getApplication();
     }
 
     /**

@@ -3,7 +3,7 @@ package com.ssz.framejava.account;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.ssz.framejava.cons.Constant;
+import com.ssz.framejava.base.cons.Constant;
 
 import java.util.Iterator;
 import java.util.Map;

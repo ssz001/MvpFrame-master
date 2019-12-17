@@ -3,7 +3,7 @@ package com.ssz.framejava.model.remote.net;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.ssz.framejava.app.Framework;
+import com.ssz.framejava.base.app.helper.AppHelper;
 import com.ssz.framejava.utils.log.LogUtil;
 
 import java.util.regex.Matcher;
@@ -40,7 +40,7 @@ public final class URL {
     }
 
     private URL(){
-        preferences = Framework.get().getSharedPreferences(NAME, Context.MODE_PRIVATE);
+        preferences = AppHelper.getApplication().getSharedPreferences(NAME, Context.MODE_PRIVATE);
     }
 
     public String getUrl() {

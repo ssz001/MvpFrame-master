@@ -1,9 +1,9 @@
 package com.ssz.framejava.module.home;
 
 
-import com.ssz.framejava.base.func.BasePresenter;
-import com.ssz.framejava.base.func.BaseView;
-import com.ssz.framejava.func.ISuccessListener;
+import com.ssz.framejava.base.ui.mvp.func.BasePresenter;
+import com.ssz.framejava.base.ui.mvp.func.BaseView;
+import com.ssz.framejava.base.func.ISuccessListener;
 
 import io.reactivex.disposables.Disposable;
 

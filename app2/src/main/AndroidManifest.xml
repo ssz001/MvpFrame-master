@@ -40,7 +40,7 @@
 
     <activity android:name=".module.custom.CustomMvpActivity" />
     <activity android:name=".module.dagger.DaggerMvpExampleActivity" />
-    <activity android:name=".base.simple.SimpleActivity" />
+    <activity android:name=".base.ui.simple.SimpleActivity" />
     </application>
 
 </manifest>

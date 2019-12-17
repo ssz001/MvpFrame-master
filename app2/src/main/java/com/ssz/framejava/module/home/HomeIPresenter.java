@@ -1,7 +1,7 @@
 package com.ssz.framejava.module.home;
 
 
-import com.ssz.framejava.func.ISuccessListener;
+import com.ssz.framejava.base.func.ISuccessListener;
 
 import io.reactivex.disposables.Disposable;
 

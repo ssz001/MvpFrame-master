@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.ssz.framejava.R;
 import com.ssz.framejava.T.SayBean;
-import com.ssz.framejava.base.mvp.MvpActivity;
+import com.ssz.framejava.base.ui.mvp.MvpActivity;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
 
 import java.util.List;
@@ -34,12 +34,12 @@ public class CustomMvpActivity extends MvpActivity<CustomMvpContract.IPresenter>
     }
 
     @Override
-    protected int getLayoutId() {
+    public int getLayoutId() {
         return R.layout.activity_custommvp;
     }
 
     @Override
-    protected void afterOnCreate(Bundle savedInstanceState) {
+    public void afterOnCreate(Bundle savedInstanceState) {
 
     }
 

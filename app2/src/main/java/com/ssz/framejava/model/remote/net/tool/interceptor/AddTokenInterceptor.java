@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.ssz.framejava.account.AccountManager;
-import com.ssz.framejava.app.Framework;
+import com.ssz.framejava.base.app.helper.AppHelper;
 
 import java.io.IOException;
 
@@ -22,10 +22,10 @@ public class AddTokenInterceptor implements Interceptor {
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {
         Request request;
-        if (!TextUtils.isEmpty(AccountManager.getToken(Framework.get()))) {
+        if (!TextUtils.isEmpty(AccountManager.getToken(AppHelper.getApplication()))) {
             request = chain.request()
                     .newBuilder()
-                    .addHeader("Authorization", "bearer " + AccountManager.getToken(Framework.get()))
+                    .addHeader("Authorization", "bearer " + AccountManager.getToken(AppHelper.getApplication()))
                     .build();
         } else {
             request = chain.request()

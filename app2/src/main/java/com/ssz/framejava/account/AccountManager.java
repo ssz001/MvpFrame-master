@@ -2,7 +2,7 @@ package com.ssz.framejava.account;
 
 import android.content.Context;
 
-import com.ssz.framejava.cons.Constant;
+import com.ssz.framejava.base.cons.Constant;
 
 
 /**
