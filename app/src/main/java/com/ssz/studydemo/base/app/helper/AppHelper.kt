@@ -1,7 +1,10 @@
 package com.ssz.studydemo.base.app.helper
 
+import android.app.ActivityManager
 import android.app.Application
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import com.ssz.studydemo.base.app.helper.ExitAppBroadcast.Companion.EDIT_ACTION
 import com.ssz.studydemo.utils.ScreenUtil
 import com.ssz.studydemo.utils.SystemUtil
@@ -45,15 +48,17 @@ object AppHelper {
     }
 
     fun exitApp(){
-        getApplication().sendBroadcast(Intent(EDIT_ACTION))
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            val activityManager = getApplication().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-//            val appTaskList = activityManager.appTasks
-//            for (appTask in appTaskList) {
-//                appTask.finishAndRemoveTask()
-//            }
-//        }
+        val flag =  "true".toBoolean()
+        if (flag)
+            getApplication().sendBroadcast(Intent(EDIT_ACTION))
+        else
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val activityManager = getApplication().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            val appTaskList = activityManager.appTasks
+            for (appTask in appTaskList) {
+                appTask.finishAndRemoveTask()
+            }
+        }
     }
 
     fun restartApp(){
