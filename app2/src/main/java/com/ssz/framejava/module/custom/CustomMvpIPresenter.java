@@ -3,10 +3,13 @@ package com.ssz.framejava.module.custom;
 
 import com.ssz.framejava.T.SayBean;
 import com.ssz.framejava.base.func.ISuccessListener;
+import com.ssz.framejava.base.ui.view.IActivity;
 import com.ssz.framejava.model.remote.net.Net;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
 import com.ssz.framejava.model.remote.net.net200.RetryTransformer200;
 import com.ssz.framejava.model.remote.net.schedulers.RxIoScheduler;
+import com.ssz.framejava.utils.RxLifecycleUtil;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.List;
 
@@ -18,48 +21,49 @@ import io.reactivex.disposables.Disposable;
  */
 public class CustomMvpIPresenter implements CustomMvpContract.IPresenter {
 
-    private CustomMvpContract.IView mIView;
+    private CustomMvpContract.IView mView;
 
     @Override
-    public void attach(CustomMvpContract.IView IView) {
-        this.mIView = IView;
+    public void attach(CustomMvpContract.IView view) {
+        this.mView = view;
     }
 
     @Override
     public void detach() {
-        this.mIView = null;
+        this.mView = null;
     }
 
     @Override
     public Disposable getJoke() {
-        mIView.showProgress();
+        mView.showProgress();
         Disposable d = Net.request().getJoke(1, 2, "video")
                 .compose(new RxIoScheduler<>())
                 .compose(RetryTransformer200.handleException())
+                .compose(RxLifecycleUtil.bindUntilEvent((IActivity) mView,ActivityEvent.DESTROY))
                 .subscribe(sayBeans -> {
-                            mIView.hideProgress();
-                            mIView.success(sayBeans);
+                            mView.hideProgress();
+                            mView.success(sayBeans);
                         },
                         throwable -> {
-                            mIView.hideProgress();
-                            mIView.error(ApiException.cast(throwable));
+                            mView.hideProgress();
+                            mView.error(ApiException.cast(throwable));
                         });
         return d;
     }
 
     @Override
     public Disposable getJoke2(ISuccessListener<List<SayBean>> listener) {
-        mIView.showProgress();
+        mView.showProgress();
         Disposable d = Net.request().getJoke(1, 2, "video")
                 .compose(new RxIoScheduler<>())
                 .compose(RetryTransformer200.handleException())
                 .subscribe(result -> {
-                            mIView.hideProgress();
-                            mIView.success(result);
+                            mView.hideProgress();
+                            mView.success(result);
                         },
                         throwable -> {
-                            mIView.hideProgress();
-                            mIView.error(ApiException.cast(throwable));
+                            mView.hideProgress();
+                            mView.error(ApiException.cast(throwable));
                         });
         return d;
     }

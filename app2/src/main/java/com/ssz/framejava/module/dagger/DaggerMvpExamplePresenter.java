@@ -2,13 +2,16 @@ package com.ssz.framejava.module.dagger;
 
 
 import com.ssz.framejava.T.SayBean;
-import com.ssz.framejava.base.ui.dagger.di.scope.ActivityScope;
 import com.ssz.framejava.base.func.ISuccessListener;
+import com.ssz.framejava.base.ui.dagger.di.scope.ActivityScope;
+import com.ssz.framejava.base.ui.view.IActivity;
 import com.ssz.framejava.model.remote.net.Api;
 import com.ssz.framejava.model.remote.net.Net;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
 import com.ssz.framejava.model.remote.net.net200.RetryTransformer200;
 import com.ssz.framejava.model.remote.net.schedulers.RxIoScheduler;
+import com.ssz.framejava.utils.RxLifecycleUtil;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.List;
 
@@ -24,21 +27,27 @@ import timber.log.Timber;
 @ActivityScope
 public class DaggerMvpExamplePresenter implements IDaggerMvpContract.IPresenter {
 
-    private DaggerMvpExampleActivity mView;
-
+    @Inject
+    IDaggerMvpContract.IView mView;
     @Inject
     Api mApi;
 
+//    @Inject
+//    public DaggerMvpExamplePresenter(IDaggerMvpContract.IView view) {
+//        this.mView = view;
+//        //false
+//        Timber.d("DaggerMvpExampleActivity == null? : %s", (view == null));
+//    }
+
     @Inject
-    public DaggerMvpExamplePresenter(DaggerMvpExampleActivity view) {
-        this.mView = view;
-        //false
-        Timber.d("DaggerMvpExampleActivity == null? : %s", (view == null));
+    public DaggerMvpExamplePresenter() {
+        Timber.d("DaggerMvpExampleActivity == null? : %s", (mView == null));
     }
 
     @Override
     public void detach() {
         this.mView = null;
+        this.mApi = null;
     }
 
     @Override
@@ -47,6 +56,7 @@ public class DaggerMvpExamplePresenter implements IDaggerMvpContract.IPresenter 
         Disposable d = Net.request().getJoke(1, 2, "video")
                 .compose(new RxIoScheduler<>())
                 .compose(RetryTransformer200.handleException())
+                .compose(RxLifecycleUtil.bindUntilEvent((IActivity) mView,ActivityEvent.DESTROY))
                 .subscribe(sayBeans -> {
                             mView.hideProgress();
                             mView.success(sayBeans);
@@ -65,9 +75,10 @@ public class DaggerMvpExamplePresenter implements IDaggerMvpContract.IPresenter 
         Disposable d = mApi.getJoke(1, 2, "video")
                 .compose(new RxIoScheduler<>())
                 .compose(RetryTransformer200.handleException())
+                .compose(RxLifecycleUtil.bindUntilEvent((IActivity) mView,ActivityEvent.DESTROY))
                 .subscribe(sayBeans -> {
                             mView.hideProgress();
-                            mView.success(sayBeans);
+                            listener.result(sayBeans);
                         },
                         throwable -> {
                             mView.hideProgress();

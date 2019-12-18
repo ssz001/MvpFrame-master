@@ -1,6 +1,8 @@
 package com.ssz.framejava.module.dagger.di.module;
 
 
+import android.os.Handler;
+
 import com.ssz.framejava.base.ui.dagger.di.scope.ActivityScope;
 
 import dagger.Module;
@@ -15,8 +17,9 @@ public class DaggerMvpModule {
 
     @ActivityScope
     @Provides
-    public String getStudent() {
-        return "ss";
+    public Handler provideHandler(){
+        return new Handler();
     }
+
 
 }

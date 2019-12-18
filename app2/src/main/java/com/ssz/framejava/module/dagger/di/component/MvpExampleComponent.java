@@ -4,6 +4,7 @@ package com.ssz.framejava.module.dagger.di.component;
 import com.ssz.framejava.base.ui.dagger.di.component.AppComponent;
 import com.ssz.framejava.base.ui.dagger.di.scope.ActivityScope;
 import com.ssz.framejava.module.dagger.DaggerMvpExampleActivity;
+import com.ssz.framejava.module.dagger.IDaggerMvpContract;
 import com.ssz.framejava.module.dagger.di.module.DaggerMvpModule;
 
 import dagger.BindsInstance;
@@ -18,12 +19,11 @@ import dagger.Component;
 public interface MvpExampleComponent {
     void inject(DaggerMvpExampleActivity activity);
 
-//    String getView();
-
     @Component.Builder
      interface Builder{
         @BindsInstance
-        Builder view(DaggerMvpExampleActivity view);
+        // 这里可以用多态，为了有些地方需要传入view提前打桩
+        Builder view(IDaggerMvpContract.IView view);
         Builder addAppComponent(AppComponent appComponent);
         Builder daggerMvpModule(DaggerMvpModule module);
         MvpExampleComponent build();

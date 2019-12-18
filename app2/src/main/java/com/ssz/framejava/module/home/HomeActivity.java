@@ -37,7 +37,7 @@ public class HomeActivity extends MvpActivity<IHomeContract.IPresenter> implemen
 
     @Override
     public void afterOnCreate(Bundle savedInstanceState) {
-        registerReceiver(new ExitAppBroadcast(),new IntentFilter(ExitAppBroadcast.EditAction));
+        registerReceiver(new ExitAppBroadcast(),new IntentFilter(ExitAppBroadcast.EDIT_ACTION));
     }
 
     @OnClick({R.id.bt_content,R.id.bt_dagger,R.id.bt_custom,R.id.bt_simple})

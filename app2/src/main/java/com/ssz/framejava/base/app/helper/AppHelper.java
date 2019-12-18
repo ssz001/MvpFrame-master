@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 
+import com.ssz.framejava.BuildConfig;
 import com.ssz.framejava.app.AppContext;
 import com.ssz.framejava.utils.ObjectHelper;
 import com.ssz.framejava.utils.ScreenUtil;
@@ -14,11 +15,17 @@ import com.ssz.framejava.utils.SystemUtil;
 
 import java.util.List;
 
+/**
+ * @author zsp
+ * create at 2019/12/18 15:07
+ * AppHelper
+ */
 public class AppHelper {
 
     private static final AppHelper instance = new AppHelper();
     private static Application application;
-    public static final boolean isDebug = Boolean.parseBoolean("true");
+//    public static final boolean DEBUG = Boolean.parseBoolean("true");
+    public static final boolean DEBUG = BuildConfig.DEBUG;
 
     @AppStatus
     private String appStatus = AppStatus.KILLED;
@@ -55,17 +62,18 @@ public class AppHelper {
         return appStatus.equals(AppStatus.KILLED);
     }
 
-
     public AppHelper toLog(){
-        SystemUtil.log();
-        ScreenUtil.log();
+        if (DEBUG){
+            SystemUtil.log();
+            ScreenUtil.log();
+        }
         return this;
     }
 
     public static void exitApp(){
-        boolean flag = Boolean.parseBoolean("true");
-        if (flag){
-            getApplication().sendBroadcast(new Intent(ExitAppBroadcast.EditAction));
+        boolean bellowOsFive = Boolean.parseBoolean("true");
+        if (bellowOsFive){
+            getApplication().sendBroadcast(new Intent(ExitAppBroadcast.EDIT_ACTION));
         }else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
                 ActivityManager activityManager = (ActivityManager)getApplication().getSystemService(Context.ACTIVITY_SERVICE);
@@ -77,7 +85,6 @@ public class AppHelper {
         }
     }
 
-
     public void restartApp(){
         final Application application = getApplication();
         Intent intent = application.getPackageManager().getLaunchIntentForPackage(application.getPackageName());
@@ -86,5 +93,4 @@ public class AppHelper {
             application.startActivity(intent);
         }
     }
-
 }

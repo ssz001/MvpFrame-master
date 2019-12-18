@@ -17,13 +17,12 @@ import com.ssz.framejava.utils.log.LogUtil;
 import com.ssz.framejava.utils.toast.ToastUtil;
 
 
-
 /**
  * @author : zsp
  * time : 2019 10 2019/10/10 15:25
  */
 @SuppressLint("Registered")
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +34,30 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     /**
      * 手动重写

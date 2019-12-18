@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ssz.studydemo.base.BaseFragment
-import com.ssz.studydemo.base.ui.mvp.func.IFragment
+import com.ssz.studydemo.base.ui.view.IFragment
 
 /**
  * @author : zsp
@@ -24,6 +24,8 @@ abstract class MvpFragment : BaseFragment(), IFragment {
         setEvent()
         afterOnCreateView(savedInstanceState)
     }
+
+    abstract fun bindPresenter()
 
     protected open fun beforeOnCreateView(){
 

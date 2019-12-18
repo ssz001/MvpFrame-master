@@ -24,6 +24,8 @@ import timber.log.Timber;
  */
 public class CustomMvpActivity extends MvpActivity<CustomMvpContract.IPresenter> implements CustomMvpContract.IView {
 
+    private final Handler mHandler = new Handler();
+
     @BindView(R.id.bt_get_joke)
     Button btGetJoke;
 
@@ -52,7 +54,7 @@ public class CustomMvpActivity extends MvpActivity<CustomMvpContract.IPresenter>
                  addDisposable(d);
 
                  // 方法二
-                new Handler().postDelayed(new Runnable() {
+                mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         // 方法二
@@ -88,5 +90,13 @@ public class CustomMvpActivity extends MvpActivity<CustomMvpContract.IPresenter>
     @Override
     public void error(ApiException ex) {
          showToast(ex.getMessage());
+    }
+
+    @Override
+    protected void onDestroy() {
+        mHandler.removeCallbacksAndMessages(null);
+        this.mPresenter = null;
+        this.mcDisposable = null;
+        super.onDestroy();
     }
 }

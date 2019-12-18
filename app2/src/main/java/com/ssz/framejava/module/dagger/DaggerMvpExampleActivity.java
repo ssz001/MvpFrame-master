@@ -12,7 +12,6 @@ import com.ssz.framejava.base.ui.dagger.DaggerMvpActivity;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
 import com.ssz.framejava.module.dagger.di.component.DaggerMvpExampleComponent;
 import com.ssz.framejava.module.dagger.di.module.DaggerMvpModule;
-import com.ssz.framejava.utils.log.LogUtil;
 
 import java.util.List;
 
@@ -28,13 +27,18 @@ import timber.log.Timber;
  */
 public class DaggerMvpExampleActivity extends DaggerMvpActivity<DaggerMvpExamplePresenter> implements IDaggerMvpContract.IView {
 
-    @Inject
-    protected AppContext appContext;
+    @Inject Handler mHandler;
+    @Inject AppContext appContext;
 
-    @Inject String stringTest;
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_custommvp;
+    }
 
     @Override
     public void initInject() {
+        // view() 在本方法初始化完成后，都可以用@Inject 获取对象,或者在类的（@Inject）构造方法中如果有view参数，
+        // 会直接取，详细见presenter
         DaggerMvpExampleComponent.builder()
                 .view(this)
                 .addAppComponent(AppHelper.getAppContext().getAppComponent())
@@ -44,27 +48,21 @@ public class DaggerMvpExampleActivity extends DaggerMvpActivity<DaggerMvpExample
     }
 
     @Override
-    public int getLayoutId() {
-        return R.layout.activity_custommvp;
-    }
-
-    @Override
     public void afterOnCreate(Bundle savedInstanceState) {
         // false
         Timber.d("appContext == null :%s", (appContext == null));
-        Timber.d("stringTest :%s", stringTest);
-        LogUtil.d("tytytyi","timer ");
     }
 
     @OnClick({R.id.bt_get_joke})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_get_joke:
+//                test1();
                 // 方法一
                 Disposable d =  mPresenter.getJoke();
                 addDisposable(d);
 
-                new Handler().postDelayed(new Runnable() {
+                mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         // 方法二
@@ -104,7 +102,43 @@ public class DaggerMvpExampleActivity extends DaggerMvpActivity<DaggerMvpExample
 
     @Override
     protected void onDestroy() {
-        this.appContext = null;
+        mHandler.removeCallbacksAndMessages(null);
         super.onDestroy();
+        this.appContext = null;
     }
+
+//    private void test1() {
+//        // 第一个Observable（即我们自己的Observable）
+//        Observable.create(new ObservableOnSubscribe<String>() {
+//            @Override
+//            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+//                while (true) {
+//                    emitter.onNext("aa");
+//                }
+//            }
+//        }).subscribeOn(Schedulers.io())
+////                .compose(bindUntilEvent(ActivityEvent.PAUSE))
+//                .subscribe(new Observer<String>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//                        Log.d("d_test", "onSubscribe: ");
+//                        addDisposable(d);
+//                    }
+//
+//                    @Override
+//                    public void onNext(String s) {
+//                        Log.d("d_test", "onSubscribe: " + s);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//                        Log.d("d_test", "onSubscribe: " + "onComplete()");
+//                    }
+//                });
+//    }
 }

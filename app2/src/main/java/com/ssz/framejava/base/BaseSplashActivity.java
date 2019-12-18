@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import com.ssz.framejava.base.app.helper.AppHelper;
 import com.ssz.framejava.base.app.helper.AppStatus;
 import com.ssz.framejava.utils.ObjectHelper;
+import com.ssz.framejava.utils.log.LogUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,7 +34,7 @@ import io.reactivex.schedulers.Schedulers;
 @SuppressLint("Registered")
 public abstract class BaseSplashActivity extends AppCompatActivity {
 
-    private final Handler mHandler = new Handler(Looper.getMainLooper());
+    private Handler mHandler = new Handler(Looper.getMainLooper());
 
     /**
      * 如果setContentView()之前花费比较多的时间，会出现短暂的白屏或黑屏
@@ -42,14 +43,16 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         AppHelper.get().setAppStatus(AppStatus.ALIVE);
+        LogUtil.d("AppStatus", "App正常启动!");
         aVoidDoubleEnter();
 
         windowInit();
         super.onCreate(savedInstanceState);
         post(() -> {
             resetTheme();
-            if (getLayoutId() != 0) {
-                setContentView(getLayoutId());
+            int layoutId = getLayoutId();
+            if (layoutId != 0) {
+                setContentView(layoutId);
             }
             afterOnCreate(savedInstanceState);
         }, getDelayTime());
@@ -139,6 +142,8 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
             disposable.dispose();
         }
         mHandler.removeCallbacksAndMessages(null);
+        this.mHandler = null;
+        this.disposable = null;
         super.onDestroy();
     }
 }

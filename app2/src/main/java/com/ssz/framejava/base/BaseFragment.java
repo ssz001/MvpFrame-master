@@ -3,29 +3,18 @@ package com.ssz.framejava.base;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.ssz.framejava.utils.ObjectHelper;
 import com.ssz.framejava.utils.toast.ToastUtil;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 /**
  * @author : zsp
  * time : 2019 11 2019/11/4 9:00
  */
 public abstract class BaseFragment extends Fragment {
-
-
-    protected abstract int getLayoutId();
 
     protected String getText(final TextView view) {
         if (ObjectHelper.nonNull(view)) {

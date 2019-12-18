@@ -2,7 +2,7 @@ package com.ssz.studydemo.base.ui.mvp
 
 import android.os.Bundle
 import com.ssz.studydemo.base.BaseActivity
-import com.ssz.studydemo.base.ui.mvp.func.IActivity
+import com.ssz.studydemo.base.ui.view.IActivity
 
 /**
  * @author : zsp
@@ -18,6 +18,8 @@ abstract class MvpActivity : BaseActivity(), IActivity {
         setEvent()
         afterOnCreate(savedInstanceState)
     }
+
+    abstract fun bindPresenter()
 
     protected open fun beforeOnCreate(savedInstanceState: Bundle?) {
 

@@ -2,7 +2,7 @@ package com.ssz.studydemo.base.ui.dagger
 
 import android.os.Bundle
 import com.ssz.studydemo.base.BaseActivity
-import com.ssz.studydemo.base.ui.dagger.func.IActivity
+import com.ssz.studydemo.base.ui.view.IActivity
 import javax.inject.Inject
 
 abstract class DaggerMvpActivity<T : BasePresenter> : BaseActivity(), IActivity {
@@ -18,6 +18,8 @@ abstract class DaggerMvpActivity<T : BasePresenter> : BaseActivity(), IActivity 
         setEvent()
         afterOnCreate(savedInstanceState)
     }
+
+    abstract fun initInject()
 
     protected open fun beforeOnCreate(savedInstanceState: Bundle?) {
 

@@ -5,9 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+/**
+ * @author zsp
+ * create at 2019/12/18 15:02
+ * 一种App退出方式
+ */
 public class ExitAppBroadcast extends BroadcastReceiver {
 
-    public static final String EditAction = "edit_app_action_by_zsp";
+    public static final String EDIT_ACTION = "edit_app_action_by_zsp";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -19,8 +24,7 @@ public class ExitAppBroadcast extends BroadcastReceiver {
                 activity.finish();
             }
         }
-        else {
+        else
             throw new IllegalStateException("context must be activity !");
-        }
     }
 }

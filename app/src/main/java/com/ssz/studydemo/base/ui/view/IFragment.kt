@@ -1,10 +1,9 @@
-package com.ssz.studydemo.base.ui.mvp.func
+package com.ssz.studydemo.base.ui.view
 
 import android.os.Bundle
 
 interface IFragment {
     fun getLayoutId(): Int
-    fun bindPresenter()
     fun afterOnCreateView(savedInstanceState: Bundle?)
     fun setEvent()
 }
