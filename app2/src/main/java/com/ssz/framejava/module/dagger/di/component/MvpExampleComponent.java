@@ -22,7 +22,7 @@ public interface MvpExampleComponent {
     @Component.Builder
      interface Builder{
         @BindsInstance
-        // 这里可以用多态，为了有些地方需要传入view提前打桩
+        // 这里可以用多态，为了有些地方需要传入view,提前打桩
         Builder view(IDaggerMvpContract.IView view);
         Builder addAppComponent(AppComponent appComponent);
         Builder daggerMvpModule(DaggerMvpModule module);

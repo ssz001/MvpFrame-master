@@ -2,6 +2,7 @@ package com.ssz.framejava.model.remote.net;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ssz.framejava.BuildConfig;
 import com.ssz.framejava.model.remote.net.tool.interceptor.LoggingInterceptor;
 import com.ssz.framejava.utils.converter.GsonConverterFactory;
 import com.ssz.framejava.utils.log.LogUtil;
@@ -47,10 +48,11 @@ final class RemoteHelper {
             }
         });
         // level 是必须的，否则不打印
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        interceptor.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY :
+                HttpLoggingInterceptor.Level.NONE);
         mOkHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
-                .addInterceptor(new LoggingInterceptor())
+//                .addInterceptor(new LoggingInterceptor())
                 .readTimeout(15, TimeUnit.SECONDS)
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
