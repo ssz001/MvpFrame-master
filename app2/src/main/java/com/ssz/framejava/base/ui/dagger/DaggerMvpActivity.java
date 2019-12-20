@@ -56,38 +56,14 @@ public abstract class DaggerMvpActivity<T extends DaggerPresenter> extends BaseA
             mLifecycleSubject = BehaviorSubject.create();
             mLifecycleSubject.onNext(ActivityEvent.CREATE);
         }
-        setContentView(getLayoutId());
-        ButterKnife.bind(this);
+        int layoutId = getLayoutId();
+        if (layoutId != 0){
+            setContentView(layoutId);
+            ButterKnife.bind(this);
+        }
         initInject();
         afterOnCreate(savedInstanceState);
     }
-
-//    @Override
-//    @NonNull
-//    @CheckResult
-//    public final Observable<ActivityEvent> lifecycle() {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//        return mLifecycleSubject.hide();
-//    }
-//
-//    @Override
-//    @NonNull
-//    @CheckResult
-//    public final <R> LifecycleTransformer<R> bindUntilEvent(@NonNull ActivityEvent event) {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//        return RxLifecycle.bindUntilEvent(mLifecycleSubject, event);
-//    }
-//
-//    @Override
-//    @NonNull
-//    @CheckResult
-//    public final <R> LifecycleTransformer<R> bindToLifecycle() {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new  IllegalStateException("please useRxLifecycle() return = true");
-//        return RxLifecycleAndroid.bindActivity(mLifecycleSubject);
-//    }
 
     @Override
     public void beforeOnCrete(Bundle savedInstanceState) {

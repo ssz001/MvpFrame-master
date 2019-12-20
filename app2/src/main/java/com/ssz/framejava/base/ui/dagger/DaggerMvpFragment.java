@@ -66,33 +66,6 @@ public abstract class DaggerMvpFragment<T extends DaggerPresenter> extends BaseF
             throw new IllegalStateException("please useRxLifecycle() return = true in"+this.getClass().getSimpleName());
     }
 
-//    @Override
-//    @NonNull
-//    @CheckResult
-//    public final Observable<FragmentEvent> lifecycle() {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//        return mLifecycleSubject.hide();
-//    }
-//
-//    @Override
-//    @NonNull
-//    @CheckResult
-//    public final <R> LifecycleTransformer<R> bindUntilEvent(@NonNull FragmentEvent event) {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//        return RxLifecycle.bindUntilEvent(mLifecycleSubject, event);
-//    }
-//
-//    @Override
-//    @NonNull
-//    @CheckResult
-//    public final <R> LifecycleTransformer<R> bindToLifecycle() {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//        return RxLifecycleAndroid.bindFragment(mLifecycleSubject);
-//    }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

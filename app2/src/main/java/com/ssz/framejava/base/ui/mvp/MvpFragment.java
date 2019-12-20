@@ -58,30 +58,6 @@ public abstract class MvpFragment<T extends BasePresenter> extends BaseFragment 
         return view;
     }
 
-//    @Nonnull
-//    @Override
-//    public Observable<FragmentEvent> lifecycle() {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//        return mLifecycleSubject.hide();
-//    }
-//
-//    @Nonnull
-//    @Override
-//    public <R> LifecycleTransformer<R> bindUntilEvent(@Nonnull FragmentEvent event) {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//        return RxLifecycle.bindUntilEvent(mLifecycleSubject, event);
-//    }
-//
-//    @Nonnull
-//    @Override
-//    public <R> LifecycleTransformer<R> bindToLifecycle() {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//        return RxLifecycleAndroid.bindFragment(mLifecycleSubject);
-//    }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

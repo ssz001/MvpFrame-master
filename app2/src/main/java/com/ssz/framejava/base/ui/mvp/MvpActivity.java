@@ -49,39 +49,18 @@ public abstract class MvpActivity<T extends BasePresenter> extends BaseActivity 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         beforeOnCrete(savedInstanceState);
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
+        int layoutId = getLayoutId();
+        if (layoutId != 0){
+            setContentView(layoutId);
+            ButterKnife.bind(this);
+        }
         if (useRxLifecycle()){
             mLifecycleSubject = BehaviorSubject.create();
             mLifecycleSubject.onNext(ActivityEvent.CREATE);
         }
-        ButterKnife.bind(this);
         attach(bindPresenter());
         afterOnCreate(savedInstanceState);
     }
-
-//    @Nonnull
-//    @Override
-//    public Observable<ActivityEvent> lifecycle() {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//       return mLifecycleSubject.hide();
-//    }
-//
-//    @Nonnull
-//    @Override
-//    public <R> LifecycleTransformer<R> bindUntilEvent(@Nonnull ActivityEvent event) {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//        return RxLifecycle.bindUntilEvent(mLifecycleSubject, event);
-//    }
-//
-//    @Nonnull
-//    @Override
-//    public <R> LifecycleTransformer<R> bindToLifecycle() {
-//        if (ObjectHelper.isNull(mLifecycleSubject))
-//            throw new IllegalStateException("please useRxLifecycle() return = true");
-//        return RxLifecycleAndroid.bindActivity(mLifecycleSubject);
-//    }
 
     @Override
     public void beforeOnCrete(Bundle savedInstanceState) {
