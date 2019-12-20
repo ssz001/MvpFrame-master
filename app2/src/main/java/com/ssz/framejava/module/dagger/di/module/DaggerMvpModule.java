@@ -20,6 +20,4 @@ public class DaggerMvpModule {
     public Handler provideHandler(){
         return new Handler();
     }
-
-
 }
