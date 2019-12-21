@@ -82,5 +82,20 @@ dependencies {
     //@IntDef和@StringDef
     implementation rootProject.ext.dependencies["annotations"]
 
+    //butterknife
+    implementation rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+
+    //rxlifecycle
+    implementation rootProject.ext.dependencies["rxlifecycle"]
+    implementation rootProject.ext.dependencies["rxlifecycle-android"]
+    implementation rootProject.ext.dependencies["rxlifecycle-components"]
+
+//    "rxlifecycle"   : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
+//    "rxlifecycle-android" : "com.trello.rxlifecycle2:rxlifecycle-android:2.2.2",
+//    "rxlifecycle-components" : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.1",
+
+    implementation  rootProject.ext.dependencies["timber"]
+
 
 }

@@ -109,5 +109,4 @@ dependencies {
     // kotlin coroutines
     implementation rootProject.ext.dependencies["kotlinx-coroutines-android"]
 
-    implementation project(':testarea')
 }
