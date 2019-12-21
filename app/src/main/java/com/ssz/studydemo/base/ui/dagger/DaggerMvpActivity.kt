@@ -13,7 +13,9 @@ abstract class DaggerMvpActivity<T : BasePresenter> : BaseActivity(), IActivity 
     override fun onCreate(savedInstanceState: Bundle?) {
         beforeOnCreate(savedInstanceState)
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
+        getLayoutId().apply {
+            if (this != 0)setContentView(this)
+        }
         initInject()
         setEvent()
         afterOnCreate(savedInstanceState)

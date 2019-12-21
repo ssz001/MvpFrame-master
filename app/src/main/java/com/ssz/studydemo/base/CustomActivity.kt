@@ -12,7 +12,9 @@ abstract class CustomActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         beforeOnCreate()
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
+        getLayoutId().apply {
+            if (this != 0)setContentView(this)
+        }
         initView()
         initData()
         setEvent()

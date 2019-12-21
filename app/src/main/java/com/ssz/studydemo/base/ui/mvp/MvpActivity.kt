@@ -13,7 +13,9 @@ abstract class MvpActivity : BaseActivity(), IActivity {
     override fun onCreate(savedInstanceState: Bundle?) {
         beforeOnCreate(savedInstanceState)
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
+        getLayoutId().apply {
+            if (this != 0)setContentView(this)
+        }
         bindPresenter()
         setEvent()
         afterOnCreate(savedInstanceState)
