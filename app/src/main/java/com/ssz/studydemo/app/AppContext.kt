@@ -15,7 +15,7 @@ import com.ssz.studydemo.utils.network.NetworkManager
  */
 class AppContext : Application(), IApp {
 
-    var branch = "master"
+    var branch = "MvpFrame-ARouter"
 
     override fun onCreate() {
         super.onCreate()
