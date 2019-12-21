@@ -15,6 +15,8 @@ import com.ssz.studydemo.utils.network.NetworkManager
  */
 class AppContext : Application(), IApp {
 
+    var ji = "我在 master 里 加了个成员变量"
+
     override fun onCreate() {
         super.onCreate()
         AppHelper.init(this).toLog()
