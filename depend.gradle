@@ -1,0 +1,83 @@
+ext{
+    android = [
+            compileSdkVersion       : 28,
+            buildToolsVersion       : "28.0.3",
+            minSdkVersion           : 23,
+            targetSdkVersion        : 28,
+            versionCode             : 1,
+            versionName             : "1.0.0"
+    ]
+
+    version = [
+            androidSupportSdkVersion : "28.0.0",
+            constraintlayout        : "1.1.3"
+    ]
+
+    dependencies = [
+            //kotlin
+            "kotlinx-coroutines-android" : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1",
+
+            //support
+            "appcompat-v7"      : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
+            "constraint-layout" : "com.android.support.constraint:constraint-layout:${version["constraintlayout"]}",
+            "design"            : "com.android.support:design:28.0.0",
+            "annotations"       : "com.android.support:support-annotations:28.0.0",
+            "recycleview"       : "com.android.support:recyclerview-v7:28.0.0",
+
+            //test
+            "junit"             : "junit:junit:4.12",
+            "runner"            : "com.android.support.test:runner:1.0.2",
+            "espresso-core"     : "com.android.support.test.espresso:espresso-core:3.0.2",
+
+            //Rxjava
+            "logging-interceptor" : "com.squareup.okhttp3:logging-interceptor:3.10.0",
+            "rxjava"              : "io.reactivex.rxjava2:rxjava:2.2.12",
+            "rxandroid"           : "io.reactivex.rxjava2:rxandroid:2.1.1",
+            "retrofit"            : "com.squareup.retrofit2:retrofit:2.6.0",
+            "retrofit-rx-adapter" : "com.squareup.retrofit2:adapter-rxjava2:2.6.0",
+            "retrofit-coverter-gson"       : "com.squareup.retrofit2:converter-gson:2.3.0",
+
+            //okhttp
+            "okhttp"              : "com.squareup.okhttp3:okhttp:3.12.3",
+
+            //gson
+            "gson"                : "com.google.code.gson:gson:2.8.5",
+
+            //glide
+            "glide"               : "com.github.bumptech.glide:glide:4.9.0",
+            "glide-compiler"      : "com.github.bumptech.glide:compiler:4.8.0",
+
+            //内存泄漏检测 leakcanary
+            "leakcanary-android"         : "com.squareup.leakcanary:leakcanary-android:1.6.3",
+            "leakcanary-android-no-op"   : "com.squareup.leakcanary:leakcanary-android-no-op:1.6.3",
+            // Optional, if you use support library fragments:
+            "leakcanary-support-fragment": "com.squareup.leakcanary:leakcanary-support-fragment:1.6.2",
+
+            //greenDao
+            "greendao"                   : "org.greenrobot:greendao:3.2.2",
+            "greendao-generator"         : "org.greenrobot:greendao-generator:3.2.2",
+
+            //butterknife
+            "butterknife"             : "com.jakewharton:butterknife:9.0.0",
+            "butterknife-compiler"    : "com.jakewharton:butterknife-compiler:8.8.1",
+
+            //dagger2
+            "dagger2" :  "com.google.dagger:dagger:2.23.2",
+            "dagger2-compiler" : "com.google.dagger:dagger-compiler:2.21",
+            "dagger2-android"  : "com.google.dagger:dagger-android:2.21",
+            "dagger-android-support" : "com.google.dagger:dagger-android-support:2.21",// if you use the support libraries
+            "dagger-android-processor" : "com.google.dagger:dagger-android-processor:2.21",
+
+            //timber
+            "timber"         : "com.jakewharton.timber:timber:4.7.1",
+
+            //findbugs
+            "findbugs"       : "com.google.code.findbugs:jsr305:3.0.2",
+
+            //rxlifecycle
+            "rxlifecycle"   : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
+            "rxlifecycle-android" : "com.trello.rxlifecycle2:rxlifecycle-android:2.2.2",
+            "rxlifecycle-components" : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.1",
+
+    ]
+}

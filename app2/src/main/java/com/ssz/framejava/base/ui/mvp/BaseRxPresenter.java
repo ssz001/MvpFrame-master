@@ -39,6 +39,7 @@ public class BaseRxPresenter<T> implements BasePresenter<T> {
     @Override
     public void detach() {
         dispose();
+        this.mcDisposable = null;
         this.mView = null;
     }
 }

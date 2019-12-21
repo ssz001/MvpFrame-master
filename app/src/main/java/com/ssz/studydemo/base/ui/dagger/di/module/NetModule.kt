@@ -2,6 +2,7 @@ package com.ssz.studydemo.base.ui.dagger.di.module
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.ssz.studydemo.BuildConfig
 import com.ssz.studydemo.model.remote.net.Api
 import com.ssz.studydemo.model.remote.net.Net
 import com.ssz.studydemo.utils.converter.GsonConverterFactory
@@ -70,7 +71,8 @@ class NetModule {
                 e.printStackTrace()
                 LogUtils.e("okhttp_", "-----$msg")
             }
-        }.setLevel(HttpLoggingInterceptor.Level.BODY)
+        }.setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
+        else HttpLoggingInterceptor.Level.NONE)
     }
 
     @Singleton

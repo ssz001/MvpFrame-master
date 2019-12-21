@@ -39,8 +39,8 @@ class RemoteHelper private constructor() {
             }
         }
         // level 是必须的，否则不打印
-        interceptor.level.apply { if (BuildConfig.DEBUG)
-            HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE}
+        interceptor.level.apply {
+            if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE}
         mOkHttpClient = OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .addInterceptor(LoggingInterceptor())

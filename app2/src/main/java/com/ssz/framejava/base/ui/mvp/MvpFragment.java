@@ -84,6 +84,9 @@ public abstract class MvpFragment<T extends BasePresenter> extends BaseFragment 
     @CallSuper
     public void onAttach(android.app.Activity activity) {
         super.onAttach(activity);
+        if (useRxLifecycle()){
+            mLifecycleSubject = BehaviorSubject.create();
+        }
         if (ObjectHelper.nonNull(mLifecycleSubject))
             mLifecycleSubject.onNext(FragmentEvent.ATTACH);
     }
@@ -91,10 +94,8 @@ public abstract class MvpFragment<T extends BasePresenter> extends BaseFragment 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (useRxLifecycle()){
-            mLifecycleSubject = BehaviorSubject.create();
+        if (ObjectHelper.nonNull(mLifecycleSubject))
             mLifecycleSubject.onNext(FragmentEvent.CREATE);
-        }
     }
 
     @Override
