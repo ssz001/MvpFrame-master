@@ -2,6 +2,8 @@ package com.ssz.framejava.app;
 
 import android.app.Application;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.ssz.framejava.BuildConfig;
 import com.ssz.framejava.base.app.func.IApp;
 import com.ssz.framejava.base.app.helper.AppHelper;
 import com.ssz.framejava.base.ui.dagger.di.component.AppComponent;
@@ -24,6 +26,18 @@ public final class AppContext extends Application implements IApp {
         AppHelper.init(this).toLog();
         // Dagger2 全局配置
         setupAppComponent();
+
+        initARouter();
+    }
+
+
+    @Override
+    public void initARouter() {
+        if (BuildConfig.DEBUG){
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+        ARouter.init(this);
     }
 
     /**

@@ -6,6 +6,7 @@ package com.ssz.framejava.base.app.func;
  * time : 2019 11 2019/11/18 16:15
  */
 public interface IApp {
+    void initARouter();
     void setupAppComponent();
 }
 
