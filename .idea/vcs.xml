@@ -2,8 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/baselibrary" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/module_begin" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/module_home" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/baselibrary" vcs="" />
+    <mapping directory="$PROJECT_DIR$/module_begin" vcs="" />
+    <mapping directory="$PROJECT_DIR$/module_home" vcs="" />
   </component>
 </project>

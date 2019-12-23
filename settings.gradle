@@ -1,1 +1,1 @@
-include ':app2', ':baselibrary', ':module_begin', ':module_home'
+include ':app', ':baselibrary', ':module_begin', ':module_home'
