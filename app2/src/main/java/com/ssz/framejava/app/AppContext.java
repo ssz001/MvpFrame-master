@@ -19,6 +19,7 @@ import com.ssz.framejava.utils.log.TimberUtil;
  */
 public final class AppContext extends Application implements IApp {
 
+
     @Override
     public void onCreate() {
         super.onCreate();
