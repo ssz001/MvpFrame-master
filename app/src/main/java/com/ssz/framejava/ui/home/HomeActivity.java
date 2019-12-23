@@ -3,7 +3,6 @@ package com.ssz.framejava.ui.home;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -34,7 +33,7 @@ public class HomeActivity extends DaggerMvpActivity<HomePresenter> implements IH
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_main;
+        return R.layout.activity_begin;
     }
 
     @Override

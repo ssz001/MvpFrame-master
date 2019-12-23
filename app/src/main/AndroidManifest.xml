@@ -30,6 +30,8 @@
         <activity android:name=".ui.home.HomeActivity"
             android:launchMode="singleTask">
         </activity>
+
+        <activity android:name="com.ssz.module_begin.BeginActivity"/>
     </application>
 
 </manifest>
