@@ -12,8 +12,9 @@ android {
 //        }
 //    }
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
     defaultConfig {
-        applicationId "com.ssz.app2"
+        applicationId "com.ssz.app"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
@@ -99,10 +100,10 @@ dependencies {
 //    implementation  rootProject.ext.dependencies["timber"]
 
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
-    implementation project(path: ':baselibrary')
+    implementation project(path: ':base')
 
     if(!isModule.toBoolean()){
-        implementation project(path: ':module_begin')
-        implementation project(path: ':module_home')
+        implementation project(path: ':login')
+        implementation project(path: ':user')
     }
 }

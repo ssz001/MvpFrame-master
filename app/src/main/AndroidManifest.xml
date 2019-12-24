@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ssz.framejava">
+    package="com.ssz.entry">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".ui.splash.SplashActivity"
+        <activity android:name="com.ssz.entry.ui.splash.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashActivityTheme">
             <intent-filter>
@@ -27,11 +27,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.home.HomeActivity"
+        <activity android:name="com.ssz.entry.ui.home.HomeActivity"
             android:launchMode="singleTask">
         </activity>
 
-        <activity android:name="com.ssz.module_begin.BeginActivity"/>
+        <activity android:name="com.ssz.login.login.LoginActivity"/>
+        <activity android:name="com.ssz.user.user.UserActivity"/>
     </application>
 
 </manifest>
