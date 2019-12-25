@@ -12,6 +12,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.ssz.baselibrary.BuildConfig;
 import com.ssz.baselibrary.app.helper.AppHelper;
 import com.ssz.baselibrary.utils.ObjectHelper;
 import com.ssz.baselibrary.utils.log.LogUtil;
@@ -29,6 +30,9 @@ public abstract class BaseActivity extends AppCompatActivity  {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         if (AppHelper.get().isKilled()){
             LogUtil.d("AppStatus", "App后台被杀，重启!");
+            if (BuildConfig.DEBUG){
+                showToast("app" + "isKilled");
+            }
             AppHelper.get().restartApp();
             return;
         }

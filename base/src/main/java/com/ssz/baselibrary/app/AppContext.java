@@ -3,7 +3,9 @@ package com.ssz.baselibrary.app;
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.simple.spiderman.SpiderMan;
 import com.ssz.baselibrary.BuildConfig;
+import com.ssz.baselibrary.R;
 import com.ssz.baselibrary.app.di.component.AppComponent;
 import com.ssz.baselibrary.app.di.component.DaggerAppComponent;
 import com.ssz.baselibrary.app.di.module.AppModule;
@@ -22,11 +24,13 @@ public final class AppContext extends Application implements IApp {
     @Override
     public void onCreate() {
         super.onCreate();
+        // 崩溃日志
+        SpiderMan.init(this)
+                .setTheme(R.style.SpiderManTheme_Dark);
         TimberUtil.init();
         AppHelper.init(this).toLog();
         // Dagger2 全局配置
         setupAppComponent();
-
         initARouter();
     }
 

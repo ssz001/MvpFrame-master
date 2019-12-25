@@ -7,10 +7,6 @@ import com.ssz.baselibrary.view.ui.dagger.func.DaggerPresenter;
  * time : 2019 12 2019/12/24 9:43
  */
 public interface ILoginContract {
-    interface IView{
-
-    }
-    interface IPresenter extends DaggerPresenter{
-
-    }
+    interface IView{}
+    interface IPresenter extends DaggerPresenter{}
 }

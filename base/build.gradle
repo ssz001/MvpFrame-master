@@ -94,4 +94,12 @@ dependencies {
 
     api rootProject.ext.dependencies["arouter-api"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+
+    //spiderman
+    debugApi (rootProject.ext.dependencies["spiderman_debug"]){
+        exclude group: "com.android.support"
+    }
+    releaseApi (rootProject.ext.dependencies["spiderman_release"]){
+        exclude group: "com.android.support"
+    }
 }

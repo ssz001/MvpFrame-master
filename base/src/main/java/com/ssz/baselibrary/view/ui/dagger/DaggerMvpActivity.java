@@ -3,6 +3,8 @@ package com.ssz.baselibrary.view.ui.dagger;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.simple.spiderman.SpiderMan;
+import com.ssz.baselibrary.utils.log.LogUtil;
 import com.ssz.baselibrary.view.BaseActivity;
 import com.ssz.baselibrary.view.ui.dagger.func.DaggerPresenter;
 import com.ssz.baselibrary.view.ui.IActivity;

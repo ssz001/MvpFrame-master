@@ -35,6 +35,6 @@ public class LoginActivity extends DaggerMvpActivity<LoginPresenter> implements 
 
     @Override
     public void afterOnCreate(@Nullable Bundle savedInstanceState) {
-             showToast(from+"_app模块_HomeActivity");
+        showToast(from+"_app模块_HomeActivity");
     }
 }
