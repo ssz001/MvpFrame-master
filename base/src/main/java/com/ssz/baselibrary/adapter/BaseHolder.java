@@ -30,6 +30,7 @@ public abstract class BaseHolder<T> implements IViewHolder<T> {
         this.mContext = parent.getContext();
         rootView = LayoutInflater.from(mContext).
                 inflate(getLayoutId(),parent,false);
+        initView();
         return applyView(rootView);
     }
 
