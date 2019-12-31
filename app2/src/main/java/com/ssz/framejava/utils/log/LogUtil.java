@@ -1,16 +1,14 @@
 package com.ssz.framejava.utils.log;
 
 
-import com.ssz.framejava.BuildConfig;
-
 /**
  * @author : zsp
  * time : 2019 11 2019/11/4 13:43
  */
 public final class LogUtil {
 
-    private static boolean DEBUG = BuildConfig.DEBUG;
-//    private static boolean DEBUG = Boolean.parseBoolean("true");
+//    private static boolean DEBUG = BuildConfig.DEBUG;
+    private static boolean DEBUG = Boolean.parseBoolean("true");
 
     public static void i(String tag, String msg) {
         if (DEBUG) android.util.Log.i(tag, msg);

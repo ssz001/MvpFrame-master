@@ -3,8 +3,10 @@ package com.ssz.framejava.base;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -108,6 +110,30 @@ public abstract class BaseActivity extends AppCompatActivity  {
     protected void showToast(final String msg, int gravity) {
         ToastUtil.showToast(this, msg, gravity);
     }
+
+    /*************************** get resources *************************/
+
+    public int getColorById(int res){
+        return ContextCompat.getColor(this,res);
+    }
+
+    public Drawable getDrawableById(int res){
+        return ContextCompat.getDrawable(this,res);
+    }
+
+    public int getDimenById(int dimenId){
+        return (int)getResources().getDimension(dimenId);
+    }
+
+    public float getDimenFloatById(int dimenId){
+        return getResources().getDimension(dimenId);
+    }
+
+    public String getStringById(int resId){
+        return getResources().getString(resId);
+    }
+
+    /*************************** get resources end *************************/
 
     /**
      * 跳转页面

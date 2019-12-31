@@ -48,4 +48,5 @@ public class RxIoScheduler<T> extends RxScheduler implements
         return upstream.subscribeOn(io())
                 .observeOn(ui());
     }
+
 }

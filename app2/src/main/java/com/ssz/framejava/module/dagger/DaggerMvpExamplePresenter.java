@@ -10,7 +10,9 @@ import com.ssz.framejava.model.remote.net.Net;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
 import com.ssz.framejava.model.remote.net.net200.RetryTransformer200;
 import com.ssz.framejava.model.remote.net.schedulers.RxIoScheduler;
+import com.ssz.framejava.model.remote.net.schedulers.lamada.RxIo;
 import com.ssz.framejava.utils.RxLifecycleUtil;
+import com.ssz.framejava.utils.log.LogUtil;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.List;
@@ -54,17 +56,21 @@ public class DaggerMvpExamplePresenter implements IDaggerMvpContract.IPresenter 
     public Disposable getJoke() {
         mView.showProgress();
         Disposable d = Net.request().getJoke(1, 2, "video")
-                .compose(new RxIoScheduler<>())
+//                .doOnSubscribe(disposable -> {
+                    // RxCachedThreadScheduler-1
+//                    LogUtil.d("getJoke","doOnSubscribe()" + Thread.currentThread().getName());
+//                    mView.showProgress();
+//                })
+                .compose(RxIo.applySinale())
                 .compose(RetryTransformer200.handleException())
                 .compose(RxLifecycleUtil.bindUntilEvent((IActivity) mView,ActivityEvent.DESTROY))
-                .subscribe(sayBeans -> {
-                            mView.hideProgress();
-                            mView.success(sayBeans);
-                        },
-                        throwable -> {
-                            mView.hideProgress();
-                            mView.error(ApiException.cast(throwable));
-                        });
+                .doFinally(() -> {
+                    // main
+                    LogUtil.d("getJoke","doFinally()" + Thread.currentThread().getName());
+                    mView.hideProgress();
+                })
+                .subscribe(sayBeans -> mView.success(sayBeans),
+                        throwable -> mView.error(ApiException.cast(throwable)));
         return d;
     }
 
