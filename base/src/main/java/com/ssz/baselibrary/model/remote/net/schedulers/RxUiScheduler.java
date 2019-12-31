@@ -1,7 +1,5 @@
 package com.ssz.baselibrary.model.remote.net.schedulers;
 
-
-
 import com.ssz.baselibrary.model.remote.net.schedulers.base.RxScheduler;
 
 import org.reactivestreams.Publisher;
