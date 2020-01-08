@@ -111,7 +111,8 @@ public abstract class DaggerMvpActivity<T extends DaggerPresenter> extends BaseA
         super.onDestroy();
     }
 
-    protected void addDisposable(@Nullable Disposable d) {
+    @Override
+    public void addDisposable(@Nullable Disposable d) {
         if (ObjectHelper.isNull(d)) return;
         if (ObjectHelper.isNull(mcDisposable)) {
             mcDisposable = new CompositeDisposable();

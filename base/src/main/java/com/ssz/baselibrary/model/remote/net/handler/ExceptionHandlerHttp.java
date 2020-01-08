@@ -1,4 +1,4 @@
-package com.ssz.baselibrary.model.remote.net.nethttp;
+package com.ssz.baselibrary.model.remote.net.handler;
 
 import android.net.ParseException;
 import android.text.TextUtils;
@@ -11,7 +11,6 @@ import com.ssz.baselibrary.model.remote.net.response.ResponseCode;
 import com.ssz.baselibrary.utils.ObjectHelper;
 import com.ssz.baselibrary.utils.gsonutils.ReflectUtil;
 import com.ssz.baselibrary.utils.log.LogUtil;
-
 
 import org.json.JSONException;
 
@@ -51,7 +50,7 @@ public final class ExceptionHandlerHttp {
      * @param e 请求过程中产生的异常
      * @return ApiException 封装后的异常
      */
-    static ApiException handleException(Throwable e) throws Exception {
+    public static ApiException handleException(Throwable e) throws Exception {
         ApiException ex;
         if (e instanceof JsonParseException
                 || e instanceof JSONException

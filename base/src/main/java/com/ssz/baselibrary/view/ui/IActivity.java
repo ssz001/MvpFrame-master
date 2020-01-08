@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
+import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.BehaviorSubject;
 
 public interface IActivity {
@@ -12,4 +13,5 @@ public interface IActivity {
     int getLayoutId();
     void afterOnCreate(@Nullable Bundle savedInstanceState);
     BehaviorSubject<ActivityEvent> provideBehaviorSubject();
+    void addDisposable(@Nullable Disposable d);
 }

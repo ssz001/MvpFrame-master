@@ -17,6 +17,7 @@ public class SplashActivity extends BaseSplashActivity {
 
     @Override
     protected void afterOnCreate(@Nullable Bundle savedInstanceState) {
+
 //        startActivity(new Intent(this, UserActivity.class));
 //        // 不需要转场动画
 //        overridePendingTransition(0, 0);

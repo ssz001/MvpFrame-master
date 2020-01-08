@@ -1,28 +1,26 @@
-package com.ssz.baselibrary.model.remote.net.net200;
+package com.ssz.baselibrary.model.remote.net.handler.observable.net200;
 
 import android.util.Log;
 
-
 import com.ssz.baselibrary.model.remote.net.execption.ApiException;
+import com.ssz.baselibrary.model.remote.net.handler.ExceptionHandler200;
 import com.ssz.baselibrary.model.remote.net.response.ResponseCode;
 import com.ssz.baselibrary.model.remote.net.response.Result;
 
-import io.reactivex.Single;
-import io.reactivex.SingleSource;
-import io.reactivex.SingleTransformer;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
 import io.reactivex.functions.Function;
 
-
 /**
- * @author zsp
- * create at 2019/1/23 13:51
- * RxJava；加工处理返回的数据
+ * @author : zsp
+ * time : 2020 01 2020/1/8 8:38
  */
 public final class ResponseTransformer200 {
 
     private static final String TAG = "ResponseTransformer200";
 
-    public static <T> SingleTransformer<Result<T>, T> handleException() {
+    public static <T> ObservableTransformer<Result<T>, T> handleException() {
         return upstream -> upstream
                 .onErrorResumeNext(new ErrorResumeFunction<>())
                 .flatMap(new ResponseFunction<>());
@@ -32,11 +30,11 @@ public final class ResponseTransformer200 {
      * RxJava 错误收集处理，发送一个新的Observable对象（Throwable）
      * 非服务器错误
      */
-    private static class ErrorResumeFunction<T> implements Function<Throwable, SingleSource<? extends Result<T>>> {
+    private static class ErrorResumeFunction<T> implements Function<Throwable, ObservableSource<? extends Result<T>>> {
         @Override
-        public SingleSource<? extends Result<T>> apply(Throwable throwable) throws Exception {
+        public ObservableSource<? extends Result<T>> apply(Throwable throwable) throws Exception {
             Log.i(TAG, "ErrorResumeFunction：错误收集");
-            return Single.error(ExceptionHandler200.handleException(throwable));
+            return Observable.error(ExceptionHandler200.handleException(throwable));
         }
     }
 
@@ -45,9 +43,9 @@ public final class ResponseTransformer200 {
      * 正常的code发送Observable.just()发送    --  走正常通道
      * 错误的code发送Observable.error()发送   --  走异常通道
      */
-    private static class ResponseFunction<T> implements Function<Result<T>, SingleSource<T>> {
+    private static class ResponseFunction<T> implements Function<Result<T>, ObservableSource<T>> {
         @Override
-        public SingleSource<T> apply(Result<T> tResult) throws Exception {
+        public ObservableSource<T> apply(Result<T> tResult) throws Exception {
             Log.i(TAG, "ResponseFunction：code分类处理");
             return dealResponseCode(tResult);
         }
@@ -58,22 +56,22 @@ public final class ResponseTransformer200 {
      * 服务器错误整理
      * public
      */
-    public static <T> SingleSource<T> dealResponseCode(Result<T> tResult) throws Exception {
+    public static <T> ObservableSource<T> dealResponseCode(Result<T> tResult) throws Exception {
         int code = tResult.getCode();
         String message = tResult.getMessage();
-        Single<T> single;
+        Observable<T> observable;
         Log.e(TAG, "code:" + code + " message:" + message);
         switch (code) {
             case ResponseCode.SUCCESS:
-                single = Single.just(tResult.getData());
+                observable = Observable.just(tResult.getData());
                 break;
             case ResponseCode.CERTIFICATE_INVALID:
-                single = Single.error(new ApiException(ResponseCode.CERTIFICATE_INVALID, "刷新凭证失败"));
+                observable = Observable.error(new ApiException(ResponseCode.CERTIFICATE_INVALID, "刷新凭证失败"));
                 break;
             default:
-                single = Single.error(new ApiException(code, message));
+                observable = Observable.error(new ApiException(code, message));
                 break;
         }
-        return single;
+        return observable;
     }
 }

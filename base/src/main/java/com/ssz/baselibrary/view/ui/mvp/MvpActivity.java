@@ -104,7 +104,8 @@ public abstract class MvpActivity<T extends BasePresenter> extends BaseActivity 
         this.mPresenter.attach(this);
     }
 
-    protected void addDisposable(@Nullable Disposable d) {
+    @Override
+    public void addDisposable(@Nullable Disposable d) {
         if (ObjectHelper.isNull(d)) return;
         if (ObjectHelper.isNull(mcDisposable)) {
             mcDisposable = new CompositeDisposable();

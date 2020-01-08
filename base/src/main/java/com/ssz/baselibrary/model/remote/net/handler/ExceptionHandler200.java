@@ -1,11 +1,10 @@
-package com.ssz.baselibrary.model.remote.net.net200;
+package com.ssz.baselibrary.model.remote.net.handler;
 
 import android.net.ParseException;
 
 import com.google.gson.JsonParseException;
 import com.ssz.baselibrary.model.remote.net.execption.ApiException;
 import com.ssz.baselibrary.model.remote.net.response.ResponseCode;
-
 
 import org.json.JSONException;
 
