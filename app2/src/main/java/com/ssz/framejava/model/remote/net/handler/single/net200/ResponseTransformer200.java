@@ -1,9 +1,9 @@
-package com.ssz.framejava.model.remote.net.nethttp;
-
+package com.ssz.framejava.model.remote.net.handler.single.net200;
 
 import android.util.Log;
 
 import com.ssz.framejava.model.remote.net.execption.ApiException;
+import com.ssz.framejava.model.remote.net.handler.ExceptionHandler200;
 import com.ssz.framejava.model.remote.net.response.ResponseCode;
 import com.ssz.framejava.model.remote.net.response.Result;
 
@@ -17,9 +17,9 @@ import io.reactivex.functions.Function;
  * create at 2019/1/23 13:51
  * RxJava；加工处理返回的数据
  */
-public final class ResponseTransformerHttp {
+public final class ResponseTransformer200 {
 
-    private static final String TAG = ResponseTransformerHttp.class.getSimpleName();
+    private static final String TAG = "ResponseTransformer200";
 
     public static <T> SingleTransformer<Result<T>, T> handleException() {
         return upstream -> upstream
@@ -30,20 +30,12 @@ public final class ResponseTransformerHttp {
     /**
      * RxJava 错误收集处理，发送一个新的Observable对象（Throwable）
      * 非服务器错误
-     * TokenExpiredException 抛出到这里处理
      */
     private static class ErrorResumeFunction<T> implements Function<Throwable, SingleSource<? extends Result<T>>> {
         @Override
         public SingleSource<? extends Result<T>> apply(Throwable throwable) throws Exception {
             Log.i(TAG, "ErrorResumeFunction：错误收集");
-            ApiException ex;
-            try {
-                ex = ExceptionHandlerHttp.handleException(throwable);
-            } catch (Exception e) {
-                // 确保返回的都是ApiException
-                ex = new ApiException(e);
-            }
-            return Single.error(ex);
+            return Single.error(ExceptionHandler200.handleException(throwable));
         }
     }
 
@@ -69,7 +61,7 @@ public final class ResponseTransformerHttp {
         int code = tResult.getCode();
         String message = tResult.getMessage();
         Single<T> single;
-        Log.i(TAG, "code:" + code + " message:" + message);
+        Log.e(TAG, "code:" + code + " message:" + message);
         switch (code) {
             case ResponseCode.SUCCESS:
                 single = Single.just(tResult.getData());

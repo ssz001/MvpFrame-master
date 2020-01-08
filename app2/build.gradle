@@ -91,11 +91,5 @@ dependencies {
     implementation rootProject.ext.dependencies["rxlifecycle-android"]
     implementation rootProject.ext.dependencies["rxlifecycle-components"]
 
-//    "rxlifecycle"   : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
-//    "rxlifecycle-android" : "com.trello.rxlifecycle2:rxlifecycle-android:2.2.2",
-//    "rxlifecycle-components" : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.1",
-
     implementation  rootProject.ext.dependencies["timber"]
-
-
 }

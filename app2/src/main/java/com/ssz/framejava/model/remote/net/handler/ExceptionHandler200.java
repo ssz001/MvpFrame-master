@@ -1,4 +1,4 @@
-package com.ssz.framejava.model.remote.net.net200;
+package com.ssz.framejava.model.remote.net.handler;
 
 import android.net.ParseException;
 

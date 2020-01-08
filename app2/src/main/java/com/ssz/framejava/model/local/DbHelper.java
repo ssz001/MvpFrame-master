@@ -37,4 +37,8 @@ public final class DbHelper {
     public DaoSession getNewSession(){
         return mDaoMaster.newSession();
     }
+
+    public DaoSession getSession() {
+        return mSession;
+    }
 }

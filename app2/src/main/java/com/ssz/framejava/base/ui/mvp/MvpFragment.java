@@ -158,8 +158,10 @@ public abstract class MvpFragment<T extends BasePresenter> extends BaseFragment 
         super.onDetach();
     }
 
-    protected void addDisposable(@Nullable Disposable d) {
+    @Override
+    public void addDisposable(@Nullable Disposable d) {
         if (ObjectHelper.isNull(d)) return;
+        if (d.isDisposed())return;
         if (ObjectHelper.isNull(mcDisposable)) {
             mcDisposable = new CompositeDisposable();
         }
