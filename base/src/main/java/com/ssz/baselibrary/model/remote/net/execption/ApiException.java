@@ -1,6 +1,7 @@
 package com.ssz.baselibrary.model.remote.net.execption;
 
 
+import com.ssz.baselibrary.model.remote.net.handler.ExceptionHandlerHttp;
 import com.ssz.baselibrary.model.remote.net.response.ResponseCode;
 
 /**
@@ -70,5 +71,16 @@ public final class ApiException extends Exception {
 
     public static ApiException cast(Throwable throwable){
         return (ApiException)throwable;
+    }
+
+    public static ApiException wrap(Throwable throwable){
+        if (throwable instanceof TokenExpiredException){
+            return new ApiException(ResponseCode.CERTIFICATE_INVALID,"凭证失效");
+        } else {
+            // 看情况打开
+            return ExceptionHandlerHttp.safeHandleException(throwable);
+//            return ExceptionHandler200.handleException(throwable);
+//            return new ApiException(ResponseCode.UNKNOWN,throwable.getMessage());
+        }
     }
 }
