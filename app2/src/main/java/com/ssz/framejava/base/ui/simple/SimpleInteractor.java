@@ -4,8 +4,8 @@ package com.ssz.framejava.base.ui.simple;
 import com.ssz.framejava.T.SayBean;
 import com.ssz.framejava.model.remote.net.Net;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
-import com.ssz.framejava.model.remote.net.net200.RetryTransformer200;
-import com.ssz.framejava.model.remote.net.schedulers.RxIoScheduler;
+import com.ssz.framejava.model.remote.net.handler.single.net200.RetryTransformer200;
+import com.ssz.framejava.model.remote.net.schedulers.lamada.RxIo;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class SimpleInteractor {
      */
     public Disposable getJoke(int page, int count, String type, IGetJokeFinishListener listener) {
         Disposable d = Net.request().getJoke(page, count, type)
-                .compose(new RxIoScheduler<>())
+                .compose(RxIo.applySinale())
                 .compose(RetryTransformer200.handleException())
                 .subscribe(listener::getJokeFinish, throwable ->
                         listener.getJokeFailure(ApiException.cast(throwable)));

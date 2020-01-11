@@ -11,10 +11,9 @@ import com.ssz.framejava.model.remote.net.Net;
 import com.ssz.framejava.model.remote.net.URL;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
 import com.ssz.framejava.model.remote.net.execption.TokenExpiredException;
-import com.ssz.framejava.model.remote.net.net200.RetryTransformer200;
+import com.ssz.framejava.model.remote.net.handler.single.net200.RetryTransformer200;
 import com.ssz.framejava.model.remote.net.response.Result;
-import com.ssz.framejava.model.remote.net.schedulers.RxIoScheduler;
-import com.ssz.framejava.model.remote.net.schedulers.RxUiScheduler;
+import com.ssz.framejava.model.remote.net.schedulers.lamada.RxIo;
 import com.ssz.framejava.model.remote.net.tool.gson.DoubleDefault0Adapter;
 import com.ssz.framejava.model.remote.net.tool.gson.IntegerDefault0Adapter;
 import com.ssz.framejava.model.remote.net.tool.gson.LongDefault0Adapter;
@@ -102,7 +101,7 @@ public class Test {
         URL.BASE_URL = "https://api.apiopen.top";
 
         Disposable d = Net.request().getJoke(1, 2, "video")
-                .compose(new RxIoScheduler<>())
+                .compose(RxIo.applySinale())
                 .compose(RetryTransformer200.handleException())
                 .subscribe(new Consumer<List<SayBean>>() {
                     @Override
@@ -132,7 +131,7 @@ public class Test {
 
     public void test5555() {
         Disposable d = getStudent()
-                .compose(new RxIoScheduler<>())
+                .compose(RxIo.applySinale())
                 .compose(RetryTransformer200.handleException())
                 .subscribe(new Consumer<Student>() {
                     @Override
@@ -208,7 +207,7 @@ public class Test {
                             public ObservableSource<?> apply(Throwable throwable) throws Exception {
                                 if (throwable instanceof TokenExpiredException) {
                                     return Observable.just("")
-                                            .compose(new RxUiScheduler())
+                                            .compose(RxIo.applyObservable())
                                             .doOnNext(new Consumer<String>() {
                                                 @Override
                                                 public void accept(String s) throws Exception {
@@ -241,7 +240,7 @@ public class Test {
     public void start2() {
         Log.d("test2", "operate ++++ ");
         Observable.just(code)
-                .compose(new RxIoScheduler<>())
+                .compose(RxIo.applyObservable())
                 .flatMap(new Function<Code, ObservableSource<? extends String>>() {
                     @Override
                     public ObservableSource<String> apply(Code code) throws Exception {

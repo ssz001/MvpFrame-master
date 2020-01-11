@@ -6,8 +6,8 @@ import com.ssz.framejava.base.func.ISuccessListener;
 import com.ssz.framejava.base.ui.view.IActivity;
 import com.ssz.framejava.model.remote.net.Net;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
-import com.ssz.framejava.model.remote.net.net200.RetryTransformer200;
-import com.ssz.framejava.model.remote.net.schedulers.RxIoScheduler;
+import com.ssz.framejava.model.remote.net.handler.single.net200.RetryTransformer200;
+import com.ssz.framejava.model.remote.net.schedulers.lamada.RxIo;
 import com.ssz.framejava.utils.RxLifecycleUtil;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
@@ -37,7 +37,7 @@ public class CustomMvpIPresenter implements CustomMvpContract.IPresenter {
     public Disposable getJoke() {
         mView.showProgress();
         Disposable d = Net.request().getJoke(1, 2, "video")
-                .compose(new RxIoScheduler<>())
+                .compose(RxIo.applySinale())
                 .compose(RetryTransformer200.handleException())
                 .compose(RxLifecycleUtil.bindUntilEvent((IActivity) mView,ActivityEvent.DESTROY))
                 .subscribe(sayBeans -> {
@@ -55,7 +55,7 @@ public class CustomMvpIPresenter implements CustomMvpContract.IPresenter {
     public Disposable getJoke2(ISuccessListener<List<SayBean>> listener) {
         mView.showProgress();
         Disposable d = Net.request().getJoke(1, 2, "video")
-                .compose(new RxIoScheduler<>())
+                .compose(RxIo.applySinale())
                 .compose(RetryTransformer200.handleException())
                 .subscribe(result -> {
                             mView.hideProgress();

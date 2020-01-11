@@ -1,5 +1,6 @@
 package com.ssz.framejava.base.ui.mvp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
@@ -80,10 +81,10 @@ public abstract class MvpFragment<T extends BasePresenter> extends BaseFragment 
         // todo 本方法在super.onCreateView()前调用 ;
     }
 
+
     @Override
-    @CallSuper
-    public void onAttach(android.app.Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
         if (useRxLifecycle()){
             mLifecycleSubject = BehaviorSubject.create();
         }
