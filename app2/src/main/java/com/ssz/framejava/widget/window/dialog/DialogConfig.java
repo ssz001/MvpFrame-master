@@ -47,7 +47,7 @@ public final class DialogConfig {
         private float verticalMargin;
         private int offsetX;
         private int offsetY;
-        private float alpha;
+        private float alpha = 1f;
         private int animation;
         private int gravity = Gravity.CENTER;
 

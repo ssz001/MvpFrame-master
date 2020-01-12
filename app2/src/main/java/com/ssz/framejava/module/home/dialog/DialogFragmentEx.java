@@ -21,7 +21,7 @@ public class DialogFragmentEx extends BaseDialog {
     @Override
     public @NotNull DialogConfig loadConfig() {
         return new DialogConfig.Builder()
-                .view(R.layout.dialog_loading)
+                .view(R.layout.dialog_loading_hor)
                 .canceledOnTouchOutside(false)
                 .width(unit(300, TypedValue.COMPLEX_UNIT_DIP))
                 .height(WRAP_CONTENT)

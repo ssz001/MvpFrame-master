@@ -101,9 +101,9 @@ public class DaggerMvpExampleActivity extends DaggerMvpActivity<DaggerMvpExample
 
     @Override
     public void hideProgress() {
-        if (null != dialogEx){
-            dialogEx.dismiss();
-        }
+//        if (null != dialogEx){
+//            dialogEx.dismiss();
+//        }
     }
 
     @Override
