@@ -101,7 +101,7 @@ public class Test {
         URL.BASE_URL = "https://api.apiopen.top";
 
         Disposable d = Net.request().getJoke(1, 2, "video")
-                .compose(RxIo.applySinale())
+                .compose(RxIo.applySingle())
                 .compose(RetryTransformer200.handleException())
                 .subscribe(new Consumer<List<SayBean>>() {
                     @Override
@@ -131,7 +131,7 @@ public class Test {
 
     public void test5555() {
         Disposable d = getStudent()
-                .compose(RxIo.applySinale())
+                .compose(RxIo.applySingle())
                 .compose(RetryTransformer200.handleException())
                 .subscribe(new Consumer<Student>() {
                     @Override

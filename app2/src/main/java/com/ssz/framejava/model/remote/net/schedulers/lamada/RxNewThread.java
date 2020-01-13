@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers;
  * time : 2019 12 2019/12/31 16:29
  */
 public final class RxNewThread {
-    public static <R> SingleTransformer<R,R> applySinale() {
+    public static <R> SingleTransformer<R,R> applySingle() {
         return upstream -> upstream
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());

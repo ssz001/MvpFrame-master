@@ -19,8 +19,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 import timber.log.Timber;
 
 /**
@@ -61,7 +59,7 @@ public class DaggerMvpExamplePresenter implements IDaggerMvpContract.IPresenter 
 //                    LogUtil.d("getJoke","doOnSubscribe()" + Thread.currentThread().getName());
                     mView.showProgress();
                 })
-                .compose(RxIo.applySinale())
+                .compose(RxIo.applySingle())
                 .compose(RetryTransformer200.handleException())
                 .compose(RxLifecycleUtil.bindUntilEvent((IActivity) mView,ActivityEvent.DESTROY))
                 .doFinally(() -> {
@@ -81,7 +79,7 @@ public class DaggerMvpExamplePresenter implements IDaggerMvpContract.IPresenter 
                 .doOnSubscribe(disposable -> {
                     mView.showProgress();
                 })
-                .compose(RxIo.applySinale())
+                .compose(RxIo.applySingle())
                 .compose(RetryTransformer200.handleException())
                 .compose(RxLifecycleUtil.bindUntilEvent((IActivity) mView,ActivityEvent.DESTROY))
                 .doFinally(() -> {

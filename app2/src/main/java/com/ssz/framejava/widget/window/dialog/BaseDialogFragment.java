@@ -83,7 +83,6 @@ public abstract class BaseDialogFragment extends DialogFragment {
         if (ObjectHelper.nonNull(mLifecycleSubject))
             mLifecycleSubject.onNext(FragmentEvent.CREATE);
 //        setStyle();
-
     }
 
 

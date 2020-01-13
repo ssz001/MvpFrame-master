@@ -13,13 +13,14 @@ import com.ssz.framejava.base.ui.dagger.DaggerMvpActivity;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
 import com.ssz.framejava.module.dagger.di.component.DaggerMvpExampleComponent;
 import com.ssz.framejava.module.dagger.di.module.DaggerMvpModule;
-import com.ssz.framejava.module.home.dialog.DialogFragmentEx;
+import com.ssz.framejava.widget.window.dialog.loading.LoadingDialog;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.OnClick;
+import dagger.Lazy;
 import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
 
@@ -31,6 +32,7 @@ public class DaggerMvpExampleActivity extends DaggerMvpActivity<DaggerMvpExample
 
     @Inject Handler mHandler;
     @Inject AppContext appContext;
+    @Inject Lazy<LoadingDialog> mLoadingDialog;
 
     @Override
     public int getLayoutId() {
@@ -55,34 +57,25 @@ public class DaggerMvpExampleActivity extends DaggerMvpActivity<DaggerMvpExample
         Timber.d("appContext == null :%s", (appContext == null));
     }
 
-    DialogFragmentEx dialogEx;
-
     @OnClick({R.id.bt_get_joke})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_get_joke:
-                Log.d("op","null");
-//                if (null == dialogEx){
-//                    dialogEx = new DialogFragmentEx();
-//                }
-//                dialogEx.show(getSupportFragmentManager(),"p");
-
-////                test1();
                 // 方法一
                 Disposable d =  mPresenter.getJoke();
                 addDisposable(d);
 
-//                mHandler.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        // 方法二
-//                        Disposable d2 =  mPresenter.getJoke2(result -> {
-//                            showToast("请求成功2 - mApi");
-//                            Timber.d(result.toString());
-//                        });
-//                        addDisposable(d2);
-//                    }
-//                },2000);
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // 方法二
+                        Disposable d2 =  mPresenter.getJoke2(result -> {
+                            showToast("请求成功2 - mApi");
+                            Timber.d(result.toString());
+                        });
+                        addDisposable(d2);
+                    }
+                },2000);
                 break;
             default:
                 break;
@@ -91,19 +84,12 @@ public class DaggerMvpExampleActivity extends DaggerMvpActivity<DaggerMvpExample
 
     @Override
     public void showProgress() {
-        runOnUiThread(() -> {
-            if (null == dialogEx){
-                dialogEx = new DialogFragmentEx(this);
-            }
-            dialogEx.show();
-        });
+        runOnUiThread(() -> mLoadingDialog.get().show());
     }
 
     @Override
     public void hideProgress() {
-//        if (null != dialogEx){
-//            dialogEx.dismiss();
-//        }
+        mLoadingDialog.get().dismiss();
     }
 
     @Override

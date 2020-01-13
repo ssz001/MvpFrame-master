@@ -12,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
  */
 public final class RxUi {
 
-    public static <R> SingleTransformer<R,R> applySinale() {
+    public static <R> SingleTransformer<R,R> applySingle() {
         return upstream -> upstream
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread());

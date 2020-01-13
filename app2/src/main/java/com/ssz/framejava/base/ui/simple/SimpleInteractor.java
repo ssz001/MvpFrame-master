@@ -28,7 +28,7 @@ public class SimpleInteractor {
      */
     public Disposable getJoke(int page, int count, String type, IGetJokeFinishListener listener) {
         Disposable d = Net.request().getJoke(page, count, type)
-                .compose(RxIo.applySinale())
+                .compose(RxIo.applySingle())
                 .compose(RetryTransformer200.handleException())
                 .subscribe(listener::getJokeFinish, throwable ->
                         listener.getJokeFailure(ApiException.cast(throwable)));

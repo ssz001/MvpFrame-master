@@ -37,7 +37,7 @@ public class CustomMvpIPresenter implements CustomMvpContract.IPresenter {
     public Disposable getJoke() {
         mView.showProgress();
         Disposable d = Net.request().getJoke(1, 2, "video")
-                .compose(RxIo.applySinale())
+                .compose(RxIo.applySingle())
                 .compose(RetryTransformer200.handleException())
                 .compose(RxLifecycleUtil.bindUntilEvent((IActivity) mView,ActivityEvent.DESTROY))
                 .subscribe(sayBeans -> {
@@ -55,7 +55,7 @@ public class CustomMvpIPresenter implements CustomMvpContract.IPresenter {
     public Disposable getJoke2(ISuccessListener<List<SayBean>> listener) {
         mView.showProgress();
         Disposable d = Net.request().getJoke(1, 2, "video")
-                .compose(RxIo.applySinale())
+                .compose(RxIo.applySingle())
                 .compose(RetryTransformer200.handleException())
                 .subscribe(result -> {
                             mView.hideProgress();

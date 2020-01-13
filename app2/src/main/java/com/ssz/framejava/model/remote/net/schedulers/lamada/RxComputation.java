@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 public final class RxComputation {
 
-    public static <R> SingleTransformer<R,R> applySinale() {
+    public static <R> SingleTransformer<R,R> applySingle() {
         return upstream -> upstream
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread());

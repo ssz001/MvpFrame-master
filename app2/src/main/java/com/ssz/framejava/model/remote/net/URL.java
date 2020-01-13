@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
  * time : 2019 11 2019/11/4 11:09
  */
 public final class URL {
+
     public static  String BASE_URL = "http://192.168.0.100:8888";
 
     /**
@@ -21,14 +22,12 @@ public final class URL {
      */
     public static final String URL_LOGIN  = BASE_URL + "/login";
 
-
-
     /****************************  以下咸亨专用  *********************************/
 
     private static final String NAME = "url_save_area";
     private static final String KEY_IP = "key_ip";
     private static final String KEY_PORT = "key_port";
-    private static URL url = new URL();
+    private static final URL url = new URL();
     private SharedPreferences preferences;
 
     public static URL operate(){

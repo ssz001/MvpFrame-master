@@ -1,6 +1,5 @@
 package com.ssz.framejava.module.dagger;
 
-
 import com.ssz.framejava.T.SayBean;
 import com.ssz.framejava.base.ui.mvp.func.BaseView;
 import com.ssz.framejava.base.ui.dagger.func.DaggerPresenter;
