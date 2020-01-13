@@ -9,18 +9,18 @@ import io.reactivex.disposables.Disposable;
  * @author : zsp
  * time : 2019 10 2019/10/10 13:18
  */
-public class HomeIPresenter implements IHomeContract.IPresenter {
+public class HomePresenter implements IHomeContract.IPresenter {
 
-    private IHomeContract.IView mIView;
+    private IHomeContract.IView mView;
 
     @Override
     public void attach(IHomeContract.IView IView) {
-        this.mIView = IView;
+        this.mView = IView;
     }
 
     @Override
     public void detach() {
-
+        this.mView = null;
     }
 
     @Override

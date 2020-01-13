@@ -34,9 +34,9 @@ public class TokenRefreshInterceptor implements Interceptor {
     @NonNull
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {
-        Log.i("rToken","未刷新前：    TokenExpiredException     ----  "+AccountManager.getToken(AppHelper.getApplication()));
-        Log.i("rToken","未刷新前： RefreshToken ----  "+AccountManager.getRefreshToken(AppHelper.getApplication()));
-        Log.i("rToken","拦截器里的线程是："+ Thread.currentThread().getName());
+        Log.d("rToken","未刷新前：    TokenExpiredException     ----  "+AccountManager.getToken(AppHelper.getApplication()));
+        Log.d("rToken","未刷新前： RefreshToken ----  "+AccountManager.getRefreshToken(AppHelper.getApplication()));
+        Log.d("rToken","拦截器里的线程是："+ Thread.currentThread().getName());
         // 对应登录
         if (TextUtils.isEmpty(AccountManager.getToken(AppHelper.getApplication()))){
             Request request = chain.request()
@@ -79,13 +79,13 @@ public class TokenRefreshInterceptor implements Interceptor {
      *      这样可以过滤很多不必要的操作；
      */
     private synchronized void getNewToken() throws IOException{
-        Log.i("newToken","--------------------走了getNewToken-----------------------");
-        Log.i("newToken","-------"+System.currentTimeMillis()+"-------------"+AccountManager.getTokenTime(AppHelper.getApplication())+"-----------"+(System.currentTimeMillis() - AccountManager.getTokenTime(AppHelper.getApplication()))+"------------");
+        Log.d("newToken","--------------------走了getNewToken-----------------------");
+        Log.d("newToken","-------"+System.currentTimeMillis()+"-------------"+AccountManager.getTokenTime(AppHelper.getApplication())+"-----------"+(System.currentTimeMillis() - AccountManager.getTokenTime(AppHelper.getApplication()))+"------------");
         long now = System.currentTimeMillis();
         long tokenTime = AccountManager.getTokenTime(AppHelper.getApplication());
         if (now >= tokenTime || tokenTime - now <= 20000L){
-            Log.i("newToken","跟新了-------------------------------------------");
-            Log.i("too", "获取Token的线程是：" + Thread.currentThread().getName());
+            Log.d("newToken","跟新了-------------------------------------------");
+            Log.d("too", "获取Token的线程是：" + Thread.currentThread().getName());
             OkHttpClient okHttpClient = new OkHttpClient();
             RequestBody body = new FormBody.Builder()
                     .add("refreshToken", AccountManager.getRefreshToken(AppHelper.getApplication()))
@@ -96,16 +96,16 @@ public class TokenRefreshInterceptor implements Interceptor {
                     .build();
             Call call = okHttpClient.newCall(request);
             String response = call.execute().body().string();
-            Log.i("rToken", response);
+            Log.d("rToken", response);
             if (!TextUtils.isEmpty(response)) {
 //                RefreshTokenBean tokenBean = new Gson().fromJson(response, RefreshTokenBean.class);
 //                if (tokenBean.getCode() == 200) {
 //                    AccountManager.saveToken(Framework.context, tokenBean.getData().getAccess_token());
-//                    Log.i("rToken","新Token " + tokenBean.getData().getAccess_token());
+//                    Log.d("rToken","新Token " + tokenBean.getData().getAccess_token());
 //                    AccountManager.saveTokenTime(Framework.context, System.currentTimeMillis() + tokenBean.getData().getExpires_in() * 1000L);
-//                    Log.i("rToken", "Token有效时间 "+tokenBean.getData().getExpires_in() + "");
+//                    Log.d("rToken", "Token有效时间 "+tokenBean.getData().getExpires_in() + "");
 //                    AccountManager.saveRefreshToken(Framework.context, tokenBean.getData().getRefresh_token());
-//                    Log.i("rToken", "刷新Token "+tokenBean.getData().getRefresh_token());
+//                    Log.d("rToken", "刷新Token "+tokenBean.getData().getRefresh_token());
 //                }
             }
         }

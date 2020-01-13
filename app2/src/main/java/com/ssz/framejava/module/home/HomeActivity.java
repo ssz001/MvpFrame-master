@@ -27,7 +27,7 @@ public class HomeActivity extends MvpActivity<IHomeContract.IPresenter> implemen
     @NonNull
     @Override
     protected IHomeContract.IPresenter bindPresenter() {
-        return new HomeIPresenter();
+        return new HomePresenter();
     }
 
     @Override

@@ -13,6 +13,7 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.functions.Function;
+import io.reactivex.processors.PublishProcessor;
 
 /**
  * @author : zsp
@@ -82,7 +83,7 @@ public final class RetryTransformer200 {
         // todo 实现 更新Token 逻辑
         final int code = ResponseCode.CERTIFICATE_INVALID;
         return Observable.error(new ApiException(code, "error:" + code));
-//        return PublishProcessor.just("sss").compose(new RxUiScheduler<>())
+//        return PublishProcessor.just("sss").compose(?)
 //                .doOnNext(s -> Log.d("token_", "getToken()"));
     }
 

@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
  * Response 脱去 code 和 message
  */
 public final class Result<T> {
+
     @SerializedName(value = "code",alternate = "status")
     private int code;
     @SerializedName(value = "message",alternate = "msg")

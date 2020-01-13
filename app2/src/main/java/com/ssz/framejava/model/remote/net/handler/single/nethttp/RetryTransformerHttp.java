@@ -95,7 +95,7 @@ public final class RetryTransformerHttp {
         // todo 实现 更新Token 逻辑
         final int code = ResponseCode.CERTIFICATE_INVALID;
         return PublishProcessor.error(new ApiException(code, "error:" + code));
-//        return PublishProcessor.just("sss").compose(new RxUiScheduler<>())
+//        return PublishProcessor.just("sss").compose(?)
 //                .doOnNext(s -> Log.d("token_", "getToken()"));
     }
 

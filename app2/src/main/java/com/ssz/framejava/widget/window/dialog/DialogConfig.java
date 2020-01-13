@@ -5,6 +5,7 @@ import android.view.Gravity;
 /**
  * @author : zsp
  * time : 2020 01 2020/1/6 15:52
+ * Dialog 配置的类
  */
 public final class DialogConfig {
 

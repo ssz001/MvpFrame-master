@@ -63,9 +63,6 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
     public abstract void applyRootView(View rootView);
 
-//    public abstract void setStyle();
-
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -82,9 +79,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
         if (ObjectHelper.nonNull(mLifecycleSubject))
             mLifecycleSubject.onNext(FragmentEvent.CREATE);
-//        setStyle();
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -223,7 +218,6 @@ public abstract class BaseDialogFragment extends DialogFragment {
                getApplication().getResources().getDisplayMetrics()));
     }
 
-
     /*************************** get resources *************************/
 
     public int getColorById(int res){
@@ -260,6 +254,4 @@ public abstract class BaseDialogFragment extends DialogFragment {
     private Context getApplication(){
         return AppHelper.getAppContext();
     }
-
-
 }
