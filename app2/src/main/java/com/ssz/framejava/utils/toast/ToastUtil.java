@@ -197,7 +197,7 @@ public class ToastUtil {
         }
     }
 
-    /***********************************/
+    /**************************** Toast Expand ******************************/
 
     public static void showToast(ToastUtil.Builder builder) {
         final Context context = builder.context;
@@ -225,7 +225,7 @@ public class ToastUtil {
     }
 
     public static final class Builder {
-        private int gravity = Gravity.BOTTOM;
+        private int gravity = -1;
         private int duration;
         private View view;
         private Context context;
