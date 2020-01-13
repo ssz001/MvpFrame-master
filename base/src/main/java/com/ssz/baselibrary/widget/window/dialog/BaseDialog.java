@@ -1,4 +1,4 @@
-package com.ssz.baselibrary.widget.dialog;
+package com.ssz.baselibrary.widget.window.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -27,6 +27,7 @@ import butterknife.ButterKnife;
 public abstract class BaseDialog extends Dialog {
 
     public final int WRAP_CONTENT = WindowManager.LayoutParams.WRAP_CONTENT;
+    public final int MATCH_PARENT = WindowManager.LayoutParams.MATCH_PARENT;
 
     protected View rootView;
     private DialogConfig mConfig;
@@ -62,12 +63,19 @@ public abstract class BaseDialog extends Dialog {
         setCanceledOnTouchOutside(mConfig.canceledOnTouchOutside);
 
         Window win = getWindow();
-        WindowManager.LayoutParams lp;
         if (win != null) {
+            WindowManager.LayoutParams lp;
             lp = win.getAttributes();
             lp.gravity = mConfig.gravity;
             lp.height = mConfig.height;
             lp.width = mConfig.width;
+            lp.dimAmount = mConfig.dimAmount;
+            lp.horizontalMargin = mConfig.horizonMargin;
+            lp.verticalMargin = mConfig.verticalMargin;
+            lp.x = mConfig.offsetX;
+            lp.y = mConfig.offsetY;
+            lp.alpha = mConfig.alpha;
+            lp.windowAnimations = mConfig.animation;
             win.setAttributes(lp);
         }
     }

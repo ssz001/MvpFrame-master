@@ -1,6 +1,5 @@
 package com.ssz.baselibrary.model.remote.net.execption;
 
-
 import com.ssz.baselibrary.model.remote.net.handler.ExceptionHandlerHttp;
 import com.ssz.baselibrary.model.remote.net.response.ResponseCode;
 
