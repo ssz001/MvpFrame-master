@@ -2,8 +2,13 @@ package com.ssz.framejava.module.dagger;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ssz.framejava.R;
 import com.ssz.framejava.T.SayBean;
@@ -13,6 +18,7 @@ import com.ssz.framejava.base.ui.dagger.DaggerMvpActivity;
 import com.ssz.framejava.model.remote.net.execption.ApiException;
 import com.ssz.framejava.module.dagger.di.component.DaggerMvpExampleComponent;
 import com.ssz.framejava.module.dagger.di.module.DaggerMvpModule;
+import com.ssz.framejava.utils.toast.ToastUtil;
 import com.ssz.framejava.widget.window.dialog.loading.LoadingDialog;
 
 import java.util.List;
@@ -84,17 +90,42 @@ public class DaggerMvpExampleActivity extends DaggerMvpActivity<DaggerMvpExample
 
     @Override
     public void showProgress() {
-        runOnUiThread(() -> mLoadingDialog.get().show());
+//        runOnUiThread(() -> mLoadingDialog.get().show());
     }
 
     @Override
     public void hideProgress() {
-        mLoadingDialog.get().dismiss();
+//        mLoadingDialog.get().dismiss();
     }
 
     @Override
     public void success(List<SayBean> sayList) {
-        showToast("请求成功1");
+
+        View view = LayoutInflater.from(this).inflate(R.layout.toast_view,null);
+        LinearLayout ll = view.findViewById(R.id.ll_toast);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(300,100);
+        ll.setLayoutParams(params);
+
+        TextView toastText = view.findViewById(R.id.tv_toast);
+        toastText.setText("android");
+
+        new ToastUtil.Builder()
+                .context(this)
+                .view(view)
+                .duration(Toast.LENGTH_SHORT)
+                .gravity(-1)
+                .text("ios")
+                .show();
+
+//        ToastUtil.showToast(new ToastUtil.Builder()
+//                .context(this)
+//                .view()
+//                .duration(Toast.LENGTH_SHORT)
+//                .gravity(Gravity.CENTER)
+//                .text("tetet")
+//                .build());
+
+//        showToast("请求成功1");
         Timber.d(sayList.toString());
     }
 

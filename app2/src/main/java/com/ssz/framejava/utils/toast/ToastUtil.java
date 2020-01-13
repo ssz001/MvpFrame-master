@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.Toast;
 
 import java.lang.reflect.Field;
@@ -34,7 +36,7 @@ public class ToastUtil {
      * @param duration Toast.LENGTH_SHORT（default,2s） or Toast.LENGTH_LONG（3.5s）
      */
     public static void showToast(Context context,CharSequence text ,int duration) {
-        ToastRunnable toastRunnable = new ToastRunnable(context, text, duration);
+        ToastRunnable toastRunnable = new ToastRunnable(context, text, duration,null,-1,0,0);
         if (isOnMainThread()){
             toastRunnable.run();
             return;
@@ -121,25 +123,48 @@ public class ToastUtil {
         private final Context context;
         private final CharSequence text;
         private final int duration;
+        private final View toastView;
 
-        private ToastRunnable(Context context,CharSequence text,int duration){
+        private final int xoffset;
+        private final int yoffset;
+
+        private final int gravity;
+
+        private ToastRunnable(Context context,CharSequence text,int duration,View toastView,int gravity,int xoffset,int yoffset){
             this.context = context.getApplicationContext();
             this.text = text;
             this.duration = duration;
+            this.toastView = toastView;
+            this.xoffset = xoffset;
+            this.yoffset = yoffset;
+            this.gravity = gravity;
         }
 
         @SuppressLint("ShowToast")
         @Override
         public void run() {
             if (mToast == null) {
-                mToast = Toast.makeText(context, text, duration);
+                if (null == toastView){
+                    mToast = Toast.makeText(context,text,duration);
+                }else {
+                    mToast = new Toast(context);
+                    mToast.setView(toastView);
+                    mToast.setDuration(duration);
+                    if (gravity != -1)
+                    mToast.setGravity(gravity,xoffset,yoffset);
+                }
             } else {
                 // 解决多次点击后只有第一次有效的问题
                 mToast.cancel();
-                mToast = Toast.makeText(context, text, duration);
-
-//                mToast.setText(text);
-//                mToast.setDuration(duration);
+                if (null == toastView){
+                    mToast = Toast.makeText(context,text,duration);
+                } else {
+                    mToast = new Toast(context);
+                    mToast.setView(toastView);
+                    mToast.setDuration(duration);
+                    if (gravity != -1)
+                    mToast.setGravity(gravity,xoffset,yoffset);
+                }
             }
             hookToast(mToast);
             mToast.show();
@@ -169,6 +194,86 @@ public class ToastUtil {
         @Override
         public void handleMessage(Message msg){
             originHandler.handleMessage(msg);
+        }
+    }
+
+    /***********************************/
+
+    public static void showToast(ToastUtil.Builder builder) {
+        final Context context = builder.context;
+        ToastRunnable toastRunnable = new ToastRunnable(
+                context,
+                builder.text,
+                builder.duration,
+                builder.view,
+                builder.gravity,
+                builder.xoffset,
+                builder.yoffset
+        );
+        if (isOnMainThread()){
+            toastRunnable.run();
+            return;
+        }
+        if (context instanceof Activity) {
+            Activity activity = (Activity)context;
+            if (!activity.isFinishing()) {
+                activity.runOnUiThread(toastRunnable);
+            }
+        } else {
+            new Handler(Looper.getMainLooper()).post(toastRunnable);
+        }
+    }
+
+    public static final class Builder {
+        private int gravity = Gravity.BOTTOM;
+        private int duration;
+        private View view;
+        private Context context;
+        private String text = "";
+        private int xoffset;
+        private int yoffset;
+
+        public Builder context(Context context){
+            this.context = context;
+            return this;
+        }
+
+        public Builder gravity(int gravity){
+            this.gravity = gravity;
+            return this;
+        }
+
+        public Builder xOffset(int xoffset){
+            this.xoffset = xoffset;
+            return this;
+        }
+
+        public Builder yOffset(int yOffset){
+            this.yoffset = yOffset;
+            return this;
+        }
+
+        public Builder view(View view){
+            this.view = view;
+            return this;
+        }
+
+        public Builder text(String text){
+            this.text = text;
+            return this;
+        }
+
+        public Builder duration(int duration){
+            this.duration = duration;
+            return this;
+        }
+
+        public Builder build(){
+            return this;
+        }
+
+        public void show(){
+            ToastUtil.showToast(this);
         }
     }
 }
