@@ -226,7 +226,7 @@ public class ToastUtil {
 
     public static final class Builder {
         private int gravity = -1;
-        private int duration;
+        private int duration = Toast.LENGTH_SHORT;
         private View view;
         private Context context;
         private String text = "";
