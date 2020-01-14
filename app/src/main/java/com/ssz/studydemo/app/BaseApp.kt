@@ -37,7 +37,6 @@ abstract class BaseApp : Application(), Application.ActivityLifecycleCallbacks{
         // 在这里可以正常调用Context的方法
     }
 
-
     override fun onCreate() {
         super.onCreate()
         getScreenMetrics()

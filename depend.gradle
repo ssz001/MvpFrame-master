@@ -16,6 +16,7 @@ ext{
 dependencies = [
         //kotlin
         "kotlinx-coroutines-android" : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1",
+        "kotlinx-coroutines-core" : 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1',
 
         //support
         "appcompat-v7"      : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",

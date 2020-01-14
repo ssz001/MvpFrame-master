@@ -36,7 +36,8 @@ public class ToastUtil {
      * @param duration Toast.LENGTH_SHORT（default,2s） or Toast.LENGTH_LONG（3.5s）
      */
     public static void showToast(Context context,CharSequence text ,int duration) {
-        ToastRunnable toastRunnable = new ToastRunnable(context, text, duration,null,-1,0,0);
+        ToastRunnable toastRunnable = new ToastRunnable(context,
+                text, duration,null,-1,0,0);
         if (isOnMainThread()){
             toastRunnable.run();
             return;
@@ -130,7 +131,13 @@ public class ToastUtil {
 
         private final int gravity;
 
-        private ToastRunnable(Context context,CharSequence text,int duration,View toastView,int gravity,int xoffset,int yoffset){
+        private ToastRunnable(Context context,
+                              CharSequence text,
+                              int duration,
+                              View toastView,
+                              int gravity,
+                              int xoffset,
+                              int yoffset){
             this.context = context.getApplicationContext();
             this.text = text;
             this.duration = duration;
@@ -197,7 +204,7 @@ public class ToastUtil {
         }
     }
 
-    /**************************** Toast Expand ******************************/
+    /************************************** Toast Expand *************************************/
 
     public static void showToast(ToastUtil.Builder builder) {
         final Context context = builder.context;
@@ -225,6 +232,7 @@ public class ToastUtil {
     }
 
     public static final class Builder {
+
         private int gravity = -1;
         private int duration = Toast.LENGTH_SHORT;
         private View view;

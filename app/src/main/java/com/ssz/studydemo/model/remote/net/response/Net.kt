@@ -14,7 +14,7 @@ import java.net.SocketTimeoutException
  * time : 2019 12 2019/12/6 14:38
  */
 
-fun <T> CoroutineScope.request(dsl: RetrofitCoroutineDSL<T>.() -> Unit) {
+fun <T> CoroutineScope.request(dsl: RetrofitCoroutineDSL<T>.() -> Unit){
     //在主线程中开启协程
     this.launch(Dispatchers.Main) {
         val coroutine = RetrofitCoroutineDSL<T>().apply(dsl)
