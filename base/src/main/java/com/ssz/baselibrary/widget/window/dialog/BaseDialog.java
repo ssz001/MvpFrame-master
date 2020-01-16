@@ -52,6 +52,9 @@ public abstract class BaseDialog extends Dialog {
     @NotNull
     public abstract DialogConfig loadConfig();
 
+    /**
+     *
+     */
     public abstract void applyRootView(View rootView);
 
     @Override

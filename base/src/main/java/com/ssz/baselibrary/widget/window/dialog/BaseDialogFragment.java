@@ -250,6 +250,6 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
     @NotNull
     private Context getApplication(){
-        return AppHelper.getAppContext();
+        return AppHelper.getApplication();
     }
 }
