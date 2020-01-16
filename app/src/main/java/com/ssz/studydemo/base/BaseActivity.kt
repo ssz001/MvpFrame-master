@@ -126,5 +126,4 @@ abstract class BaseActivity : AppCompatActivity(){
         }
         startActivityForResult(intent, requestCode)
     }
-
 }

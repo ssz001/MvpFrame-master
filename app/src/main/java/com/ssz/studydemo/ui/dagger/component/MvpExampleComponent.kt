@@ -20,6 +20,5 @@ interface MvpExampleComponent {
         fun addAppComponent(appComponent: AppComponent):Builder
         fun addDaggerMvpModule(module: DaggerMvpModule):Builder
         fun build():MvpExampleComponent
-
     }
 }
